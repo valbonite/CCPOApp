@@ -644,9 +644,8 @@ mysqli_close($connection);
         };
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": []};
     
-
     var markers = null;
     
     function load() {
@@ -753,15 +752,14 @@ map.setMapTypeId(customMapTypeId);
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
         for (var i = 0; i < markers.length; i++) {
-          var day = markers[i].getAttribute("day");
-          var barangay = markers[i].getAttribute("barangay");
+          var day = markers[i].getAttribute("day")
           var crime = markers[i].getAttribute("classification");
           var address = markers[i].getAttribute("areaofincident");
           var type = markers[i].getAttribute("crimetype");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + crime + "</b> <br/>" + barangay + "</b> <br/>" + type + "</b> <br/>" + address;
+          var html = "<b>" + crime + "</b> <br/>" + type + "</b> <br/>" + address;
           var icon = customIcons[type] || {};
           var marker = new google.maps.Marker({
             map: map,
@@ -771,9 +769,11 @@ map.setMapTypeId(customMapTypeId);
 
           markerGroups[type].push(marker);
           markerGroups[day].push(marker);
-          //markerGroups[barangay].push(marker);
+
+          console.log(marker)
           
           bindInfoWindow(marker, map, infowindow, html);
+          console.log(bindInfoWindow)
       }
   });
       console.log(marker)
@@ -1160,20 +1160,6 @@ map.setMapTypeId(customMapTypeId);
                                         </label>
                                     </div>
                                 </li>
-                            </ul>                          
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Barangay<span class="fa arrow rotate"></span></a>
-                            <ul class="nav nav-second-level">
-                                <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="selector">
-                                    <option>Choose barangay</option>
-                                    <option name="Capitol Site" value="Capitol Site">Capitol Site</option>
-                                    <option name="Apas" value="Apas">Apas</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
                             </ul>                          
                         </li>
                         <!-- /.nav-second-level -->

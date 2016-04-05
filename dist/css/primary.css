@@ -15,8 +15,18 @@ body {
     background-color: #fff;
 }
 
+#page-wrapper-reporting {
+    height: 100vh;
+    background-color: #fff;
+}
+
 @media(min-width:768px) {
     #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+    }
+
+    #page-wrapper-reporting {
         position: inherit;
         margin: 0 0 0 250px;
     }
@@ -578,6 +588,7 @@ input[readonly] {
 
 .checkbox {
     display: inline-block;
+    color: #000;
 }
 
 #datepicker {
@@ -590,4 +601,12 @@ input[readonly] {
     padding-top: 15px;
     width: 400px;
     float: left;
+}
+
+.input-group-reporting {
+    margin-top: -15px;
+}
+
+#barangay-selector {
+    margin: 0 15px 15px 15px;
 }
