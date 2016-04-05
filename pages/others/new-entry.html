@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>New Entry - CCPO Crime Prediction</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/primary.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <style>.bootstrap-iso .form-group button, .bootstrap-iso form input.form-control, .bootstrap-iso form textarea.form-control, .bootstrap-iso form select.form-control{-webkit-border-radius: 0 !important;-moz-border-radius: 0; border-radius: 0;}.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: white}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}.bootstrap-iso form .input-group-addon {color:#555555; background-color: #f0f0f0; border-radius: 0px; padding-left:12px}</style>
+
+</head>
+
+<body onload="initialize()" onload="s">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <img src="D:\School\CMSC 192\CPP\CPP\pages\images\logo-small.png" class="center-block" alt="Logo Small">
+                </div>
+                <div class="date-time">                
+                    <p id="demo"></p>
+                </div>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 1</strong>
+                                        <span class="pull-right text-muted">40% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 2</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 3</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 4</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <div class="btn-group btn-group-justified">
+                                <a href="index.html" class="btn btn-primary" id="prediction" role="button">Prediction</a>
+                                <a href="weekly.html" class="btn btn-primary" id="reporting" role="button">Reporting</a>
+                            </div>
+                        </li>
+                        <li class="heading">
+                            <h4>GRID SNAPSHOT</h4>
+                        </li>
+                        <li>
+                            <div class="btn-group btn-group-justified">
+                                <a href="daily.html" class="btn btn-primary" id="daily" role="button">Daily</a>
+                                <a href="weekly.html" class="btn btn-primary" id="weekly" role="button">Weekly</a>
+                                <a href="monthly.html" class="btn btn-primary" id="monthly" role="button">Monthly</a>
+                            </div>
+                        </li>  
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->                       
+                        <li class="sidebar-upload">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Browse&hellip; <input type="file" id="fileinput" name="files[]" multiple>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </li>       
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="mergeNoCounts()">Merge Squares</button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="generateTileFiles()">Generate Tile Files</button>
+                        </li>
+                        <li class="sidebar-upload">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Browse&hellip; <input type="file" id="fileinput2" name="files[]" multiple>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()">Show All Counts</button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showPredictionComparisons()">Show Prediction Comparisons</button>
+                        </li>
+                        <li>
+                            <div class="back-forward">
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()">Back</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()">Forward</button>
+                            </div>
+                        </li>
+                        <li class="sidebar-upload">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Browse&hellip; <input type="file" id="fileinput3" name="files[]" multiple>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+            <div class="bootstrap-iso">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="panel panel-default">
+                                <form action="https://formden.com/post/lkcJxPYF/" method="post">
+                                    <div class="panel-heading">
+                                        <h2>New Crime Entry</h2>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="datecomtd">Date Committed</label>
+                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="daycomtd">Day Committed</label>
+                                        <input class="form-control" id="day" name="daycomtd" placeholder='i.e. "Monday," "Tuesday"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="timecomtd">Time Committed</label>
+                                        <input class="form-control" id="time" name="timecomtd" placeholder='i.e. "11:00 AM," "11:00 PM"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="control-label " for="areaofincident">Area of Incident</label>
+                                        <input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN," "STATION2_FUENTE"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="control-label " for="barangay">Barangay</label>
+                                        <input class="form-control" id="barangay" name="barangay" placeholder='i.e. "Pasil," "Tisa"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="control-label " for="street">Building/House No/Street/Sitio</label>
+                                        <input class="form-control" id="street" name="street" type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
+                                        <input class="form-control" id="latitude" name="latitude" type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
+                                        <input class="form-control" id="longitude" name="longitude" type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="crimetype">Crime Type</label>
+                                        <input class="form-control" id="crimetype" name="crimetype" placeholder='i.e. "NON-INDEX CRIME," "INDEX CRIME"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="indexcrimetype">Index Crime Type</label>
+                                        <input class="form-control" id="indexcrimetype" name="indexcrimetype" type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="control-label " for="crimecategory">Crime Category</label>
+                                        <input class="form-control" id="crimecategory" name="crimecategory" placeholder='i.e. "OTHERNONINDEX," "SPECIALLAWS"' type="text"/>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label " for="classification">Classification</label>
+                                        <input class="form-control" id="classification" name="classification" type="text"/>
+                                    </div>
+                                    <div class="form-group">
+                                    <div>
+                                        <input name="_honey" style="display:none" type="text"/>
+                                        <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/highlight.js"></script>
+    <script src="../dist/js/main.js"></script>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toString();
+    </script>
+
+    <script>
+        $('.fa.arrow').on('click', function() {
+        $(this).closest('a').next('.nav').slideToggle();
+        });
+    </script>
+
+    <script>
+        $(".rotate").click(function(){
+        $(this).toggleClass("down")  ; 
+        })
+    </script>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    document.getElementById('fileinput').addEventListener('change', handleFileSelect, false);
+    document.getElementById('fileinput2').addEventListener('change', handleFileSelect2, false);
+</script>
