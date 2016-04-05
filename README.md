@@ -1,32 +1,15 @@
 <<<<<<< HEAD
-# [Start Bootstrap](http://startbootstrap.com/) - [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/)
-
-[SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
-
+# CCPO Crime Prediction and Reporting
 ## Getting Started
 
-To use this template, choose one of the following options to get started:
-* Download the latest release on Start Bootstrap
-* Fork this repository on GitHub
-* Install via bower using `bower install startbootstrap-sb-admin-2`
-
-## Bugs and Issues
-
-Have a bug or an issue with this template? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-sb-admin-2/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/).
-
-## Creator
-
-Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
-
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2015 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE) license.
-=======
-# CCPOApp
-CCPO Crime Prediction and Reporting App
->>>>>>> 85fcad7a2a7389391de98d32789f40cde1ca5a10
+Steps on using the tool:
+1. Choose which grid snapshot to use.   grid.html for monthly snapshots   gridweekly.html for weekly snapshots   griddaily.html for daily snapshots 
+2. To change the grid size, find the variable “grid_size” in the html file and change its value (in meters). Then save the file. 
+3. Open the edited html file in a browser of your choice. 
+4. Click on the first "Choose Files" button to load your data. The data must be in a specific format. Check data Data.xlsx for the format and save the data as a .csv file 
+5.  (Optional) To merge squares in the grid, press the "Merge Squares" button. Then click again the choose files button then press cancel. This will clear the previous loaded data. Then do step 4 again. Proceed to step 6 afterwards 
+6. To generate the tile files for the neural network, press on the "Generate Tile Files" button. A file will be downloaded containing the data for the grid snapshots. 
+7. Create a new folder and label it as desired. Place the downloaded file and the "CrimeNeuroNet.py" file to the same folder. 
+8. Edit the necessary sections of code in "CrimeNeuroNet.py" like epochs, training function, to conduct experiments. Run the python code and this will generate experiment reports, graphs, and "predictiontest" file. 
+9. Go back to the opened html file and click the 2nd "Choose Files" button. Open the generated "predictiontest" file" 
+10. Click on the "Show Prediction Comparisons" to show the actual data and predicted data. Traverse the data using the back and forward buttons. 
