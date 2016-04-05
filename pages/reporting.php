@@ -759,12 +759,13 @@ map.setMapTypeId(customMapTypeId);
               parseFloat(markers[i].getAttribute("longitude")));
           var html = "<b>" + crime + "</b> <br/>" + type + "</b> <br/>" + address;
           var icon = customIcons[type] || {};
-          markerGroups[type].push(marker);
           var marker = new google.maps.Marker({
             map: map,
             position: point,
             icon: icon.icon
         });
+
+          markerGroups[type].push(marker);
 
           console.log(marker)
           
