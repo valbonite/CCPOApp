@@ -2,6 +2,7 @@
 session_start();
 
 include('connection.php');
+require('../vendor/autoload.php');
 // Only process the form if $_POST isn't empty
 
 if( isset( $_POST["submit"])) {

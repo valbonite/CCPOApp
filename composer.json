@@ -2,5 +2,8 @@
 	"name": "CCPO Crime Prediction App",
 	"require": {
     	"php": "^5.5.12"
+  	},
+  	"require-dev": {
+    	"heroku/heroku-buildpack-php": "*"
   	}
 }
