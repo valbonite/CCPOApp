@@ -14,12 +14,11 @@ $db['default']['username'] = $cleardb_username;
 $db['default']['password'] = $cleardb_password;
 $db['default']['database'] = $cleardb_db;
 
-$conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 if(!$connection) {
 	die("Connection failed: " . mysqli_connect_error() );
 }
-
 
 //echo "Connected successfully!";
 ?>
