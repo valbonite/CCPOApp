@@ -9,7 +9,7 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect ('localhost', $username);
+$connection=@mysql_connect ($cleardb_server, $cleardb_username);
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
 // Set the active MySQL database

@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-//include('connection.php');
+include('connection.php');
 require('../vendor/autoload.php');
 // Only process the form if $_POST isn't empty
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+/*$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $cleardb_server = $cleardb_url["host"];
 $cleardb_username = $cleardb_url["user"];
@@ -16,11 +16,12 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = $cleardb_server;
-$db['default']['username'] = $username;
-$db['default']['password'] = $password;
+$db['default']['username'] = $cleardb_username;
+$db['default']['password'] = $cleardb_password;
 $db['default']['database'] = $cleardb_db;
 
-$conn = new mysqli($server, $username, $password, $db);
+$conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+*/
 
 if( isset( $_POST["submit"])) {
     function validateFormData ( $formData ) {
