@@ -1,9 +1,13 @@
 {
 	"name": "CCPO Crime Prediction App",
 	"require": {
-    	"php": "^5.5.12"
+    	"php": "^5.5.12",
+		"herrera-io/silex-pdo": "^1.2"
   	},
   	"require-dev": {
     	"heroku/heroku-buildpack-php": "*"
+  	},
+  	"require": {
+  		"ext-mysql": "*"
   	}
 }

@@ -1,9 +1,26 @@
 <?php
 session_start();
 
-include('connection.php');
+//include('connection.php');
 require('../vendor/autoload.php');
 // Only process the form if $_POST isn't empty
+
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"], 1);
+
+$active_group = 'default';
+$active_record = TRUE;
+
+$db['default']['hostname'] = $cleardb_server;
+$db['default']['username'] = $username;
+$db['default']['password'] = $password;
+$db['default']['database'] = $cleardb_db;
+
+$conn = new mysqli($server, $username, $password, $db);
 
 if( isset( $_POST["submit"])) {
     function validateFormData ( $formData ) {
