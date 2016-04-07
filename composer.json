@@ -9,8 +9,5 @@
   	},
   	"require": {
   		"ext-mysql": "*"
-  	},
-    "require": {
-      "ext-mbstring": "*"
-    }
+  	}
 }
