@@ -254,7 +254,18 @@ map.setMapTypeId(customMapTypeId);
 </head>
 
 <body onload="load()" onload="s">
-    <div class="wrapper">
+    <div class="wrapper">  
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <div class="navbar-index-brand">
+                    <img src="images/logo-small.png" class="center-block" alt="Logo Small">
+                </div>
+            </div>
+            <div class="navbar-right-index">
+                <!--<button type="button" class="btn btn-default btn-outline"><span class="fa fa-user fa-fw"></span> LOGIN</button>-->
+                <a href="login.php" class="btn btn-default btn-outline" role="button"><span class="fa fa-user fa-fw"></span> LOGIN</a>
+            </div>
+        </nav>
         <div id="page-wrapper-index-reporting">
             <div id="map_canvas" style="width:100%; height: 100vh"></div>
         </div>

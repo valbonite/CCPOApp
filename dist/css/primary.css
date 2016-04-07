@@ -54,6 +54,11 @@ body {
     padding: 0 0 0 0;
 }
 
+.navbar-index-brand {
+    min-width: 250px;
+    padding: 0 0 0 0;
+}
+
 .navbar-top-links {
     margin-right: 0;
 }
@@ -625,4 +630,23 @@ input[readonly] {
 
 #barangay-selector {
     margin: 0 15px 15px 15px;
+}
+
+.btn-default.btn-outline { 
+    color: #fff; 
+    border-color: #fff;
+    border-width: 2px;
+}
+
+.btn-default.btn-outline:hover {
+    color: #36a9e0; 
+    background-color: #fff; 
+    border-color: #fff;
+    border-width: 2px;
+}
+
+
+.navbar-right-index {
+    margin: 7px 15px;
+    float: right!important;
 }
