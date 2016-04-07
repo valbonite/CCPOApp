@@ -65,31 +65,34 @@ include("connection.php");
 </head>
 
 <body class="background">
-    <div class="page-wrap">
-                <div class="row vertical-offset-100">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="row-fluid user-row">
-                            <img align="middle" src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
-                        </div>
-                        <div class="panel panel-default">                               
-                            <div class="panel-body">
-                                <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
-                                    <fieldset>
-                                        <label for="login-username" class="sr-only"></label>
-                                        <input class="form-control col-md-6" placeholder="Username" type="text" name="username">
-                                        <label for="login-password" class="sr-only"></label>
-                                        <input class="form-control col-md-6" placeholder="Password" type="password" name="password">
-                                        <br></br>
-                                        <input class="btn btn-primary btn-block" type="submit" value="Submit" name="submit">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="page-wrap">
+    <div class="col-md-offset-4 ">
+      <img src="images/bg-map.png" alt="bg" style="position: absolute">
+    </div>
+    <div class="row vertical-offset-100" style="position: relative">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="row-fluid user-row">
+          <img align="middle" src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
+        </div>
+        <div class="panel panel-default">                               
+          <div class="panel-body">
+            <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
+              <fieldset>
+                <label for="login-username" class="sr-only"></label>
+                <input class="form-control col-md-6" placeholder="Username" type="text" name="username">
+                <label for="login-password" class="sr-only"></label>
+                <input class="form-control col-md-6" placeholder="Password" type="password" name="password">
+                <br></br>
+                <input class="btn btn-primary btn-block" type="submit" value="Submit" name="submit">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- jQuery -->
+  <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
