@@ -1,36 +1,31 @@
 <?php
-session_start();
-
-    if(isset($_POST['login'])) {
-        include('connection.php');
-        $username = strip_tags($_POST['username']);
-        $password = strip_tags($_POST['password']);
-
-        $username = stripslashes($username);
-        $password = stripslashes($password);
-
-        $username = mysqli_real_escape_string($db, $username);
-        $password = mysqli_real_escape_string($db, $password);
-
-        $password = md5($password);
-
-        $sql = "SELECT * FROM ccpo_users WHERE username='$username' LIMIT 1";
-        $query = mysqli_query($db, $sql);
-
-        $row = mysqli_fetch_array($query);
-
-        $id = $row['id'];
-
-        $db_password = $row['password'];
-
-        if($password == $db_password) {
-            $_SESSION['username'] = $username;
-            $_SESSION['id'] = $id;
-            header("Location: index.html");
-        } else {
-            echo "You didn't enter the correct details.";
-        }
-    }
+include("connection.php");
+   session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      
+      $myusername = mysqli_real_escape_string($cleardb_db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($cleardb_db,$_POST['password']); 
+      
+      $sql = "SELECT id FROM ccpo_users WHERE username = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($cleardb_db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+        
+      if($count == 1) {
+         session_register("myusername");
+         $_SESSION['login_user'] = $myusername;
+         
+         header("location: index.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
 
 
 ?>
@@ -70,22 +65,22 @@ session_start();
 </head>
 
 <body class="background">
-    <div class="container">
+    <div class="page-wrap">
                 <div class="row vertical-offset-100">
                     <div class="col-md-4 col-md-offset-4">
                         <div class="row-fluid user-row">
-                            <img src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
+                            <img align="middle" src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
                         </div>
                         <div class="panel panel-default">                               
                             <div class="panel-body">
-                                <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="login.php" enctype="multipart/form-data">
+                                <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
                                     <fieldset>
                                         <label for="login-username" class="sr-only"></label>
                                         <input class="form-control col-md-6" placeholder="Username" id="login-username" type="text" name="username">
                                         <label for="login-password" class="sr-only"></label>
                                         <input class="form-control col-md-6" placeholder="Password" id="login-password" type="password" name="password">
                                         <br></br>
-                                        <input class="btn btn-primary btn-block" type="submit" id="login" value="Login" name="login">
+                                        <input class="btn btn-primary btn-block" type="submit" id="login" value="submit" name="login">
                                     </fieldset>
                                 </form>
                             </div>
