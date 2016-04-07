@@ -1,0 +1,282 @@
+<?php
+session_start();
+
+include('connection.php');
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CCPO Crime Prediction</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/primary.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!--<script src="../dist/js/date-time.js"></script>-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
+<script type="text/javascript" src="proj4.js"></script>
+<script type="text/javascript">
+        var customIcons = [];
+
+        var customIcons = {
+              'NON-INDEX CRIME': {
+                icon: 'images/non-index.png'
+            },
+            'INDEX CRIME': {
+                icon: 'images/index.png'
+            },
+            'OTHERINCIDENTS(Non Crime)': {
+                icon: 'images/othercrimes.png'
+            },
+            'ORDINANCE': {
+                icon: 'images/ordinances.png'
+            }
+        };
+
+    //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
+    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    
+
+    var markers = null;
+    
+    function load() {
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            center: new google.maps.LatLng(10.3216299, 123.9052633),
+            zoom: 14,
+            mapTypeId: 'roadmap'
+        });
+
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var customMapType = new google.maps.StyledMapType([            
+        {
+            "featureType": "administrative",
+            "elementType": "labels.text.fill",
+            "stylers": [
+            {
+                "color": "#444444"
+            }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [
+            {
+                "visibility": "off"
+            }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "all",
+            "stylers": [
+            {
+                "visibility": "simplified"
+            }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [
+            {
+                "visibility": "off"
+            }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [
+            {
+                "visibility": "off"
+            }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+            {
+                "color": "#46bcec"
+            },
+            {
+                "visibility": "on"
+            }
+            ]
+        }
+        ], {
+          name: 'Custom Style'
+      });
+
+var customMapTypeId = 'custom_style';        
+
+map.mapTypes.set(customMapTypeId, customMapType);
+map.setMapTypeId(customMapTypeId);
+
+      // Change this depending on the name of your PHP file
+      downloadUrl("phpsqlajax_genxml.php", function(data) {
+        var xml = data.responseXML;
+        markers = xml.documentElement.getElementsByTagName("marker");
+        console.log(markers)
+        for (var i = 0; i < markers.length; i++) {
+          var day = markers[i].getAttribute("day");
+          var barangay = markers[i].getAttribute("barangay");
+          var crime = markers[i].getAttribute("classification");
+          var address = markers[i].getAttribute("areaofincident");
+          var type = markers[i].getAttribute("crimetype");
+          var point = new google.maps.LatLng(
+              parseFloat(markers[i].getAttribute("latitude")),
+              parseFloat(markers[i].getAttribute("longitude")));
+          var html = "<b>" + crime + "</b> <br/>" + barangay + "</b> <br/>" + type + "</b> <br/>" + address;
+          var icon = customIcons[type] || {};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: point,
+            icon: icon.icon
+        });
+
+          markerGroups[type].push(marker);
+          markerGroups[day].push(marker);
+          //markerGroups[barangay].push(marker);
+          
+          bindInfoWindow(marker, map, infowindow, html);
+      }
+  });
+      console.log(marker)
+  }
+
+  function downloadUrl(url, callback) {
+      var request = window.ActiveXObject ?
+      new ActiveXObject('Microsoft.XMLHTTP') :
+      new XMLHttpRequest;
+
+      request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+          request.onreadystatechange = doNothing;
+          callback(request, request.status);
+      }
+  };
+
+  request.open('GET', url, true);
+  request.send(null);
+}
+
+  function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+    
+    console.log('something');
+  }
+
+  function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(false);
+        }
+    }
+  }
+
+
+  function bindInfoWindow(marker, map, infoWindow, html) {
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(html);
+        infoWindow.open(map, marker);
+    });
+  }
+
+
+
+    function doNothing() {}
+
+    </script>
+
+</head>
+
+<body onload="load()" onload="s">
+    <div class="wrapper">
+        <div id="page-wrapper-index-reporting">
+            <div id="map_canvas" style="width:100%; height: 100vh"></div>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/highlight.js"></script>
+    <script src="../dist/js/main.js"></script>
+
+</body>
+
+</html>

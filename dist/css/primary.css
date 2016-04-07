@@ -21,6 +21,11 @@ body {
     background-color: #fff;
 }
 
+#page-wrapper-index-reporting {
+    height: 100vh;
+    background-color: #fff;
+}
+
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
@@ -30,6 +35,11 @@ body {
     #page-wrapper-reporting {
         position: inherit;
         margin: 0 0 0 250px;
+    }
+
+    #page-wrapper-index-reporting {
+        position: inherit;
+        margin: 0px;
     }
 }
 
@@ -590,10 +600,6 @@ input[readonly] {
 
 .page-wrap {
     min-height: 100vh;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .checkbox {
