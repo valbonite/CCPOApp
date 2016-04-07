@@ -66,7 +66,7 @@ include("connection.php");
 
 <body class="background">
   <div class="page-wrap">
-    <div class="col-md-offset-4 ">
+    <div class="col-md-offset-3" style="padding-top: 100px">
       <img src="images/bg-map.png" alt="bg" style="position: absolute">
     </div>
     <div class="row vertical-offset-100" style="position: relative">
