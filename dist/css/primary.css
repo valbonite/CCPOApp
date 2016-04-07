@@ -632,21 +632,16 @@ input[readonly] {
     margin: 0 15px 15px 15px;
 }
 
-.btn-default.btn-outline { 
+.login-btn { 
     color: #fff; 
-    border-color: #fff;
-    border-width: 2px;
 }
 
-.btn-default.btn-outline:hover {
-    color: #36a9e0; 
-    background-color: #fff; 
-    border-color: #fff;
-    border-width: 2px;
+.login-btn:hover {
+    color: #36a9e0;
 }
 
 
 .navbar-right-index {
-    margin: 7px 15px;
+    margin: 15px 15px;
     float: right!important;
 }
