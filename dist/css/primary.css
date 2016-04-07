@@ -590,6 +590,10 @@ input[readonly] {
 
 .page-wrap {
     min-height: 100vh;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .checkbox {
