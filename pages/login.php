@@ -5,23 +5,23 @@ include("connection.php");
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($connection,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($connection,$_POST['password']); 
+      $username = mysqli_real_escape_string($connection,$_POST['username']);
+      $password = mysqli_real_escape_string($connection,$_POST['password']); 
       
-      $sql = "SELECT * FROM ccpo_users WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT * FROM ccpo_users WHERE username = '$username' and password = '$password'";
       $result = mysqli_query($connection,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
+      // If result matched $username and $password, table row must be 1 row
         
       if($count == 1) {
-         session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
+         session_register("username");
+         $_SESSION['login_user'] = $username;
          
-         header("location: pages/daily.html");
+         header("location: daily.html");
       }else {
          $error = "Your Login Name or Password is invalid";
       }
