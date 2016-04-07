@@ -27,6 +27,8 @@ include("connection.php");
          echo "error";
       }
    }
+   console.log($username);
+   console.log($password);
 
 ?>
 
