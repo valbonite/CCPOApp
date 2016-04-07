@@ -75,6 +75,7 @@ include('connection.php');
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3078222, 123.9052633),
             zoom: 14,
+            mapTypeControl: false,
             mapTypeId: 'roadmap'
         });
 
@@ -267,7 +268,24 @@ map.setMapTypeId(customMapTypeId);
             </div>
         </nav>
         <div id="page-wrapper-index-reporting">
-            <div id="map_canvas" style="width:100%; height: 100vh"></div>
+            <div class="index-sidebar" style="position: absolute">
+               <div class="heading">
+                    <h4>MAP FILTERS</h4>
+               </div>
+                <div class="form-group" id="barangay-selector">
+                    <select class="form-control" id="selector">
+                        <option>Choose barangay</option>
+                        <option name="Sunday" value="Sunday">Sunday</option>
+                        <option name="Monday" value="Monday">Monday</option>
+                        <option name="Tuesday" value="Tuesday">Tuesday</option>
+                        <option name="Wednesday" value="Wednesday">Wednesday</option>
+                        <option name="Thursday" value="Thursday">Thursday</option>
+                        <option name="Friday" value="Friday">Friday</option>
+                        <option name="Saturday" value="Saturday">Saturday</option>
+                    </select>
+                </div>
+            </div>
+            <div id="map_canvas" style="width:100%; height: 100vh; position: relative"></div>
         </div>
     </div>
 
