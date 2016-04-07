@@ -658,7 +658,13 @@ input[readonly] {
 }
 
 .bg-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    margin: 0 auto;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 700px;
 }
