@@ -76,7 +76,7 @@ include("connection.php");
                                 <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
                                     <fieldset>
                                         <label for="login-username" class="sr-only"></label>
-                                        <i class="fa fa-list fa-fw"><input class="form-control col-md-6" placeholder="Username" type="text" name="username">
+                                        <input class="form-control col-md-6" placeholder="Username" type="text" name="username">
                                         <label for="login-password" class="sr-only"></label>
                                         <input class="form-control col-md-6" placeholder="Password" type="password" name="password">
                                         <br></br>
