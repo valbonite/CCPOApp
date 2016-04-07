@@ -8,7 +8,7 @@ include("connection.php");
       $myusername = mysqli_real_escape_string($connection,$_POST['username']);
       $mypassword = mysqli_real_escape_string($connection,$_POST['password']); 
       
-      $sql = "SELECT id FROM ccpo_users WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT * FROM ccpo_users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($connection,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
@@ -75,11 +75,11 @@ include("connection.php");
                                 <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
                                     <fieldset>
                                         <label for="login-username" class="sr-only"></label>
-                                        <input class="form-control col-md-6" placeholder="Username" id="login-username" type="text" name="username">
+                                        <input class="form-control col-md-6" placeholder="Username" type="text" name="username">
                                         <label for="login-password" class="sr-only"></label>
-                                        <input class="form-control col-md-6" placeholder="Password" id="login-password" type="password" name="password">
+                                        <input class="form-control col-md-6" placeholder="Password" type="password" name="password">
                                         <br></br>
-                                        <input class="btn btn-primary btn-block" type="submit" id="login" value="submit" name="submit">
+                                        <input class="btn btn-primary btn-block" type="submit" value="Submit" name="submit">
                                     </fieldset>
                                 </form>
                             </div>
