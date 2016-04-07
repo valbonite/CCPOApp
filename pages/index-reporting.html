@@ -191,7 +191,9 @@ map.setMapTypeId(customMapTypeId);
             position: point,
             icon: icon.icon
         });
-          markerGroups[barangay].push(marker);
+
+          markerGroups[type].push(marker);
+          markerGroups[day].push(marker);
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
@@ -272,7 +274,7 @@ map.setMapTypeId(customMapTypeId);
                </div>
                 <div class="form-group" id="barangay-selector">
                     <select class="form-control" id="selector">
-                        <option>Choose barangay</option>
+                        <option>choose day</option>
                         <option name="Sunday" value="Sunday">Sunday</option>
                         <option name="Monday" value="Monday">Monday</option>
                         <option name="Tuesday" value="Tuesday">Tuesday</option>
