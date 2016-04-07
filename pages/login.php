@@ -5,11 +5,11 @@ include("connection.php");
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($cleardb_db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($cleardb_db,$_POST['password']); 
+      $myusername = mysqli_real_escape_string($connection,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($connection,$_POST['password']); 
       
       $sql = "SELECT id FROM ccpo_users WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($cleardb_db,$sql);
+      $result = mysqli_query($connection,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
@@ -26,7 +26,6 @@ include("connection.php");
          $error = "Your Login Name or Password is invalid";
       }
    }
-
 
 ?>
 
@@ -80,7 +79,7 @@ include("connection.php");
                                         <label for="login-password" class="sr-only"></label>
                                         <input class="form-control col-md-6" placeholder="Password" id="login-password" type="password" name="password">
                                         <br></br>
-                                        <input class="btn btn-primary btn-block" type="submit" id="login" value="submit" name="login">
+                                        <input class="btn btn-primary btn-block" type="submit" id="login" value="submit" name="submit">
                                     </fieldset>
                                 </form>
                             </div>
