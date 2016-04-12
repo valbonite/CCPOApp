@@ -1118,17 +1118,17 @@ map.setMapTypeId(customMapTypeId);
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME"> INDEX CRIME
+                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME" checked> INDEX CRIME
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME"> NON-INDEX CRIME
+                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME" checked> NON-INDEX CRIME
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE"> ORDINANCE
+                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE" checked> ORDINANCE
                                         </label>
                                     </div>
                                     <div class="filters">
