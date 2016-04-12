@@ -24,7 +24,7 @@ include("connection.php");
          header("location: daily.html");
       }else {
          $error = "Your Login Name or Password is invalid";
-         echo "error";
+         //echo "error";
       }
    }
 
