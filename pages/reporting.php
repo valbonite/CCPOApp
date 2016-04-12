@@ -615,6 +615,10 @@ mysqli_close($connection);
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Pace-->
+    <script src="../dist/js/pace.min.js"></script>
+    <link href="../dist/css/pace-loading-bar.css" rel="stylesheet">
+
     <!-- MetisMenu CSS -->
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
