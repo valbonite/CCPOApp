@@ -636,9 +636,14 @@ input[readonly] {
 }
 
 .login-btn:hover {
-    color: #36a9e0;
+    color: #204d74;
+    text-decoration: none !important;
 }
 
+.login-btn:active {
+    color: #204d74;
+    text-decoration: none !important;
+}
 
 .navbar-right-index {
     margin: 15px 15px;
