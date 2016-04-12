@@ -814,7 +814,7 @@ map.setMapTypeId(customMapTypeId);
   request.send(null);
 }
 
-  function show(category) {
+  /*function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
@@ -832,9 +832,21 @@ map.setMapTypeId(customMapTypeId);
             markersInCategory[i].setVisible(false);
         }
     }
-  }
+  }*/
 
-  hide("NON-INDEX");
+  function show(category) {
+    for (i = 0; i < markersInCategory.length; i++) {
+        marker = markerGroups[i];
+        // If is same category or category not picked
+        if (marker.category == category || category.length === 0) {
+            marker.setVisible(true);
+        }
+        // Categories don't match 
+        else {
+            marker.setVisible(false);
+        }
+    }
+}
 
 
   function bindInfoWindow(marker, map, infoWindow, html) {
