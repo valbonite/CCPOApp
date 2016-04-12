@@ -834,6 +834,8 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
+  hide("NON-INDEX");
+
 
   function bindInfoWindow(marker, map, infoWindow, html) {
       google.maps.event.addListener(marker, 'click', function() {
