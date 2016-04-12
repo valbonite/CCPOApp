@@ -48,6 +48,7 @@ include('connection.php');
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
 <script type="text/javascript" src="proj4.js"></script>
 <script type="text/javascript">
+
         var customIcons = [];
 
         var customIcons = {
@@ -192,7 +193,7 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon
         });
 
-          markerGroups[barangay].push(marker);
+          //markerGroups[barangay].push(marker);
           markerGroups[day].push(marker);
           //markerGroups[barangay].push(marker);
           
@@ -285,6 +286,8 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             </div>
             <div id="map_canvas" style="width:100%; height: 100vh; position: relative"></div>
+        </div>
+        <div class="progress">
         </div>
     </div>
 
