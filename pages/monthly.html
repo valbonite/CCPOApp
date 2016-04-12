@@ -1226,58 +1226,21 @@
                                         Browse&hellip; <input type="file" id="fileinput2" name="files[]" multiple>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" class="form-control" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Upload the prediction test file." readonly>
                             </div>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()">Show All Counts</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Show All Counts</button>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showPredictionComparisons()">Show Prediction Comparisons</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showPredictionComparisons()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Compares actual data with prediction data.">Show Prediction Comparisons</button>
                         </li>
                         <li>
                             <div class="back-forward">
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()">Previous Month</button>
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()">Next Month</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Traverse the previous month.">Previous Month</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Traverse the next month.">Next Month</button>
                             </div>
                         </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-list fa-fw"></i> Crime Type<span class="fa arrow rotate"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li id="checkbox">
-                                    <a href="#">Murder</a>
-                                </li>
-                                <li>
-                                    <a href="#">Rape</a>
-                                </li>
-                                <li>
-                                    <a href="#">Carnapping</a>
-                                </li>
-                                <li>
-                                    <a href="#">Theft</a>
-                                </li>
-                            </ul>                          
-                        </li>
-                        //-->
-                        <!-- /.nav-second-level -->
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Filter Location<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Enter Location">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        //-->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

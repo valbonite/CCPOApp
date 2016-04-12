@@ -785,7 +785,8 @@ map.setMapTypeId(customMapTypeId);
           var marker = new google.maps.Marker({
             map: map,
             position: point,
-            icon: icon.icon
+            icon: icon.icon,
+            title: 'Click to show crime info'
         });
 
           markerGroups[type].push(marker);
@@ -1123,12 +1124,12 @@ map.setMapTypeId(customMapTypeId);
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME" checked> NON-INDEX CRIME
+                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME" > NON-INDEX CRIME
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE" checked> ORDINANCE
+                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE" > ORDINANCE
                                         </label>
                                     </div>
                                     <div class="filters">
@@ -1800,6 +1801,7 @@ $(".checkbox").click(function(){
             }
         });
 </script>
+
 
 </body>
 

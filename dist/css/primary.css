@@ -676,3 +676,7 @@ input[readonly] {
 .form-control {
     margin-top: 0 !important;
 }
+
+hr {
+    border-width: 2px;
+}

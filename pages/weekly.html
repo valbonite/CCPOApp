@@ -1221,14 +1221,14 @@
                                         Browse&hellip; <input type="file" id="fileinput" name="files[]" multiple>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" class="form-control" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Load your data. The data must be in a .csv (Comma-separated) format." readonly>
                             </div>
                         </li>       
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="mergeNoCounts()">Merge Squares</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="mergeNoCounts()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Merge squares in the grid.">Merge Squares</button>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="generateTileFiles()">Generate Tile Files</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="generateTileFiles()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Generates the tile files for the neural network.">Generate Tile Files</button>
                         </li>
                         <li class="heading">
                             <h4>LOAD PREDICTION FILE</h4>
@@ -1240,19 +1240,19 @@
                                         Browse&hellip; <input type="file" id="fileinput2" name="files[]" multiple>
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" class="form-control" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Upload the prediction test file." readonly>
                             </div>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()">Show All Counts</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Show All Counts</button>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showPredictionComparisons()">Show Prediction Comparisons</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="showPredictionComparisons()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Compares actual data with prediction data.">Show Prediction Comparisons</button>
                         </li>
                         <li>
                             <div class="back-forward">
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()">Previous Week</button>
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()">Next Week</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Traverse the previous week.">Previous Week</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Traverse the next week.">Next Week</button>
                             </div>
                         </li>
                         <!--
