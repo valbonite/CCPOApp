@@ -667,3 +667,9 @@ input[readonly] {
     left: 0;
     right: 0;
 }
+
+.login-header {
+    color: #36a9e0;
+    text-align: center;
+    padding-bottom: 15px;
+}

@@ -76,6 +76,9 @@ include("connection.php");
         </div>
         <div class="panel panel-default">                               
           <div class="panel-body">
+            <div class="login-header">
+              <h2>Enter Police Credentials</h2>
+            </div>
             <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="">
               <fieldset>
                 <label for="login-username" class="sr-only"></label>
