@@ -473,7 +473,6 @@ table.dataTable thead .sorting:after {
 .btn-file {
   position: relative;
   overflow: hidden;
-  margin-top: 15px;
 }
 
 .btn-file input[type=file] {
@@ -672,4 +671,8 @@ input[readonly] {
     color: #36a9e0;
     text-align: center;
     padding-bottom: 15px;
+}
+
+.form-control {
+    margin-top: 0 !important;
 }

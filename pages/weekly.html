@@ -1210,6 +1210,9 @@
                                 <a href="weekly.html" class="btn btn-primary btn-weekly active" id="weekly" role="button">Weekly</a>
                                 <a href="monthly.html" class="btn btn-primary" id="monthly" role="button">Monthly</a>
                             </div>
+                        </li>
+                        <li class="heading">
+                            <h4>LOAD DATA</h4>
                         </li>                    
                         <li class="sidebar-upload">
                             <div class="input-group">
@@ -1226,6 +1229,9 @@
                         </li>
                         <li>
                             <button type="button" class="btn btn-primary btn-md sharp" onclick="generateTileFiles()">Generate Tile Files</button>
+                        </li>
+                        <li class="heading">
+                            <h4>LOAD PREDICTION FILE</h4>
                         </li>
                         <li class="sidebar-upload">
                             <div class="input-group">
@@ -1245,18 +1251,8 @@
                         </li>
                         <li>
                             <div class="back-forward">
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()">Back</button>
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()">Forward</button>
-                            </div>
-                        </li>
-                        <li class="sidebar-upload">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-primary btn-file">
-                                        Browse&hellip; <input type="file" id="fileinput3" name="files[]" multiple>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()">Previous Week</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()">Next Week</button>
                             </div>
                         </li>
                         <!--
