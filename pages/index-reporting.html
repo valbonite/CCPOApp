@@ -25,6 +25,9 @@ include('connection.php');
     <!-- MetisMenu CSS -->
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+    <!-- Pace Loading Bar CSS -->
+    <link href="../dist/css/pace-loading-bar.css" rel="stylesheet">
+
     <!-- Timeline CSS -->
     <link href="../dist/css/timeline.css" rel="stylesheet">
 
@@ -190,7 +193,8 @@ map.setMapTypeId(customMapTypeId);
           var marker = new google.maps.Marker({
             map: map,
             position: point,
-            icon: icon.icon
+            icon: icon.icon,
+            title: 'Click to show crime info'
         });
           markerGroups[day].push(marker);
           
@@ -292,6 +296,8 @@ map.setMapTypeId(customMapTypeId);
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="../dist/js/pace.min.js"></script>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
@@ -302,7 +308,7 @@ map.setMapTypeId(customMapTypeId);
     <script src="../js/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    title: 'Click to show crime info'
     <script src="../dist/js/highlight.js"></script>
     <script src="../dist/js/main.js"></script>
 
