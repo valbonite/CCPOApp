@@ -839,9 +839,9 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
-    hide('NON-INDEX CRIME');
-    hide('ORDINANCE');
-    hide('OTHERINCIDENTS(Non Crime)');
+    hide("NON-INDEX CRIME");
+    hide("ORDINANCE");
+    hide("OTHERINCIDENTS(Non Crime)");
 
 
   function bindInfoWindow(marker, map, infoWindow, html) {
