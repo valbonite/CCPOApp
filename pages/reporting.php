@@ -800,6 +800,26 @@ map.setMapTypeId(customMapTypeId);
           bindInfoWindow(marker, map, infowindow, html);
       }
   });
+function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+    
+    console.log('something');
+  }
+
+  function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(false);
+        }
+    }
+  }
+
       console.log(marker);
       hide("NON-INDEX CRIME");
       hide("ORDINANCE");
@@ -822,25 +842,7 @@ map.setMapTypeId(customMapTypeId);
   request.send(null);
 }
 
-  function show(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-        }
-    }
-    
-    console.log('something');
-  }
-
-  function hide(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(false);
-        }
-    }
-  }
+  
 
 
   function bindInfoWindow(marker, map, infoWindow, html) {
