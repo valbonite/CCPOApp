@@ -800,7 +800,10 @@ map.setMapTypeId(customMapTypeId);
           bindInfoWindow(marker, map, infowindow, html);
       }
   });
-      console.log(marker)
+      console.log(marker);
+      hide("NON-INDEX CRIME");
+      hide("ORDINANCE");
+      hide("OTHERINCIDENTS(Non Crime)");
   }
 
   function downloadUrl(url, callback) {
@@ -838,10 +841,6 @@ map.setMapTypeId(customMapTypeId);
         }
     }
   }
-
-    hide("NON-INDEX CRIME");
-    hide("ORDINANCE");
-    hide("OTHERINCIDENTS(Non Crime)");
 
 
   function bindInfoWindow(marker, map, infoWindow, html) {
