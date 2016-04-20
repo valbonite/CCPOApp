@@ -624,7 +624,7 @@ require('../vendor/autoload.php');
     }
 
 
-    function preprocessData(file) {
+    function preprocessData() {
         years = [];
         days = [];
         dayCounts = [];
@@ -1279,6 +1279,10 @@ require('../vendor/autoload.php');
                                 <input type="text" class="form-control" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Upload the prediction test file." readonly>
                             </div>
                         </li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-md sharp" onclick="preprocessData()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Process Data</button>
+                        </li>
+
                         <li>
                             <button type="button" class="btn btn-primary btn-md sharp" onclick="showAllCounts()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Show All Counts</button>
                         </li>
