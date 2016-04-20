@@ -1,3 +1,9 @@
+<?php
+session_start();
+include('connection.php');
+require('../vendor/autoload.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,12 +53,12 @@
     var rect_counts = [];
     var years = [];
     var months = []
-    var weekCounts = []
+    var dayCounts = []
     var cols=["red","blue","green","yellow","orange","gray"]
     var startYear = 0
-    var startWeek = 0
+    var startDay = 0
     var startYearCounter = 0
-    var startWeekCounter = 1
+    var startDayCounter = 1
     var predictionCounter = 0
     var predictions = [];
 
@@ -620,87 +626,88 @@
 
     function preprocessData(file) {
         years = [];
-        weeks = [];
-        weekCounts = [];
+        days = [];
+        dayCounts = [];
         startYear = 0
-        startWeek = 0
+        startDay = 0
         file = file.split("\n");
 
         var currentYear = 0;
         var currentMonth = 0;
         var prevMonth = 0;
         var prevYear = 0;
-        var prevWeek = 0;
-        var currentWeek = 0;
+        var prevDay = 0;
         var currentDay = 0;
 
         rect_counts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
 
-        for (x in file) {
-            if (x == 0) continue;
-            line = file[x]
-            console.log(line);
-            line = line.split(",");
+        downloadUrl("phpsqlajax_genxml.php", function(data) {
+        var xml = data.responseXML;
+        markers = xml.documentElement.getElementsByTagName("marker");
+        for (var i = 0; i < markers.length; i++) {
+          var dateData = markers[i].getAttribute("date");
+          var latitudeData = markers[i].getAttribute("latitude");
+          var longitudeData = markers[i].getAttribute("longitude");
 
-            var date = line[0].split("/");
+          console.log(dateData);
+          console.log(latitudeData);
+
+            var date = dateData[0].split("/");
             var year = date[2];
             var month = date[1];
             var day = date[0];
 
             var savedYear = false;
 
+
+
             prevYear = currentYear;
             currentYear = parseInt(year);
             prevMonth = currentMonth;
             currentMonth = parseInt(month);
+            prevDay = currentDay;
             currentDay = parseInt(day);
-
-            var today = new Date(currentYear, currentMonth-1, currentDay);
-            var weekno = today.getWeek();
-
-            prevWeek = currentWeek;
-            currentWeek = weekno;
 
             if (currentYear != prevYear) {
                 if (prevYear != 0){
-                    weekDataSnapshot = {
+                    dayDataSnapshot = {
                         month: prevMonth,
-                        week: prevWeek,
-                        counts: weekCounts
+                        day: prevDay,
+                        counts: dayCounts
                     }
-                    weeks.push(weekDataSnapshot);
+                    days.push(dayDataSnapshot);
 
                     yearDataSnapshot = {
                         year: prevYear,
-                        weeks: weeks
+                        days: days
                     }
                     years.push(yearDataSnapshot);
                     savedYear = true;
                 }
-                weeks = []
-                weekCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
+                days = []
+                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
             }
 
-            if (currentWeek != prevWeek && !savedYear) {
-                if (prevWeek != 0) {
-                    weekDataSnapshot = {
+            if (currentDay != prevDay && !savedYear) {
+                if (prevDay != 0) {
+                    dayDataSnapshot = {
                         month: prevMonth,
-                        week: prevWeek,
-                        counts: weekCounts
+                        day: prevDay,
+                        counts: dayCounts
                     }
-                    weeks.push(weekDataSnapshot);
+                    days.push(dayDataSnapshot);
                     savedYear = false;
                 }
 
-                weekCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
+                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
             }
 
-            var ed50 = [];
-            ed50.push(line[6]);
-            ed50.push(line[7])
-            var coordinates = convertToWSG(ed50);
+            //var ed50 = [];
+            //ed50.push(line[6]);
+            //ed50.push(line[7])
+            //var coordinates = convertToWSG(ed50);
 
-            var incident = new google.maps.LatLng(coordinates[1], coordinates[0])
+            var incident = new google.maps.LatLng(latitudeData, longitudeData)
 
             // marker = new google.maps.Marker({
             //  position: incident,
@@ -709,25 +716,26 @@
 
             for (y in rectArr) {
                 if (rectArr[y].bounds.contains(incident)) {
-                    weekCounts[y]++;
+                    dayCounts[y]++;
                     rectArr[y].counts++;
                     break;
                 }
             }
         }
-        weekDataSnapshot = {
+    }
+        dayDataSnapshot = {
             month: prevMonth,
-            week: prevWeek,
-            counts: weekCounts
+            day: prevDay,
+            counts: dayCounts
         }
-        weeks.push(weekDataSnapshot);
+        days.push(dayDataSnapshot);
         yearDataSnapshot = {
             year: prevYear,
-            weeks: weeks
+            days: days
         }
         years.push(yearDataSnapshot);
         startYear = years[0].year
-        startDay = years[0].weeks[0].week
+        startDay = years[0].days[0].day
         console.log("finished")
         console.log(years);
     }
@@ -753,7 +761,8 @@
     }
 
     function showTiles(year, month) {
-        mapTiles = years[year-startYear].weeks[month].counts;
+        mapTiles = years[year-startYear].days[month - 1].counts;
+        console.log(mapTiles.length)
         for (y in mapTiles) {
             if (mapTiles[y] == 0){
                 rectArr[y].setOptions({fillColor: 'green'});
@@ -787,7 +796,7 @@
         var trueneg = 0;
         var falseneg = 0;
 
-        var actual_tiles = years[year-startYear].weeks[month].counts;
+        var actual_tiles = years[year-startYear].days[month - 1].counts;
         var pred_tiles = predictions[pred_month];
 
         for (y in actual_tiles) {
@@ -831,25 +840,31 @@
             x = parseInt(x)
             year = years[x];
             // console.log(year);
-            for (y in year.weeks) {
+            for (y in year.days) {
                 y = parseInt(y)
-                if (y == year.weeks.length - 1) {
+                if (y == year.days.length - 1) {
                     nextYear = x + 1;
-                    nextWeek = 0;
+                    nextDay = 0;
                     if (nextYear == years.length) break
                 } else {
                     nextYear = x;
-                    nextWeek = y + 1;
+                    nextDay = y + 1;
                 }
 
-                week = year.weeks[y];
+                day = year.days[y];
+
+                var now = new Date(year.year, day.month - 1, day.day);
+                var start = new Date(now.getFullYear(), 0, 0);
+                var diff = now - start;
+                var oneDay = 1000 * 60 * 60 * 24;
+                var doy = Math.round(diff / oneDay);
 
                 // line = year.year.toString()
                 // line = month.month.toString()
                 // line += "," + month.month.toString()
-                line = (week.week/53).toString()
-                for (z in week.counts) {
-                    if (week.counts[z] == 0) {
+                line = (doy/365).toString()
+                for (z in day.counts) {
+                    if (day.counts[z] == 0) {
                         line += ",-1"
                     } else {
                         line += ",1"
@@ -859,12 +874,19 @@
 
                 line += " "
 
+                now = new Date(years[nextYear].year, years[nextYear].days[nextDay].month - 1, years[nextYear].days[nextDay].day);
+
+                start = new Date(now.getFullYear(), 0, 0);
+                diff = now - start;
+                oneDay = 1000 * 60 * 60 * 24;
+                doy = Math.round(diff / oneDay);
+
                 // line += years[nextYear].year.toString()
                 // line += years[nextYear].months[nextMonth].month.toString()
                 // line += "," + years[nextYear].months[nextMonth].month.toString()
-                line += (years[nextYear].weeks[nextWeek].week/53).toString()
-                for (z in years[nextYear].weeks[nextWeek].counts) {
-                    if (years[nextYear].weeks[nextWeek].counts[z] == 0) {
+                line += (doy/365).toString()
+                for (z in years[nextYear].days[nextDay].counts) {
+                    if (years[nextYear].days[nextDay].counts[z] == 0) {
                         line += ",-1"
                     } else {
                         line += ",1"
@@ -874,12 +896,11 @@
 
                 line += "\n";
                 output += line;
-
                 console.log(output);
             }
         }
         // writeFile("griddatadiscrete.txt", output);
-        download(output, "griddata.txt", "text/plain");
+        download(output, "griddatadiscrete.txt", "text/plain");
         console.log("fin")
     }
 
@@ -941,40 +962,37 @@
     }
 
     function showPredictionComparisons() {
-        weekData = years[startYearCounter].weeks;
-        week = weekData[startWeekCounter].week;
+        console.log(startYearCounter);
+        dayData = years[startYearCounter].days;
+        dayDay = dayData[startDayCounter].day;
+        dayMonth = dayData[startDayCounter].month;
 
-        document.getElementById('date').innerHTML = week + ", " + (startYear + startYearCounter);
-        showTiles(startYear + startYearCounter, startWeek + startWeekCounter);
+        document.getElementById('date').innerHTML = dayMonth + ", " + dayDay + ", " + (startYear + startYearCounter);
+        showTiles(startYear + startYearCounter, startDay + startDayCounter);
         showPredictionTiles(predictionCounter);
-        get_accuracy(startYear + startYearCounter, startWeek + startWeekCounter, predictionCounter);
+        get_accuracy(startYear + startYearCounter, startDay + startDayCounter, predictionCounter);
     }
 
     function forward() {
-        startWeekCounter++
+        startDayCounter++
         predictionCounter++
-        if (startWeekCounter + startWeek == 53) {
+        if (startDayCounter + startDay == 355) {
             startYearCounter++
-            startWeekCounter = 0
+            startDayCounter = 0
         }
         showPredictionComparisons()
     }
 
     function back() {
-        startWeekCounter--
+        startDayCounter--
         predictionCounter--
-        console.log(startWeek + startWeekCounter)
-        if (startWeekCounter + startWeek == -1) {
+        if (startDayCounter + startDay == 0) {
             startYearCounter--
-            startWeekCounter = 52
+            startDayCounter = 353
         }
         showPredictionComparisons()
     }
 
-    Date.prototype.getWeek = function() {
-        var onejan = new Date(this.getFullYear(),0,1);
-        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
-    }
       
 </script>
 
@@ -1224,8 +1242,8 @@
                         </li>
                         <li class="sidebar-upload">
                             <div class="btn-group btn-group-justified">
-                                <a href="daily.html" class="btn btn-primary" id="daily" role="button">Daily</a>
-                                <a href="weekly.html" class="btn btn-primary btn-weekly active" id="weekly" role="button">Weekly</a>
+                                <a href="daily.html" class="btn btn-primary active" id="daily" role="button">Daily</a>
+                                <a href="weekly.html" class="btn btn-primary btn-weekly" id="weekly" role="button">Weekly</a>
                                 <a href="monthly.html" class="btn btn-primary" id="monthly" role="button">Monthly</a>
                             </div>
                         </li>
@@ -1269,47 +1287,10 @@
                         </li>
                         <li>
                             <div class="back-forward">
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Traverse the previous week.">Previous Week</button>
-                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Traverse the next week.">Next Week</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="back()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title="Traverse the previous day.">Previous Day</button>
+                                <button type="button" class="btn btn-primary btn-md sharp" onclick="forward()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Traverse the next day.">Next Day</button>
                             </div>
                         </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-list fa-fw"></i> Crime Type<span class="fa arrow rotate"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li id="checkbox">
-                                    <a href="#">Murder</a>
-                                </li>
-                                <li>
-                                    <a href="#">Rape</a>
-                                </li>
-                                <li>
-                                    <a href="#">Carnapping</a>
-                                </li>
-                                <li>
-                                    <a href="#">Theft</a>
-                                </li>
-                            </ul>                          
-                        </li>
-                        //-->
-                        <!-- /.nav-second-level -->
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Filter Location<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Enter Location">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        //-->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -1334,6 +1315,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+    $('document').ready(function () {
+        $('#button-tooltip').tooltip()
+    })
+    </script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
@@ -1364,6 +1351,32 @@
         $(this).toggleClass("down")  ; 
         })
     </script>
+
+    <script>
+        $(document).on('change', '.btn-file :file', function() {
+          var input = $(this),
+              numFiles = input.get(0).files ? input.get(0).files.length : 1,
+              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+          input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).ready( function() {
+            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+                
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+                
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+                
+            });
+        });
+    </script>
+
+
 
 </body>
 
