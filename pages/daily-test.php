@@ -178,6 +178,120 @@ require('../vendor/autoload.php');
 
         map2.mapTypes.set(customMapTypeId, customMapType);
         map2.setMapTypeId(customMapTypeId);
+
+        years = [];
+        days = [];
+        dayCounts = [];
+        startYear = 0
+        startDay = 0
+        file = file.split("\n");
+
+        var currentYear = 0;
+        var currentMonth = 0;
+        var prevMonth = 0;
+        var prevYear = 0;
+        var prevDay = 0;
+        var currentDay = 0;
+
+        rect_counts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
+
+        downloadUrl("phpsqlajax_genxml.php", function(data) {
+        var xml = data.responseXML;
+        markers = xml.documentElement.getElementsByTagName("marker");
+        for (var i = 0; i < markers.length; i++) {
+          var dateData = markers[i].getAttribute("date");
+          var latitudeData = markers[i].getAttribute("latitude");
+          var longitudeData = markers[i].getAttribute("longitude");
+
+          console.log(dateData);
+          console.log(latitudeData);
+
+            var date = dateData[0].split("/");
+            var year = date[2];
+            var month = date[1];
+            var day = date[0];
+
+            var savedYear = false;
+
+
+
+            prevYear = currentYear;
+            currentYear = parseInt(year);
+            prevMonth = currentMonth;
+            currentMonth = parseInt(month);
+            prevDay = currentDay;
+            currentDay = parseInt(day);
+
+            if (currentYear != prevYear) {
+                if (prevYear != 0){
+                    dayDataSnapshot = {
+                        month: prevMonth,
+                        day: prevDay,
+                        counts: dayCounts
+                    }
+                    days.push(dayDataSnapshot);
+
+                    yearDataSnapshot = {
+                        year: prevYear,
+                        days: days
+                    }
+                    years.push(yearDataSnapshot);
+                    savedYear = true;
+                }
+                days = []
+                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
+            }
+
+            if (currentDay != prevDay && !savedYear) {
+                if (prevDay != 0) {
+                    dayDataSnapshot = {
+                        month: prevMonth,
+                        day: prevDay,
+                        counts: dayCounts
+                    }
+                    days.push(dayDataSnapshot);
+                    savedYear = false;
+                }
+
+                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
+            }
+
+            //var ed50 = [];
+            //ed50.push(line[6]);
+            //ed50.push(line[7])
+            //var coordinates = convertToWSG(ed50);
+
+            var incident = new google.maps.LatLng(latitudeData, longitudeData)
+
+            // marker = new google.maps.Marker({
+            //  position: incident,
+            //  map: map
+            // });
+
+            for (y in rectArr) {
+                if (rectArr[y].bounds.contains(incident)) {
+                    dayCounts[y]++;
+                    rectArr[y].counts++;
+                    break;
+                }
+            }
+        }
+    }
+        dayDataSnapshot = {
+            month: prevMonth,
+            day: prevDay,
+            counts: dayCounts
+        }
+        days.push(dayDataSnapshot);
+        yearDataSnapshot = {
+            year: prevYear,
+            days: days
+        }
+        years.push(yearDataSnapshot);
+        startYear = years[0].year
+        startDay = years[0].days[0].day
+        console.log("finished")
+        console.log(years);
     }
 
     function drawCityBounds() {
@@ -579,38 +693,6 @@ require('../vendor/autoload.php');
         });
     }
 
-    function handleFileSelect(evt) {
-        var files = evt.target.files;
-
-        for (var i = 0, f; f = files[i]; i++) {
-          var reader = new FileReader();
-          // Closure to capture the file information.
-          reader.onload = (function(theFile) {
-            return function(e) {
-              preprocessData(e.target.result)
-            };
-          })(f);
-          // Read in the image file as a data URL.
-          reader.readAsText(f);
-        }
-        
-    }
-
-    function handleFileSelect2(evt) {
-        var files = evt.target.files;
-
-        for (var i = 0, f; f = files[i]; i++) {
-          var reader = new FileReader();
-          // Closure to capture the file information.
-          reader.onload = (function(theFile) {
-            return function(e) {
-              readPredictions(e.target.result)
-            };
-          })(f);
-          // Read in the image file as a data URL.
-          reader.readAsText(f);
-        }
-    }
 
     function readPredictions(file) {
         file = file.split("\n")
@@ -621,123 +703,6 @@ require('../vendor/autoload.php');
             line = line.split(" ")
             predictions.push(line)
         }
-    }
-
-
-    function preprocessData() {
-        years = [];
-        days = [];
-        dayCounts = [];
-        startYear = 0
-        startDay = 0
-        file = file.split("\n");
-
-        var currentYear = 0;
-        var currentMonth = 0;
-        var prevMonth = 0;
-        var prevYear = 0;
-        var prevDay = 0;
-        var currentDay = 0;
-
-        rect_counts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
-
-        downloadUrl("phpsqlajax_genxml.php", function(data) {
-        var xml = data.responseXML;
-        markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markers.length; i++) {
-          var dateData = markers[i].getAttribute("date");
-          var latitudeData = markers[i].getAttribute("latitude");
-          var longitudeData = markers[i].getAttribute("longitude");
-
-          console.log(dateData);
-          console.log(latitudeData);
-
-            var date = dateData[0].split("/");
-            var year = date[2];
-            var month = date[1];
-            var day = date[0];
-
-            var savedYear = false;
-
-
-
-            prevYear = currentYear;
-            currentYear = parseInt(year);
-            prevMonth = currentMonth;
-            currentMonth = parseInt(month);
-            prevDay = currentDay;
-            currentDay = parseInt(day);
-
-            if (currentYear != prevYear) {
-                if (prevYear != 0){
-                    dayDataSnapshot = {
-                        month: prevMonth,
-                        day: prevDay,
-                        counts: dayCounts
-                    }
-                    days.push(dayDataSnapshot);
-
-                    yearDataSnapshot = {
-                        year: prevYear,
-                        days: days
-                    }
-                    years.push(yearDataSnapshot);
-                    savedYear = true;
-                }
-                days = []
-                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
-            }
-
-            if (currentDay != prevDay && !savedYear) {
-                if (prevDay != 0) {
-                    dayDataSnapshot = {
-                        month: prevMonth,
-                        day: prevDay,
-                        counts: dayCounts
-                    }
-                    days.push(dayDataSnapshot);
-                    savedYear = false;
-                }
-
-                dayCounts = Array.apply(null, new Array(rectArr.length)).map(Number.prototype.valueOf,0);
-            }
-
-            //var ed50 = [];
-            //ed50.push(line[6]);
-            //ed50.push(line[7])
-            //var coordinates = convertToWSG(ed50);
-
-            var incident = new google.maps.LatLng(latitudeData, longitudeData)
-
-            // marker = new google.maps.Marker({
-            //  position: incident,
-            //  map: map
-            // });
-
-            for (y in rectArr) {
-                if (rectArr[y].bounds.contains(incident)) {
-                    dayCounts[y]++;
-                    rectArr[y].counts++;
-                    break;
-                }
-            }
-        }
-    }
-        dayDataSnapshot = {
-            month: prevMonth,
-            day: prevDay,
-            counts: dayCounts
-        }
-        days.push(dayDataSnapshot);
-        yearDataSnapshot = {
-            year: prevYear,
-            days: days
-        }
-        years.push(yearDataSnapshot);
-        startYear = years[0].year
-        startDay = years[0].days[0].day
-        console.log("finished")
-        console.log(years);
     }
 
     function downloadUrl(url, callback) {
