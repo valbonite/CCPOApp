@@ -645,6 +645,11 @@ input[readonly] {
     text-decoration: none !important;
 }
 
+.login-btn:visited {
+    color: #204d74;
+    text-decoration: none !important;
+}
+
 .navbar-right-index {
     margin: 15px 15px;
     float: right!important;

@@ -35,6 +35,7 @@ while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
+  $newnode->setAttribute("date",$row['date']);
   $newnode->setAttribute("day",$row['day']);
   $newnode->setAttribute("barangay",$row['barangay']);
   $newnode->setAttribute("classification",$row['classification']);

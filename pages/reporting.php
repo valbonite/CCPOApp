@@ -776,6 +776,7 @@ map.setMapTypeId(customMapTypeId);
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
         for (var i = 0; i < markers.length; i++) {
+          var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
           var barangay = markers[i].getAttribute("barangay");
           var crime = markers[i].getAttribute("classification");
@@ -1295,7 +1296,17 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="areaofincident">Area of Incident</label>
-                            <input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>
+                            <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">choose day</option>
+                                <option name="Sunday" value="Sunday">Sunday</option>
+                                <option name="Monday" value="Monday">Monday</option>
+                                <option name="Tuesday" value="Tuesday">Tuesday</option>
+                                <option name="Wednesday" value="Wednesday">Wednesday</option>
+                                <option name="Thursday" value="Thursday">Thursday</option>
+                                <option name="Friday" value="Friday">Friday</option>
+                                <option name="Saturday" value="Saturday">Saturday</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $barangayError; ?></small>-->
