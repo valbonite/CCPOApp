@@ -790,7 +790,7 @@ map.setMapTypeId(customMapTypeId);
           var type = markers[i].getAttribute("crimetype");
           var category = markers[i].getAttribute("crimecategory");
           var crime = markers[i].getAttribute("classification");
-          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + date + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
+          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + date + " " + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
           var icon = customIcons[category] || {};
           var marker = new google.maps.Marker({
             map: map,
@@ -1131,24 +1131,60 @@ map.setMapTypeId(customMapTypeId);
                             <a href="#"><i class="fa fa-list fa-fw"></i> Crime Type<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                     "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME"> INDEX CRIME
+                                            <input class="checkbox" id="MURDER" name="MURDER" type="checkbox" value="MURDER"> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME" > NON-INDEX CRIME
+                                            <input class="checkbox" id="THEFT" name="THEFT" type="checkbox" value="THEFT"> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE" > ORDINANCE
+                                            <input class="checkbox" id="ROBBERY" name="ROBBERY" type="checkbox" value="ROBBERY" > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERINCIDENTS(Non Crime)" name="OTHERINCIDENTS(Non Crime)" type="checkbox" value="OTHERINCIDENTS(Non Crime)"> OTHER INCIDENTS
+                                            <input class="checkbox" id="ORDINANCES" name="ORDINANCES" type="checkbox" value="ORDINANCES" > ORDINANCES
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="CATTLERUSTLING" name="CATTLERUSTLING" type="checkbox" value="CATTLERUSTLING"> CATTLE RUSTLING
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="SPECIALLAWS" name="SPECIALLAWS" type="checkbox" value="SPECIALLAWS"> SPECIAL LAWS
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="HOMICIDE" name="HOMICIDE" type="checkbox" value="HOMICIDE"> HOMICIDE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="CARNAPPING" name="CARNAPPING" type="checkbox" value="CARNAPPING"> CARNAPPING
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="PHYSICALINJURIES" type="checkbox" value="PHYSICALINJURIES"> PHYSICAL INJURIES
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="RAPE" name="RAPE" type="checkbox" value="RAPE"> RAPE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="OTHERNONINDEX" name="OTHERNONINDEX" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
                                         </label>
                                     </div>
                                 </li>
