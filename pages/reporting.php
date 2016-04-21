@@ -652,7 +652,7 @@ mysqli_close($connection);
         var customIcons = [];
 
         var customIcons = {
-              'MURDER': {
+            'MURDER': {
                 icon: 'images/murder.png'
             },
             'THEFT': {
@@ -817,7 +817,7 @@ map.setMapTypeId(customMapTypeId);
         });
 
           markerGroups[crimeCategory].push(marker);
-          markerGroups[day].push(marker);
+          
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
