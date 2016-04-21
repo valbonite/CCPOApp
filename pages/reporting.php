@@ -801,14 +801,14 @@ map.setMapTypeId(customMapTypeId);
           var day = markers[i].getAttribute("day");
           var barangay = markers[i].getAttribute("barangay");
           var crime = markers[i].getAttribute("classification");
-          var crimeCategory = markers[i].getAttribute("crimecategory");
+          var category = markers[i].getAttribute("crimecategory");
           var address = markers[i].getAttribute("areaofincident");
           var type = markers[i].getAttribute("crimetype");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + crimeCategory + "</b> <br/>" + crime + "</b> <br/>" + barangay + "</b>  <br/>" + type + "</b> <br/>" + address;
-          var icon = customIcons[crimeCategory] || {};
+          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + barangay + "</b>  <br/>" + type + "</b> <br/>" + address;
+          var icon = customIcons[category] || {};
           var marker = new google.maps.Marker({
             map: map,
             position: point,
@@ -816,8 +816,8 @@ map.setMapTypeId(customMapTypeId);
             title: 'Click to show crime info'
         });
 
-          markerGroups[crimeCategory].push(marker);
-          console.log(crimeCategory);
+          markerGroups[category].push(marker);
+          console.log(category);
           
           //markerGroups[barangay].push(marker);
           
