@@ -631,6 +631,10 @@ input[readonly] {
     margin: 0 15px 15px 15px;
 }
 
+#day-selector {
+    margin: 0 15px 15px 15px;
+}
+
 .login-btn { 
     color: #fff; 
 }
