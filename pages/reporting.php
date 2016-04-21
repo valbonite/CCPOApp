@@ -817,6 +817,7 @@ map.setMapTypeId(customMapTypeId);
         });
 
           markerGroups[crimeCategory].push(marker);
+          console.log(crimeCategory);
           
           //markerGroups[barangay].push(marker);
           
@@ -1149,7 +1150,7 @@ map.setMapTypeId(customMapTypeId);
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME" checked> INDEX CRIME
+                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME"> INDEX CRIME
                                         </label>
                                     </div>
                                     <div class="filters">
