@@ -277,7 +277,19 @@ map.setMapTypeId(customMapTypeId);
                <hr></hr>
                 <div class="form-group" id="barangay-selector">
                     <select class="form-control" id="selector" onchange="hide(this.value);">
-                        <option value="">choose day</option>
+                        <option value="">Choose Barangay</option>
+                        <option name="Sunday" value="Sunday">Sunday</option>
+                        <option name="Monday" value="Monday">Monday</option>
+                        <option name="Tuesday" value="Tuesday">Tuesday</option>
+                        <option name="Wednesday" value="Wednesday">Wednesday</option>
+                        <option name="Thursday" value="Thursday">Thursday</option>
+                        <option name="Friday" value="Friday">Friday</option>
+                        <option name="Saturday" value="Saturday">Saturday</option>
+                    </select>
+                </div>
+                <div class="form-group" id="day-selector">
+                    <select class="form-control" id="selector" onchange="hide(this.value);">
+                        <option value="">Choose Day</option>
                         <option name="Sunday" value="Sunday">Sunday</option>
                         <option name="Monday" value="Monday">Monday</option>
                         <option name="Tuesday" value="Tuesday">Tuesday</option>

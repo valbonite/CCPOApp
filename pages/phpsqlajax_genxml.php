@@ -39,6 +39,7 @@ while ($row = @mysql_fetch_assoc($result)){
   $newnode->setAttribute("day",$row['day']);
   $newnode->setAttribute("barangay",$row['barangay']);
   $newnode->setAttribute("classification",$row['classification']);
+  $newnode->setAttribute("crimecategory",$row['crimecategory']);
   $newnode->setAttribute("areaofincident", $row['areaofincident']);
   $newnode->setAttribute("latitude", $row['latitude']);
   $newnode->setAttribute("longitude", $row['longitude']);

@@ -652,22 +652,43 @@ mysqli_close($connection);
         var customIcons = [];
 
         var customIcons = {
-              'NON-INDEX CRIME': {
-                icon: 'images/non-index.png'
+              'MURDER': {
+                icon: 'images/murder.png'
             },
-            'INDEX CRIME': {
-                icon: 'images/index.png'
+            'THEFT': {
+                icon: 'images/theft.png'
             },
-            'OTHERINCIDENTS(Non Crime)': {
-                icon: 'images/othercrimes.png'
+            'ROBBERY': {
+                icon: 'images/robbery.png'
             },
-            'ORDINANCE': {
+            'ORDINANCES': {
                 icon: 'images/ordinances.png'
+            },
+            'CATTLERUSTLING': {
+                icon: 'images/cattle.png'
+            },
+            'SPECIALLAWS': {
+                icon: 'images/special-laws.png'
+            },
+            'HOMICIDE': {
+                icon: 'images/homicide.png'
+            },
+            'CARNAPPING': {
+                icon: 'images/carnapping.png'
+            },
+            'PHYSICALINJURIES': {
+                icon: 'images/physical-injuries.png'
+            },
+            'RAPE': {
+                icon: 'images/rape.png'
+            },
+            'OTHERNONINDEX': {
+                icon: 'images/other.png'
             }
         };
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
     
 
     var markers = null;
@@ -780,13 +801,14 @@ map.setMapTypeId(customMapTypeId);
           var day = markers[i].getAttribute("day");
           var barangay = markers[i].getAttribute("barangay");
           var crime = markers[i].getAttribute("classification");
+          var crimeCategory = markers[i].getAttribute("crimecategory");
           var address = markers[i].getAttribute("areaofincident");
           var type = markers[i].getAttribute("crimetype");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + crime + "</b> <br/>" + barangay + "</b> <br/>" + type + "</b> <br/>" + address;
-          var icon = customIcons[type] || {};
+          var html = "<b>" + crimeCategory + "</b> <br/>" + crime + "</b> <br/>" + barangay + "</b>  <br/>" + type + "</b> <br/>" + address;
+          var icon = customIcons[crimeCategory] || {};
           var marker = new google.maps.Marker({
             map: map,
             position: point,
@@ -794,7 +816,7 @@ map.setMapTypeId(customMapTypeId);
             title: 'Click to show crime info'
         });
 
-          markerGroups[type].push(marker);
+          markerGroups[crimeCategory].push(marker);
           markerGroups[day].push(marker);
           //markerGroups[barangay].push(marker);
           
