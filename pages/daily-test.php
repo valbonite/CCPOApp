@@ -184,7 +184,6 @@ require('../vendor/autoload.php');
         dayCounts = [];
         startYear = 0
         startDay = 0
-        file = file.split("\n");
 
         var currentYear = 0;
         var currentMonth = 0;
@@ -1245,7 +1244,7 @@ require('../vendor/autoload.php');
                             </div>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary btn-md sharp" onclick="preprocessData()" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Process Data</button>
+                            <button type="button" class="btn btn-primary btn-md sharp" id="button-tooltip" data-toggle="tooltip" data-placement="right" title=" Shows all counts of plotted crime.">Process Data</button>
                         </li>
 
                         <li>
