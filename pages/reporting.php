@@ -3,25 +3,7 @@ session_start();
 
 include('connection.php');
 require('../vendor/autoload.php');
-// Only process the form if $_POST isn't empty
 
-/*$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"], 1);
-
-$active_group = 'default';
-$active_record = TRUE;
-
-$db['default']['hostname'] = $cleardb_server;
-$db['default']['username'] = $cleardb_username;
-$db['default']['password'] = $cleardb_password;
-$db['default']['database'] = $cleardb_db;
-
-$conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-*/
 
 if( isset( $_POST["submit"])) {
     function validateFormData ( $formData ) {
@@ -688,8 +670,8 @@ mysqli_close($connection);
         };
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    
+    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
 
     var markers = null;
     
@@ -799,15 +781,16 @@ map.setMapTypeId(customMapTypeId);
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
-          var barangay = markers[i].getAttribute("barangay");
-          var crime = markers[i].getAttribute("classification");
-          var category = markers[i].getAttribute("crimecategory");
+          var time = markers[i].getAttribute("time");
           var address = markers[i].getAttribute("areaofincident");
-          var type = markers[i].getAttribute("crimetype");
+          var barangay = markers[i].getAttribute("barangay");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + barangay + "</b>  <br/>" + type + "</b> <br/>" + address;
+          var type = markers[i].getAttribute("crimetype");
+          var category = markers[i].getAttribute("crimecategory");
+          var crime = markers[i].getAttribute("classification");
+          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + date + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
           var icon = customIcons[category] || {};
           var marker = new google.maps.Marker({
             map: map,

@@ -650,7 +650,7 @@ input[readonly] {
 }
 
 .login-btn:visited {
-    color: #204d74;
+    color: #fff;
     text-decoration: none !important;
 }
 
