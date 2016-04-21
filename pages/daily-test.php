@@ -261,7 +261,7 @@ require('../vendor/autoload.php');
             //ed50.push(line[7])
             //var coordinates = convertToWSG(ed50);
 
-            var incident = new google.maps.LatLng(latitudeData, longitudeData)
+            var incident = new google.maps.LatLng(latitudeData, longitudeData);
 
             // marker = new google.maps.Marker({
             //  position: incident,
