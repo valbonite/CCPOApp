@@ -202,8 +202,7 @@ require('../vendor/autoload.php');
           var latitudeData = markers[i].getAttribute("latitude");
           var longitudeData = markers[i].getAttribute("longitude");
 
-          console.log(dateData);
-          console.log(latitudeData);
+
 
             var date = dateData[0].split("/");
             var year = date[2];
