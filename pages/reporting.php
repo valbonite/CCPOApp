@@ -631,7 +631,7 @@ mysqli_close($connection);
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
         <script type="text/javascript" src="proj4.js"></script>
         <script type="text/javascript">
-        var customIcons = [];
+        //var customIcons = [];
 
         var customIcons = {
             'MURDER': {
@@ -788,10 +788,10 @@ map.setMapTypeId(customMapTypeId);
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
           var type = markers[i].getAttribute("crimetype");
-          var category = markers[i].getAttribute("crimecategory");
+          var crimecategory = markers[i].getAttribute("crimecategory");
           var crime = markers[i].getAttribute("classification");
-          var html = "<b>" + category + "</b> <br/>" + crime + "</b> <br/>" + date + " " + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
-          var icon = customIcons[category] || {};
+          var html = "<b>" + crimecategory + "</b> <br/>" + crime + "</b> <br/>" + date + " " + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
+          var icon = customIcons[crimecategory] || {};
           var marker = new google.maps.Marker({
             map: map,
             position: point,
@@ -799,8 +799,8 @@ map.setMapTypeId(customMapTypeId);
             title: 'Click to show crime info'
         });
 
-          markerGroups[category].push(marker);
-          console.log(category);
+          markerGroups[crimecategory].push(marker);
+          console.log(crimecategory);
           
           //markerGroups[barangay].push(marker);
           
