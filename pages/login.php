@@ -72,7 +72,7 @@ include("connection.php");
     <div class="row vertical-offset-100" style="position: relative">
       <div class="col-md-4 col-md-offset-4">
         <div class="row-fluid user-row">
-          <img align="middle" src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
+          <a href="index-reporting.html"><img align="middle" src="images/logo.png" class="img-responsive" alt="Conxole Admin"/>
         </div>
         <div class="panel panel-default">                               
           <div class="panel-body">

@@ -272,12 +272,23 @@ map.setMapTypeId(customMapTypeId);
         <div id="page-wrapper-index-reporting">
             <div class="index-sidebar" style="position: absolute">
                <div class="heading">
-                    <h4>MAP FILTERS</h4>
+                    <h3><i class="fa fa-map-marker fa-fw"></i> MAP FILTERS</h3>
                </div>
                <hr></hr>
+               <div id="barangay-selector">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search for barangay...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
                 <div class="form-group" id="barangay-selector">
                     <select class="form-control" id="selector" onchange="hide(this.value);">
-                        <option value="">Choose Barangay</option>
+                        <option value="">Choose Crime Type</option>
                         <option name="Sunday" value="Sunday">Sunday</option>
                         <option name="Monday" value="Monday">Monday</option>
                         <option name="Tuesday" value="Tuesday">Tuesday</option>

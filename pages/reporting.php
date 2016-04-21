@@ -1131,7 +1131,6 @@ map.setMapTypeId(customMapTypeId);
                             <a href="#"><i class="fa fa-list fa-fw"></i> Crime Type<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                     "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
                                             <input class="checkbox" id="MURDER" name="MURDER" type="checkbox" value="MURDER"> MURDER
