@@ -1865,7 +1865,3 @@ $(".checkbox").click(function(){
 </body>
 
 </html>
-<script type="text/javascript">
-document.getElementById('fileinput').addEventListener('change', handleFileSelect, false);
-document.getElementById('fileinput2').addEventListener('change', handleFileSelect2, false);
-</script>
