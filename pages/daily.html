@@ -641,10 +641,10 @@
             // console.log(line)
             line = line.split(",");
 
-            var date = line[0].split("/");
-            var year = date[2];
+            var date = line[0].split("-");
+            var year = date[0];
             var month = date[1];
-            var day = date[0];
+            var day = date[2];
 
             var savedYear = false;
 
@@ -727,22 +727,6 @@
         console.log("finished")
         console.log(years);
     }
-
-    function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-      new ActiveXObject('Microsoft.XMLHTTP') :
-      new XMLHttpRequest;
-
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-      }
-  };
-
-  request.open('GET', url, true);
-  request.send(null);
-}
 
     function convertToWSG(coordinates){
         return proj4(proj4.defs("SR-ORG:14-UTM"),proj4.defs("EPSG:4326"), coordinates);
@@ -884,7 +868,6 @@
 
                 line += "\n";
                 output += line;
-                console.log(output);
             }
         }
         // writeFile("griddatadiscrete.txt", output);
