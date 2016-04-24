@@ -803,13 +803,15 @@ map.setMapTypeId(customMapTypeId);
             title: 'Click to show crime info'
         });
 
-          markerGroups[crimecategory].push(marker);
+          
           console.log(crimecategory);
           
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
       }
+      markerGroups[crimecategory].push(marker);
+
   });
       console.log(marker);
   }
