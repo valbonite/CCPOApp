@@ -806,6 +806,7 @@ map.setMapTypeId(customMapTypeId);
           bindInfoWindow(marker, map, infowindow, html);
       }
       markerGroups[crimecategory].push(marker);
+      var markerCluster = new MarkerClusterer(map, marker);
 
   });
       console.log(marker);
