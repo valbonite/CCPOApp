@@ -1846,6 +1846,9 @@ map.setMapTypeId(customMapTypeId);
     </div>
 </div>
 
+
+<link href="../dist/css/jquery-ui.min.css" rel="stylesheet">
+<script src="../dist/js/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
@@ -1866,10 +1869,6 @@ map.setMapTypeId(customMapTypeId);
 <script src="../dist/js/highlight.js"></script>
 <script src="../dist/js/main.js"></script>
 
-<script>
-var d = new Date();
-document.getElementById("demo").innerHTML = d.toString();
-</script>
 
 <script>
 $('.fa.arrow').on('click', function() {
