@@ -576,10 +576,6 @@ mysqli_close($connection);
 
 ?>
 
-<style>
-.datepicker{z-index: 1151 !important;}
-</style>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -616,14 +612,9 @@ mysqli_close($connection);
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Datepicker CSS -->
-    <link href="../dist/css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <!-- Include Date Range Picker -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css">
-
+    <script src="../dist/js/bootstrap-datepicker.min.js"></script>
+    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -1096,6 +1087,13 @@ map.setMapTypeId(customMapTypeId);
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
+            <div class="picker-sidebar" style="position: absolute">
+                <div class="input-daterange input-group" id="datepicker">
+                    <input type="text" class="input-sm form-control" name="start" />
+                    <span class="input-group-addon">to</span>
+                    <input type="text" class="input-sm form-control" name="end" />
+                </div>
+            </div>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -1131,12 +1129,6 @@ map.setMapTypeId(customMapTypeId);
                         </li>
                         <li class="heading">
                             <h4>FILTERS</h4>
-                        </li>
-                        <li>
-                            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-    <span></span> <b class="caret"></b>
-</div>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-list fa-fw"></i> Crime Type<span class="fa arrow rotate"></span></a>
@@ -1844,8 +1836,6 @@ map.setMapTypeId(customMapTypeId);
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-<script src="../dist/js/bootstrap-datepicker.js"></script>
-<script src="../dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
@@ -1878,15 +1868,6 @@ $(".rotate").click(function(){
 </script>
 
 <script type="text/javascript">
-$(function() {
-  $('#datepicker').datepicker({
-    language: 'pt-BR'
-  });
-  console.log('something');
-});
-</script>
-
-<script type="text/javascript">
 $(".checkbox").click(function(){
     var cat = $(this).attr("value");    
             // If checked
@@ -1901,9 +1882,15 @@ $(".checkbox").click(function(){
         });
 </script>
 
-
-</body>
 <script type="text/javascript">
+$('#sandbox-container .input-daterange').datepicker({
+    clearBtn: true,
+    orientation: "bottom right"
+});
+
+</script>
+
+<!--<script type="text/javascript">
 $(function() {
 
     function cb(start, end) {
@@ -1923,5 +1910,8 @@ $(function() {
     }, cb);
 
 });
-</script>
+</script>-->
+
+
+</body>
 </html>

@@ -41,6 +41,11 @@ include('connection.php');
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Include Date Range Picker -->
+    <script src="../dist/js/moment.min.js"></script>
+    <script src="../dist/js/daterangepicker.js"></script>
+    <link href="../dist/css/daterangepicker.css" rel="stylesheet">
+
     <!--<script src="../dist/js/date-time.js"></script>-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -52,6 +57,7 @@ include('connection.php');
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
 <script type="text/javascript" src="proj4.js"></script>
 <script type="text/javascript">
+        var customIcons = [];
 
         var customIcons = {
             'MURDER': {
