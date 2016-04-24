@@ -612,9 +612,7 @@ mysqli_close($connection);
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Include Date Range Picker -->
-    <script src="../dist/js/bootstrap-datepicker.min.js"></script>
-    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -1850,6 +1848,10 @@ map.setMapTypeId(customMapTypeId);
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script src="../dist/js/bootstrap-datepicker.min.js"></script>
+    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
