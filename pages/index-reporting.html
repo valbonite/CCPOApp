@@ -53,26 +53,49 @@ include('connection.php');
 <script type="text/javascript" src="proj4.js"></script>
 <script type="text/javascript">
 
-        var customIcons = [];
-
         var customIcons = {
-              'NON-INDEX CRIME': {
-                icon: 'images/non-index.png'
+            'MURDER': {
+                icon: 'images/murder.png'
             },
-            'INDEX CRIME': {
-                icon: 'images/index.png'
+            'THEFT': {
+                icon: 'images/theft.png'
             },
-            'OTHERINCIDENTS(Non Crime)': {
-                icon: 'images/othercrimes.png'
+            'ROBBERY': {
+                icon: 'images/robbery.png'
             },
-            'ORDINANCE': {
+            'ORDINANCES': {
                 icon: 'images/ordinances.png'
+            },
+            'CATTLERUSTLING': {
+                icon: 'images/cattle.png'
+            },
+            'SPECIALLAWS': {
+                icon: 'images/special-laws.png'
+            },
+            'HOMICIDE': {
+                icon: 'images/homicide.png'
+            },
+            'CARNAPPING': {
+                icon: 'images/carnapping.png'
+            },
+            'PHYSICALINJURIES': {
+                icon: 'images/physical-injuries.png'
+            },
+            'RAPE': {
+                icon: 'images/rape.png'
+            },
+            'OTHERNONINDEX': {
+                icon: 'images/other.png'
+            },
+            'OTHERINCIDENTS': {
+                icon: 'images/other-incidents.png'
             }
         };
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    
+    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
+
 
     var markers = null;
     

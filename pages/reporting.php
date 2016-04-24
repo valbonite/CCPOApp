@@ -635,7 +635,7 @@ mysqli_close($connection);
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
         <script type="text/javascript" src="proj4.js"></script>
         <script type="text/javascript">
-        //var customIcons = [];
+        var customIcons = [];
 
         var customIcons = {
             'MURDER': {
