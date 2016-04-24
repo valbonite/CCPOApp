@@ -809,8 +809,9 @@ map.setMapTypeId(customMapTypeId);
 
   });
       console.log(marker);
-      console.log(counter);
+
   }
+  console.log(counter);
 
   function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
