@@ -846,6 +846,11 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
+    hide("MURDER");
+    hide("THEFT");
+    hide("ROBBERY");
+    hide("ORDINANCES");
+
   function bindInfoWindow(marker, map, infoWindow, html) {
       google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(html);
