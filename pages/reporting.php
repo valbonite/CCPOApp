@@ -1894,7 +1894,7 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
-$('#sandbox-container .input-daterange').datepicker({
+$('.input-daterange').datepicker({
     clearBtn: true,
     orientation: "bottom right"
 });
