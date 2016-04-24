@@ -826,9 +826,9 @@ map.setMapTypeId(customMapTypeId);
   request.send(null);
 }
 
-  function show(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
+  function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
@@ -837,9 +837,9 @@ map.setMapTypeId(customMapTypeId);
     console.log('something');
   }
 
-  function hide(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
+  function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
