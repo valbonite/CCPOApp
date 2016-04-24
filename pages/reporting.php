@@ -590,8 +590,18 @@ mysqli_close($connection);
 
     <title>Reporting - CCPO Crime Prediction</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
 
     <!-- Pace-->
     <script src="../dist/js/pace.min.js"></script>
@@ -1847,14 +1857,6 @@ map.setMapTypeId(customMapTypeId);
 </div>
 
 
-<link href="../dist/css/jquery-ui.min.css" rel="stylesheet">
-<script src="../dist/js/jquery-ui.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-
-    <!-- Include Date Range Picker -->
-    <script src="../dist/js/bootstrap-datepicker.min.js"></script>
-    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
