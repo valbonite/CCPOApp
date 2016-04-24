@@ -204,16 +204,19 @@ map.setMapTypeId(customMapTypeId);
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
         for (var i = 0; i < markers.length; i++) {
+          var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
-          var barangay = markers[i].getAttribute("barangay");
-          var crime = markers[i].getAttribute("classification");
+          var time = markers[i].getAttribute("time");
           var address = markers[i].getAttribute("areaofincident");
-          var type = markers[i].getAttribute("crimetype");
+          var barangay = markers[i].getAttribute("barangay");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + crime + "</b> <br/>" + barangay + "</b> <br/>" + type + "</b> <br/>" + address;
-          var icon = customIcons[type] || {};
+          var type = markers[i].getAttribute("crimetype");
+          var crimecategory = markers[i].getAttribute("crimecategory");
+          var crime = markers[i].getAttribute("classification");
+          var html = "<b>" + crimecategory + "</b> <br/>" + crime + "</b> <br/>" + date + " " + time + "</b> <br/>" + barangay + "</b> <br/>" + address;
+          var icon = customIcons[crimecategory] || {};
           var marker = new google.maps.Marker({
             map: map,
             position: point,
