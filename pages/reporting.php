@@ -796,7 +796,7 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          var counter = markers.length;
+          
 
           
           console.log(crimecategory);
@@ -809,6 +809,8 @@ map.setMapTypeId(customMapTypeId);
 
   });
       console.log(marker);
+      var counter = markers.length;
+      console.log(counter);
 
   }
   console.log(counter);
