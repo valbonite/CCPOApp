@@ -832,9 +832,9 @@ map.setMapTypeId(customMapTypeId);
   request.send(null);
 }
 
-  function show(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
+  function show(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+        var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
@@ -843,9 +843,9 @@ map.setMapTypeId(customMapTypeId);
     console.log('something');
   }
 
-  function hide(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
+  function hide(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+        var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
@@ -1305,7 +1305,11 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="source">Source</label>
-                            <input class="form-control" id="source" name="source" placeholder="Blotter" type="text"/>
+                            <select class="form-control" id="selector">
+                                <option value="">Choose Source</option>
+                                <option name="Blotter" value="Blotter">Blotter</option>
+                                <option name="WCPD Blotter" value="WCPD Blotter">WCPD Blotter</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4" id="datepicker">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
@@ -1335,19 +1339,44 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="ppo">PPO</label>
-                            <input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>
+                            <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose PPO</option>
+                                <option name="BOHOL" value="BOHOL">BOHOL</option>
+                                <option name="CEBU" value="CEBU">CEBU</option>
+                                <option name="CEBU_CITY" value="CEBU_CITY">CEBU_CITY</option>
+                                <option name="LAPULAPU_CITY" value="LAPULAPU_CITY">LAPULAPU_CITY</option>
+                                <option name="MANDAUE_CITY" value="MANDAUE_CITY">MANDAUE_CITY</option>
+                                <option name="NEGROS_ORIENTAL" value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
+                                <option name="SIQUIJOR_PROV" value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="unitstation">Unit/Station</label>
-                            <input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>
+                            <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose UNIT/STATION</option>
+                                <option name="STATION1_CENTRO" value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                <option name="STATION2_SUBANGDAKU" value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                <option name="STATION3_BASAK" value="STATION3_BASAK">STATION3_BASAK</option>
+                                <option name="STATION4_CASUNTINGAN" value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                <option name="STATION5_OPAO" value="STATION5_OPAO">STATION5_OPAO</option>
+                                <option name="STATION6_CANDUMAN" value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                <option name="MCPO_WCPD" value="MCPO_WCPD">MCPO_WCPD</option>
+                                <option name="MCPO_TRS" value="MCPO_TRS">MCPO_TRS</option>
+                                <option name="MCPO_HOMICIDE" value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
+                                <option name="MCPO_TPU" value="MCPO_TPU">MCPO_TPU</option>
+                                <option name="MCPO_CIB" value="MCPO_CIB">MCPO_CIB</option>
+                                <option name="MCPO_IDMB" value="MCPO_IDMB">MCPO_IDMB</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="areaofincident">Area of Incident</label>
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector">
-                                <option value="">choose day</option>
+                                <option value="">Choose Day</option>
                                 <option name="Sunday" value="Sunday">Sunday</option>
                                 <option name="Monday" value="Monday">Monday</option>
                                 <option name="Tuesday" value="Tuesday">Tuesday</option>
