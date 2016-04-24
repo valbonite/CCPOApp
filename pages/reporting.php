@@ -670,6 +670,9 @@ mysqli_close($connection);
             },
             'OTHERNONINDEX': {
                 icon: 'images/other.png'
+            },
+            'OTHERINCIDENTS': {
+                icon: 'images/other-incidents.png'
             }
         };
 

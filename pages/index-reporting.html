@@ -197,10 +197,11 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          markerGroups[day].push(marker);
+          //markerGroups[day].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
       }
+      markerGroups[crimecategory].push(marker);
   });
   }
 
