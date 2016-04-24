@@ -590,12 +590,16 @@ mysqli_close($connection);
 
     <title>Reporting - CCPO Crime Prediction</title>
 
-    <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+ 
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
     <!-- Pace-->
     <script src="../dist/js/pace.min.js"></script>
@@ -1104,10 +1108,9 @@ map.setMapTypeId(customMapTypeId);
             </ul>
             <!-- /.navbar-top-links -->
             <div class="picker-sidebar" style="position: absolute">
-                <div class="input-daterange input-group" id="datepicker">
-                    <input type="text" class="input-sm form-control" name="start" />
-                    <span class="input-group-addon">to</span>
-                    <input type="text" class="input-sm form-control" name="end" />
+                <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                    <span></span> <b class="caret"></b>
                 </div>
             </div>
 
@@ -1893,15 +1896,9 @@ $(".checkbox").click(function(){
         });
 </script>
 
+
+
 <script type="text/javascript">
-$('.input-daterange').datepicker({
-    clearBtn: true,
-    orientation: "bottom right"
-});
-
-</script>
-
-<!--<script type="text/javascript">
 $(function() {
 
     function cb(start, end) {
@@ -1921,7 +1918,7 @@ $(function() {
     }, cb);
 
 });
-</script>-->
+</script>
 
 
 </body>
