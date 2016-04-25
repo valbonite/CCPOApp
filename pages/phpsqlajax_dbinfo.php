@@ -13,4 +13,8 @@ $db['default']['hostname'] = $cleardb_server;
 $db['default']['username'] = $cleardb_username;
 $db['default']['password'] = $cleardb_password;
 $db['default']['database'] = $cleardb_db;
+
+$connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
+if (!$connection) {  die('Not connected : ' . mysql_error());}
+
 ?>
