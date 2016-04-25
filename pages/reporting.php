@@ -681,6 +681,8 @@ mysqli_close($connection);
     
     function load() {
 
+        var count = 0;
+
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -783,8 +785,8 @@ map.setMapTypeId(customMapTypeId);
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
-        var count = 0; 
-        count = markers.length;
+        //var count = 0; 
+        //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
@@ -813,7 +815,7 @@ map.setMapTypeId(customMapTypeId);
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
-          //count++;
+          count++;
       }
       markerGroups[crimecategory].push(marker);
       //$('#counter h2 span').html(markers.length);
@@ -1122,6 +1124,7 @@ map.setMapTypeId(customMapTypeId);
                     </div>
                 </div>
                 <div id="counter">
+                    <h3><span></span></h3>
                 </div>
             </div>
 
