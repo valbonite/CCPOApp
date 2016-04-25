@@ -1874,7 +1874,7 @@ map.setMapTypeId(customMapTypeId);
             <div class="modal-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div id="map_canvas" style="width:600px; height: 400px; position: relative"></div>
+                        <div id="map_canvas" style="width:600px; height: 400px"></div>
                     </div>
                 </div>
             </div>
