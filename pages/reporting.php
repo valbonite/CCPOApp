@@ -819,7 +819,7 @@ map.setMapTypeId(customMapTypeId);
       var markerCluster = new MarkerClusterer(map, marker);
 
   });
-    document.getElementById('counter').innerHTML = "Number of crimes: " + counter;
+    document.getElementById('counter').innerHTML = "Number of crimes: " + markers.length;
 
   }
 
