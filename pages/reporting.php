@@ -1434,21 +1434,21 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="street">Building/House No/Street/Sitio</label>
                             <input class="form-control" id="street" name="street" type="text"/>
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $latitudeError; ?></small>-->
                             <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
                             <input class="form-control" id="latitude" name="latitude" type="text"/>
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $longitudeError; ?></small>-->
                             <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
                             <input class="form-control" id="longitude" name="longitude" type="text"/>
                         </div>
-                        <div class="form-group col-md-2">
+                        <!--<div class="form-group col-md-2">
                             <div>
                                 <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
                             <label class="control-label " for="crimetype">Crime Type</label>
