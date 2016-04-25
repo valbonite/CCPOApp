@@ -883,6 +883,18 @@ map.setMapTypeId(customMapTypeId);
 
     </script>
 
+    <script type="text/javascript">
+$('#daterange').daterangepicker({
+    "startDate": "04/19/2016",
+    "endDate": "04/25/2016"
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
+
+var date_from = $('#daterange').data('startDate');
+var date_to = $('#daterange').data('endDate');
+</script>
+
 </head>
 
 <body onload="load()">
@@ -1945,18 +1957,7 @@ $(".checkbox").click(function(){
         });
 </script>
 
-<!--
-<script type="text/javascript">
-$('#daterange').daterangepicker({
-    "startDate": "04/19/2016",
-    "endDate": "04/25/2016"
-}, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
 
-var date_from = $('#daterange').data('startDate');
-var date_to = $('#daterange').data('endDate');
-</script>-->
 
 <!--
 <script type="text/javascript">
