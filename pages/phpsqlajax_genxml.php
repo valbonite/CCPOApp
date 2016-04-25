@@ -17,7 +17,6 @@ if (!$connection) {  die('Not connected : ' . mysql_error());}
 $db_selected = mysql_select_db($cleardb_db, $connection);
 if (!$db_selected) {
   die ('Can\'t use db : ' . mysql_error());
-  echo "Error";
 }
 
 // Select all the rows in the markers table
