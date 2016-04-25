@@ -221,7 +221,7 @@ map.setMapTypeId(customMapTypeId);
           var type = markers[i].getAttribute("crimetype");
           var crimecategory = markers[i].getAttribute("crimecategory");
           var crime = markers[i].getAttribute("classification");
-          var html = "<b>" + crimecategory + "</b> <br/>" + "classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Barangay: " + barangay + "</b> <br/>" + "Precinct: " + address;
+          var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Barangay: " + barangay + "</b> <br/>" + "Precinct: " + address;
           var icon = customIcons[crimecategory] || {};
           var marker = new google.maps.Marker({
             map: map,

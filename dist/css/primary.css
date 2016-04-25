@@ -722,3 +722,7 @@ hr {
     z-index: 11111111;
     margin: 70px -10px 0 0;
 }
+
+.counter {
+    background-color: #204d74;
+}

@@ -680,6 +680,8 @@ mysqli_close($connection);
     var markers = null;
     
     function load() {
+
+        var counter; 
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -812,15 +814,14 @@ map.setMapTypeId(customMapTypeId);
           bindInfoWindow(marker, map, infowindow, html);
       }
       markerGroups[crimecategory].push(marker);
+      counter++;
       var markerCluster = new MarkerClusterer(map, marker);
 
   });
       console.log(marker);
-      var counter = markers.length;
-      console.log(counter);
+      $('#counter h2 span').html(counter);
 
   }
-  console.log(counter);
 
   function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
@@ -1118,6 +1119,9 @@ map.setMapTypeId(customMapTypeId);
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
+                </div>
+                <div id="counter">
+                    <h2><span></span> Crimes</h2>
                 </div>
             </div>
 
