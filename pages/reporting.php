@@ -1872,6 +1872,10 @@ map.setMapTypeId(customMapTypeId);
     <div class="modal fade" id="map-picker" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h3>New Crime Entry</h3>
+                </div>
+
                 <div class="container-fluid">
                     <div class="row">
                         <div id="map_canvas" style="width:600px; height: 400px"></div>
