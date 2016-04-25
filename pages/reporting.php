@@ -820,7 +820,7 @@ map.setMapTypeId(customMapTypeId);
 
   });
       console.log(marker);
-      console.log(count);
+      console.log('count ' + count);
       $('.picker-sidebar #counter h2 span').html(count);
 
   }
