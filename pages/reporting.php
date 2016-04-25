@@ -681,7 +681,7 @@ mysqli_close($connection);
     
     function load() {
 
-        count = 0; 
+        var count = 0; 
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -815,13 +815,12 @@ map.setMapTypeId(customMapTypeId);
           count++;
       }
       markerGroups[crimecategory].push(marker);
-      
+      $('#counter h2 span').html(markers.length);
       var markerCluster = new MarkerClusterer(map, marker);
 
   });
       console.log(marker);
       console.log('count ' + count);
-      $('.picker-sidebar #counter h2 span').html(count);
 
   }
 
