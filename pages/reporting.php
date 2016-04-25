@@ -876,7 +876,7 @@ map.setMapTypeId(customMapTypeId);
     });
   }
 
-
+console.log(drp);
 
 
     function doNothing() {}
@@ -1954,7 +1954,7 @@ $('#daterange').daterangepicker({
 });
 
 var drp = $('#daterange').data('startDate');
-  console.log(drp);
+  
 </script>
 
 <!--
