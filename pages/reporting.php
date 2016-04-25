@@ -826,20 +826,23 @@ map.setMapTypeId(customMapTypeId);
 
 
   function show(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
         var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
+    }
     console.log(markersInCategory.length);
-    console.log(markerGroups[crimecategory]);
     console.log(crimecategory);
   }
 
   function hide(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
         var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
+    }
     console.log(crimecategory);
   }
 
