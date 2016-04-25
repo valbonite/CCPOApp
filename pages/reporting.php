@@ -787,7 +787,6 @@ map.setMapTypeId(customMapTypeId);
         //var count = 0; 
         //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
-          count++;
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
           var time = markers[i].getAttribute("time");
@@ -807,15 +806,12 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          
-
-          
           console.log(crimecategory);
           
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
-          
+          count++;
       }
       markerGroups[crimecategory].push(marker);
       //$('#counter h2 span').html(markers.length);
