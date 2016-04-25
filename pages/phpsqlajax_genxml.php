@@ -35,13 +35,13 @@ while ($row = @mysql_fetch_assoc($result)){
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
   $newnode->setAttribute("date",$row['date']);
-  $newnode->setAttribute("day",$row['day']));
-  $newnode->setAttribute("time",$row['time']));
+  $newnode->setAttribute("day",$row['day']);
+  $newnode->setAttribute("time",$row['time']);
   $newnode->setAttribute("areaofincident",$row['areaofincident']);
   $newnode->setAttribute("barangay",$row['barangay']);
   $newnode->setAttribute("latitude",$row['latitude']);
   $newnode->setAttribute("longitude",$row['longitude']);
-  $newnode->setAttribute("crimetype",$row['crimetype']));
+  $newnode->setAttribute("crimetype",$row['crimetype']);
   $newnode->setAttribute("crimecategory",$row['crimecategory']);
   $newnode->setAttribute("classification",$row['classification']);
 }
