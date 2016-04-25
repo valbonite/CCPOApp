@@ -820,6 +820,7 @@ map.setMapTypeId(customMapTypeId);
 
   });
       console.log(marker);
+      console.log(counter);
       $('.picker-sidebar #counter h2 span').html(counter);
 
   }
@@ -1122,7 +1123,7 @@ map.setMapTypeId(customMapTypeId);
                     </div>
                 </div>
                 <div id="counter">
-                    <h2><span></span> Crimes</h2>
+                    <h3><span></span> Crimes</h3>
                 </div>
             </div>
 

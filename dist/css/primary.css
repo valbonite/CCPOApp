@@ -723,6 +723,6 @@ hr {
     margin: 70px -10px 0 0;
 }
 
-.counter {
-    background-color: #204d74;
+#counter {
+    color: #fff;
 }
