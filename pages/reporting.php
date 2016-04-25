@@ -812,14 +812,15 @@ map.setMapTypeId(customMapTypeId);
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
+          counter++;
       }
       markerGroups[crimecategory].push(marker);
-      counter++;
+      
       var markerCluster = new MarkerClusterer(map, marker);
 
   });
       console.log(marker);
-      $('#counter h2 span').html(counter);
+      $('.picker-sidebar #counter h2 span').html(counter);
 
   }
 
