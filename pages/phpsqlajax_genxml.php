@@ -18,7 +18,6 @@ $db_selected = mysql_select_db($cleardb_db, $connection);
 if (!$db_selected) {
   die ('Can\'t use db : ' . mysql_error());
 }
-
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
