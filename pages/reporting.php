@@ -681,7 +681,7 @@ mysqli_close($connection);
     
     function load() {
 
-        var counter; 
+        count = 0; 
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -812,7 +812,7 @@ map.setMapTypeId(customMapTypeId);
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
-          counter++;
+          count++;
       }
       markerGroups[crimecategory].push(marker);
       
@@ -820,8 +820,8 @@ map.setMapTypeId(customMapTypeId);
 
   });
       console.log(marker);
-      console.log(counter);
-      $('.picker-sidebar #counter h2 span').html(counter);
+      console.log(count);
+      $('.picker-sidebar #counter h2 span').html(count);
 
   }
 
