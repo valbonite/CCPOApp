@@ -825,25 +825,25 @@ map.setMapTypeId(customMapTypeId);
 
 
 
-  function show(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
+  function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
     }
     
-    console.log('something');
+    console.log(category);
   }
 
-  function hide(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
+  function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
     }
-    console.log('something');
+    console.log(category);
   }
 
     hide("MURDER");
