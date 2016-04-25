@@ -1953,7 +1953,7 @@ $('#daterange').daterangepicker({
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
 
-var drp = $('#daterange').data('daterangepicker');
+var drp = $('#daterange').data('startDate');
   console.log(drp);
 </script>
 
