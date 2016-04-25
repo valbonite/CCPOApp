@@ -874,12 +874,7 @@ map.setMapTypeId(customMapTypeId);
     });
   }
 
-  function showMarkers() {
-    var date_from = document.getElementById('start_date').value;
-    var date_to = document.getElementById('end_date').value;
-}
 
-console.log($('.datepicker').datepicker('getStartDate'););
 
 
     function doNothing() {}
