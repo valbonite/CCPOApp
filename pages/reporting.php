@@ -681,7 +681,6 @@ mysqli_close($connection);
     
     function load() {
 
-        var count = 0;
 
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
@@ -781,7 +780,8 @@ map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
-      downloadUrl("phpsqlajax_genxml.php", function(data) {
+      downloadUrl("phpsqlajax_genxml.php", function(data) {       
+        var count = 0;
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
