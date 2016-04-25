@@ -1108,9 +1108,16 @@ map.setMapTypeId(customMapTypeId);
             </ul>
             <!-- /.navbar-top-links -->
             <div class="picker-sidebar" style="position: absolute">
-                <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+
+                <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
+                </div>-->
+                <div class="input-group">
+                    <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+                    <div class="input-group-addon">
+                        <span class="fa fa-calendar fa-fw"></span>
+                    </div>
                 </div>
             </div>
 
@@ -1931,13 +1938,27 @@ $(".checkbox").click(function(){
         });
 </script>
 
-
-
 <script type="text/javascript">
+$('#daterange').daterangepicker({
+    "startDate": "04/19/2016",
+    "endDate": "04/25/2016"
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
+</script>
+
+<!--
+<script type="text/javascript">
+$(function() {
+    $('#daterange').daterangepicker();
+});
+</script>-->
+
+<!--<script type="text/javascript">
 $(function() {
 
     function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#reportrange').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     }
     cb(moment().subtract(29, 'days'), moment());
 
@@ -1954,6 +1975,8 @@ $(function() {
 
 });
 </script>
+-->
+
 
 
 </body>
