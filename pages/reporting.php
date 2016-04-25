@@ -1420,15 +1420,21 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="street">Building/House No/Street/Sitio</label>
                             <input class="form-control" id="street" name="street" type="text"/>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $latitudeError; ?></small>-->
                             <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
                             <input class="form-control" id="latitude" name="latitude" type="text"/>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $longitudeError; ?></small>-->
                             <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
                             <input class="form-control" id="longitude" name="longitude" type="text"/>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div>
+                                <input style="display:none" type="text"/>
+                                <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
