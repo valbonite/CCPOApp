@@ -812,15 +812,14 @@ map.setMapTypeId(customMapTypeId);
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
-          count++;
+          //count++;
       }
       markerGroups[crimecategory].push(marker);
-      $('#counter h2 span').html(markers.length);
+      //$('#counter h2 span').html(markers.length);
       var markerCluster = new MarkerClusterer(map, marker);
 
   });
-      console.log(marker);
-      console.log(count);
+    document.getElementById('counter').innerHTML = "Number of crimes: " + counter;
 
   }
 
@@ -1122,7 +1121,7 @@ map.setMapTypeId(customMapTypeId);
                     </div>
                 </div>
                 <div id="counter">
-                    <h3><span></span> Crimes</h3>
+                    <h3><span></span></h3>
                 </div>
             </div>
 
