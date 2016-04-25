@@ -1338,7 +1338,17 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
                             <label class="control-label " for="daycomtd">Day Committed</label>
-                            <input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>
+                            <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose Day</option>
+                                <option name="Sunday" value="Sunday">Sunday</option>
+                                <option name="Monday" value="Monday">Monday</option>
+                                <option name="Tuesday" value="Tuesday">Tuesday</option>
+                                <option name="Wednesday" value="Wednesday">Wednesday</option>
+                                <option name="Thursday" value="Thursday">Thursday</option>
+                                <option name="Friday" value="Friday">Friday</option>
+                                <option name="Saturday" value="Saturday">Saturday</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
