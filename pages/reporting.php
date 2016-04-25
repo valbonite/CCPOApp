@@ -1869,7 +1869,7 @@ map.setMapTypeId(customMapTypeId);
 
     <!-- End of Crime Entry modal -->
 
-    <div class="modal fade" id="form-entry" role="dialog">
+    <div class="modal fade" id="map-picker" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="container-fluid">
