@@ -823,6 +823,9 @@ map.setMapTypeId(customMapTypeId);
 
   }
 
+  var drp = $('#daterange').data('daterangepicker');
+  console.log(drp);
+
   function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
