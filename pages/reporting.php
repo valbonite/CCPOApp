@@ -833,7 +833,7 @@ map.setMapTypeId(customMapTypeId);
         }
     }
     console.log(markersInCategory.length);
-    console.log(category);
+    console.log(crimecategory);
   }
 
   function hide(crimecategory) {
@@ -843,7 +843,7 @@ map.setMapTypeId(customMapTypeId);
             markersInCategory[i].setVisible(false);
         }
     }
-    console.log(category);
+    console.log(crimecategory);
   }
 
     hide("MURDER");
