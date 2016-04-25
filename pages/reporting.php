@@ -832,7 +832,7 @@ map.setMapTypeId(customMapTypeId);
             markersInCategory[i].setVisible(true);
         }
     }
-    
+    console.log(markersInCategory.length);
     console.log(category);
   }
 
