@@ -1432,8 +1432,7 @@ map.setMapTypeId(customMapTypeId);
                         </div>
                         <div class="form-group col-md-2">
                             <div>
-                                <input style="display:none" type="text"/>
-                                <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                                <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -1867,6 +1866,22 @@ map.setMapTypeId(customMapTypeId);
             </div>
         </div>
     </div>
+
+    <!-- End of Crime Entry modal -->
+
+    <div class="modal fade" id="form-entry" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="map_canvas" style="width:600px; height: 400px; position: relative"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 
