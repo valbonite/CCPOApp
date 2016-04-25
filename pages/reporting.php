@@ -876,7 +876,7 @@ map.setMapTypeId(customMapTypeId);
     });
   }
 
-console.log(drp);
+
 
 
     function doNothing() {}
@@ -1945,6 +1945,7 @@ $(".checkbox").click(function(){
         });
 </script>
 
+<!--
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
@@ -1953,9 +1954,9 @@ $('#daterange').daterangepicker({
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
 
-var drp = $('#daterange').data('startDate');
-  
-</script>
+var date_from = $('#daterange').data('startDate');
+var date_to = $('#daterange').data('endDate');
+</script>-->
 
 <!--
 <script type="text/javascript">
