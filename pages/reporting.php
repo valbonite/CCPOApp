@@ -1122,7 +1122,6 @@ map.setMapTypeId(customMapTypeId);
                     </div>
                 </div>
                 <div id="counter">
-                    <h3><span></span></h3>
                 </div>
             </div>
 
