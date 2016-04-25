@@ -823,8 +823,7 @@ map.setMapTypeId(customMapTypeId);
 
   }
 
-  var drp = $('#daterange').data('daterangepicker');
-  console.log(drp);
+
 
   function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
@@ -1953,6 +1952,9 @@ $('#daterange').daterangepicker({
 }, function(start, end, label) {
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
+
+var drp = $('#daterange').data('daterangepicker');
+  console.log(drp);
 </script>
 
 <!--
