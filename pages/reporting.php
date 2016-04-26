@@ -821,7 +821,7 @@ map.setMapTypeId(customMapTypeId);
     document.getElementById('counter').innerHTML = "Number of crimes: " + count;
     console.log(count);
 
-  }
+}
 
 
 

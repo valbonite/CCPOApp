@@ -706,8 +706,10 @@ hr {
 .prediction-label {
     right: 30px;
     padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     min-height: 50px;
-    width: 200px;
+    min-width: 50px;
     background-color: #383d4a;
     z-index: 11111111;
     margin: 70px -10px 0 0;
