@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
 $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $cleardb_server = $cleardb_url["host"];
