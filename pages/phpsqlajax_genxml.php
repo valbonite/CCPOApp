@@ -14,10 +14,10 @@ $parnode = $dom->appendChild($node);
 
 // Set the active MySQL database
 
-$db_selected = mysql_select_db($cleardb_db, $connection);
-if (!$db_selected) {
-  die ('Can\'t use db : ' . mysql_error());
-}
+//$db_selected = mysql_select_db($cleardb_db, $connection);
+//if (!$db_selected) {
+//  die ('Can\'t use db : ' . mysql_error());
+//}
 
 // Select all the rows in the markers table
 
