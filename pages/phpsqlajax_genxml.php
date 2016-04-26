@@ -10,13 +10,17 @@ $parnode = $dom->appendChild($node);
 // Opens a connection to a MySQL server
 
 $connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-if (!$connection) {  die('Not connected : ' . mysql_error());}
+if (!$connection) { 
+  header('HTTP/1.1 500 Error: Could not connect!'); 
+  exit();
+}
 
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
 if (!$db_selected) {
-  die ('Can\'t use db : ' . mysql_error());
+  header('HTTP/1.1 500 Error: Could not connect to db!'); 
+  exit();
 }
 
 // Select all the rows in the markers table
@@ -24,7 +28,8 @@ if (!$db_selected) {
 $query = "SELECT * FROM master_data WHERE 1";
 $result = mysql_query($query);
 if (!$result) {
-  die('Invalid query: ' . mysql_error());
+  header('HTTP/1.1 500 Error: Query not successful!'); 
+  exit();
 }
 
 header("Content-type: text/xml; charset=UTF-8");
