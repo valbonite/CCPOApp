@@ -23,7 +23,7 @@ if (!$db_selected) {
 $query = "SELECT * FROM master_data WHERE 1";
 $result = mysql_query($query);
 if (!$result) {
-  die('Invalid query: ' . mysql_error());
+  throw new Exception($connection->error);
 }
 
 header("Content-type: text/xml; charset=UTF-8");
