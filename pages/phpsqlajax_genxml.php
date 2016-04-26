@@ -18,7 +18,7 @@ if (!$connection) {
 
 // Set the active MySQL database
 
-$db_selected = mysql_select_db($cleardb_db, $connection);
+$db_selected = mysqli_select_db($cleardb_db, $connection);
 if (!$db_selected) {
   echo "Error 2"; 
 }
