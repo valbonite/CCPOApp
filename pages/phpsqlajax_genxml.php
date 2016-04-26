@@ -9,7 +9,7 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if (!$connection) { 
   header('HTTP/1.1 500 Error: Could not connect!'); 
   exit();
