@@ -16,8 +16,8 @@ $db['default']['database'] = $cleardb_db;
 
 $connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-if($connection) {
-	echo "Connected successfully!";
-} else {
-	echo "Connection unsuccessful!";
+if(!$connection) {
+	die("Connection failed: " . mysqli_connect_error() );
+}
+echo "Connected successfully!";
 ?>
