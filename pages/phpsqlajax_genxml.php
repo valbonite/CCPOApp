@@ -1,5 +1,5 @@
 <?php
-require("phpsqlajax_dbinfo.php");
+require("connection.php");
 
 // Start XML file, create parent node
 
