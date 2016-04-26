@@ -11,7 +11,8 @@ $parnode = $dom->appendChild($node);
 
 $connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if (!$connection) { 
-  header('HTTP/1.1 500 Error: Could not connect!'); 
+  header('HTTP/1.1 500 Error: Could not connect!');
+  echo "Error 1"; 
   exit();
 }
 
@@ -19,7 +20,8 @@ if (!$connection) {
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
 if (!$db_selected) {
-  header('HTTP/1.1 500 Error: Could not connect to db!'); 
+  header('HTTP/1.1 500 Error: Could not connect to db!');
+  echo "Error 2"; 
   exit();
 }
 
@@ -28,7 +30,8 @@ if (!$db_selected) {
 $query = "SELECT * FROM master_data WHERE 1";
 $result = mysql_query($query);
 if (!$result) {
-  header('HTTP/1.1 500 Error: Query not successful!'); 
+  header('HTTP/1.1 500 Error: Query not successful!');
+  echo "Error 3"; 
   exit();
 }
 
