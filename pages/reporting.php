@@ -3,25 +3,7 @@ session_start();
 
 include('connection.php');
 require('../vendor/autoload.php');
-// Only process the form if $_POST isn't empty
 
-/*$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"], 1);
-
-$active_group = 'default';
-$active_record = TRUE;
-
-$db['default']['hostname'] = $cleardb_server;
-$db['default']['username'] = $cleardb_username;
-$db['default']['password'] = $cleardb_password;
-$db['default']['database'] = $cleardb_db;
-
-$conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-*/
 
 if( isset( $_POST["submit"])) {
     function validateFormData ( $formData ) {
@@ -584,19 +566,15 @@ if( isset( $_POST["submit"])) {
     $query = "INSERT INTO master_data ( id, encoder, source, datereptd, date, day, time, entryno, ppo, areaofincident, barangay, street, latitude, longitude, crimetype, indexcrimetype, crimecategory, classification, modeofcommission, streetcrime, involveminor, specialcase, weaponused, facaliber, fastatus, falicenseno, crsfirearms, fadisposition, transport, motorcycleridingcriminals, driversuspect, vehowner, vehtype, vehplatenum, drugs, drugconfiscateditem, gambling, gamblingconfiscateditem, gamblingamountconfiscated, rec_unrec, robberytype, bankrobberyamount, establishmenttype, establishmentname, casestatus, solved, cleared, uncleared_unsolved, arrest, numarrested, datefiled, iscasenum, numvictim, namevictim, addressvictim, victimoccupation, victimoccupationagency, victimage, victimagegroup, victimsex, victimcs, victimtourist, victimnationality, victimethnicity, victimdefect, victimstatus, victimdrugalcohol, numsuspect, namesuspect, addresssuspect, suspectbirthplace, suspectdistinctmark, suspectsex, suspectcs, suspectheight, suspectweight, suspectbday, suspectage, suspecthaircolor, suspectoccupation, suspectoccupationagency, suspectnationality, suspectethnicity, suspectforeigner, suspectgang, suspectprevcriminal, suspectpnpmember, suspectdrugalcohol, suspectdisposition, investigator, narrative, progressreport ) VALUES ( NULL, '$encoder', '$source', '$datereptd', '$date', '$day', '$time', '$entryno', '$ppo', '$areaofincident', '$barangay', '$street', '$latitude', '$longitude', '$crimetype', '$indexcrimetype', '$crimecategory', '$classification', '$modeofcommission', '$streetcrime', '$involveminor', '$specialcase', '$weaponused', '$facaliber', '$fastatus', '$falicenseno', '$crsfirearms', '$fadisposition', '$transport', '$motorcycleridingcriminals', '$driversuspect', '$vehowner', '$vehtype', '$vehplatenum', '$drugs', '$drugconfiscateditem', '$gambling', '$gamblingconfiscateditem', '$gamblingamountconfiscated', '$rec_unrec', '$robberytype', '$bankrobberyamount', '$establishmenttype', '$establishmentname', '$casestatus', '$solved', '$cleared', '$uncleared_unsolved', '$arrest', '$numarrested', '$datefiled', '$iscasenum', '$numvictim', '$namevictim', '$addressvictim', '$victimoccupation', '$victimoccupationagency', '$victimage', '$victimagegroup', '$victimsex', '$victimcs', '$victimtourist', '$victimnationality', '$victimethnicity', '$victimdefect', '$victimstatus', '$victimdrugalcohol', '$numsuspect', '$namesuspect', '$addresssuspect', '$suspectbirthplace', '$suspectdistinctmark', '$suspectsex', '$suspectcs', '$suspectheight', '$suspectweight', '$suspectbday', '$suspectage', '$suspecthaircolor', '$suspectoccupation', '$suspectoccupationagency', '$suspectnationality', '$suspectethnicity', '$suspectforeigner', '$suspectgang','$suspectprevcriminal', '$suspectpnpmember', '$suspectdrugalcohol', '$suspectdisposition', '$investigator', '$narrative', '$progressreport' )";
 
     if(mysqli_query($connection, $query)){
-        echo "New record in database!";
+        //echo "New record in database!";
     } else {
-        echo "Error: ". $query . "<br>" . mysqli_error($connection);
+        //echo "Error: ". $query . "<br>" . mysqli_error($connection);
     }
 }
 
 mysqli_close($connection);
 
 ?>
-
-<style>
-.datepicker{z-index: 1151 !important;}
-</style>
 
 
 <!DOCTYPE html>
@@ -612,8 +590,16 @@ mysqli_close($connection);
 
     <title>Reporting - CCPO Crime Prediction</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+ 
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Pace-->
     <script src="../dist/js/pace.min.js"></script>
@@ -634,9 +620,6 @@ mysqli_close($connection);
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Datepicker CSS -->
-    <link href="../dist/css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="../dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
 
 
@@ -652,27 +635,53 @@ mysqli_close($connection);
         var customIcons = [];
 
         var customIcons = {
-              'NON-INDEX CRIME': {
-                icon: 'images/non-index.png'
+            'MURDER': {
+                icon: 'images/murder.png'
             },
-            'INDEX CRIME': {
-                icon: 'images/index.png'
+            'THEFT': {
+                icon: 'images/theft.png'
             },
-            'OTHERINCIDENTS(Non Crime)': {
-                icon: 'images/othercrimes.png'
+            'ROBBERY': {
+                icon: 'images/robbery.png'
             },
-            'ORDINANCE': {
+            'ORDINANCES': {
                 icon: 'images/ordinances.png'
+            },
+            'CATTLERUSTLING': {
+                icon: 'images/cattle.png'
+            },
+            'SPECIALLAWS': {
+                icon: 'images/special-laws.png'
+            },
+            'HOMICIDE': {
+                icon: 'images/homicide.png'
+            },
+            'CARNAPPING': {
+                icon: 'images/carnapping.png'
+            },
+            'PHYSICALINJURIES': {
+                icon: 'images/physical-injuries.png'
+            },
+            'RAPE': {
+                icon: 'images/rape.png'
+            },
+            'OTHERNONINDEX': {
+                icon: 'images/other.png'
+            },
+            'OTHERINCIDENTS': {
+                icon: 'images/other-incidents.png'
             }
         };
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    
+    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
+    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
 
     var markers = null;
     
     function load() {
+
+        var count = 0;
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -771,37 +780,76 @@ map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
-      downloadUrl("phpsqlajax_genxml.php", function(data) {
+      downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
+        //var count = 0; 
+        //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
+          var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
-          var barangay = markers[i].getAttribute("barangay");
-          var crime = markers[i].getAttribute("classification");
+          var time = markers[i].getAttribute("time");
           var address = markers[i].getAttribute("areaofincident");
-          var type = markers[i].getAttribute("crimetype");
+          var barangay = markers[i].getAttribute("barangay");
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("latitude")),
               parseFloat(markers[i].getAttribute("longitude")));
-          var html = "<b>" + crime + "</b> <br/>" + barangay + "</b> <br/>" + type + "</b> <br/>" + address;
-          var icon = customIcons[type] || {};
+          var type = markers[i].getAttribute("crimetype");
+          var crimecategory = markers[i].getAttribute("crimecategory");
+          var crime = markers[i].getAttribute("classification");
+          var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Time: " + time + "</b> <br/>" + "Barangay: "+ barangay + "</b> <br/>" + "Precinct: "+ address;
+          var icon = customIcons[crimecategory] || {};
           var marker = new google.maps.Marker({
             map: map,
             position: point,
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-
-          markerGroups[type].push(marker);
-          markerGroups[day].push(marker);
+          console.log(crimecategory);
+          
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
+          count++;
       }
+      markerGroups[crimecategory].push(marker);
+      //$('#counter h2 span').html(markers.length);
+      var markerCluster = new MarkerClusterer(map, marker);
+
   });
-      console.log(marker);
+    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
+    console.log(count);
+
+}
+
+
+
+  function show(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+        var markersInCategory = markerGroups[crimecategory];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+    console.log(markersInCategory.length);
+    console.log(crimecategory);
   }
+
+  function hide(crimecategory) {
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+        var markersInCategory = markerGroups[crimecategory];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(false);
+        }
+    }
+    console.log(crimecategory);
+  }
+
+    hide("MURDER");
+    hide("THEFT");
+    hide("ROBBERY");
+    hide("ORDINANCES");
 
   function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
@@ -819,29 +867,7 @@ map.setMapTypeId(customMapTypeId);
   request.send(null);
 }
 
-  function show(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-        }
-    }
-    
-    console.log('something');
-  }
-
-  function hide(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(false);
-        }
-    }
-  }
-
-    hide("NON-INDEX CRIME");
-    hide("ORDINANCE");
-    hide("OTHERINCIDENTS(Non Crime)");
+  
 
   function bindInfoWindow(marker, map, infoWindow, html) {
       google.maps.event.addListener(marker, 'click', function() {
@@ -849,6 +875,7 @@ map.setMapTypeId(customMapTypeId);
         infoWindow.open(map, marker);
     });
   }
+
 
 
 
@@ -1084,6 +1111,22 @@ map.setMapTypeId(customMapTypeId);
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
+            <div class="picker-sidebar" style="position: absolute">
+
+                <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                    <span></span> <b class="caret"></b>
+                </div>-->
+                <div class="input-group">
+                    <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+                    <div class="input-group-addon">
+                        <span class="fa fa-calendar fa-fw"></span>
+                    </div>
+                </div>
+                <div id="counter">
+                    <h3><span></span></h3>
+                </div>
+            </div>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -1126,22 +1169,57 @@ map.setMapTypeId(customMapTypeId);
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="INDEX CRIME" name="INDEX CRIME" type="checkbox" value="INDEX CRIME" checked> INDEX CRIME
+                                            <input class="checkbox" id="MURDER" name="MURDER" type="checkbox" value="MURDER"> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="NON-INDEX CRIME" name="NON-INDEX CRIME" type="checkbox" value="NON-INDEX CRIME" > NON-INDEX CRIME
+                                            <input class="checkbox" id="THEFT" name="THEFT" type="checkbox" value="THEFT"> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCE" name="ORDINANCE" type="checkbox" value="ORDINANCE" > ORDINANCE
+                                            <input class="checkbox" id="ROBBERY" name="ROBBERY" type="checkbox" value="ROBBERY" > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERINCIDENTS(Non Crime)" name="OTHERINCIDENTS(Non Crime)" type="checkbox" value="OTHERINCIDENTS(Non Crime)"> OTHER INCIDENTS
+                                            <input class="checkbox" id="ORDINANCES" name="ORDINANCES" type="checkbox" value="ORDINANCES" > ORDINANCES
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="CATTLERUSTLING" name="CATTLERUSTLING" type="checkbox" value="CATTLERUSTLING"> CATTLE RUSTLING
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="SPECIALLAWS" name="SPECIALLAWS" type="checkbox" value="SPECIALLAWS"> SPECIAL LAWS
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="HOMICIDE" name="HOMICIDE" type="checkbox" value="HOMICIDE"> HOMICIDE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="CARNAPPING" name="CARNAPPING" type="checkbox" value="CARNAPPING"> CARNAPPING
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="PHYSICALINJURIES" type="checkbox" value="PHYSICALINJURIES"> PHYSICAL INJURIES
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="RAPE" name="RAPE" type="checkbox" value="RAPE"> RAPE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="OTHERNONINDEX" name="OTHERNONINDEX" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
                                         </label>
                                     </div>
                                 </li>
@@ -1228,7 +1306,7 @@ map.setMapTypeId(customMapTypeId);
         </nav>
 
         <div id="page-wrapper-reporting">
-            <div id="map_canvas" style="width:100%; height: 100vh"></div>
+            <div id="map_canvas" style="width:100%; height: 100%"></div>
         </div>
         <!-- /#page-wrapper -->
 
@@ -1255,7 +1333,11 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="source">Source</label>
-                            <input class="form-control" id="source" name="source" placeholder="Blotter" type="text"/>
+                            <select class="form-control" id="selector">
+                                <option value="">Choose Source</option>
+                                <option name="Blotter" value="Blotter">Blotter</option>
+                                <option name="WCPD Blotter" value="WCPD Blotter">WCPD Blotter</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4" id="datepicker">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
@@ -1270,7 +1352,17 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
                             <label class="control-label " for="daycomtd">Day Committed</label>
-                            <input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>
+                            <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose Day</option>
+                                <option name="Sunday" value="Sunday">Sunday</option>
+                                <option name="Monday" value="Monday">Monday</option>
+                                <option name="Tuesday" value="Tuesday">Tuesday</option>
+                                <option name="Wednesday" value="Wednesday">Wednesday</option>
+                                <option name="Thursday" value="Thursday">Thursday</option>
+                                <option name="Friday" value="Friday">Friday</option>
+                                <option name="Saturday" value="Saturday">Saturday</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
@@ -1285,17 +1377,52 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="ppo">PPO</label>
-                            <input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>
+                            <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose PPO</option>
+                                <option name="BOHOL" value="BOHOL">BOHOL</option>
+                                <option name="CEBU" value="CEBU">CEBU</option>
+                                <option name="CEBU_CITY" value="CEBU_CITY">CEBU_CITY</option>
+                                <option name="LAPULAPU_CITY" value="LAPULAPU_CITY">LAPULAPU_CITY</option>
+                                <option name="MANDAUE_CITY" value="MANDAUE_CITY">MANDAUE_CITY</option>
+                                <option name="NEGROS_ORIENTAL" value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
+                                <option name="SIQUIJOR_PROV" value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="unitstation">Unit/Station</label>
-                            <input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>
+                            <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose UNIT/STATION</option>
+                                <option name="STATION1_CENTRO" value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                <option name="STATION2_SUBANGDAKU" value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                <option name="STATION3_BASAK" value="STATION3_BASAK">STATION3_BASAK</option>
+                                <option name="STATION4_CASUNTINGAN" value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                <option name="STATION5_OPAO" value="STATION5_OPAO">STATION5_OPAO</option>
+                                <option name="STATION6_CANDUMAN" value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                <option name="MCPO_WCPD" value="MCPO_WCPD">MCPO_WCPD</option>
+                                <option name="MCPO_TRS" value="MCPO_TRS">MCPO_TRS</option>
+                                <option name="MCPO_HOMICIDE" value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
+                                <option name="MCPO_TPU" value="MCPO_TPU">MCPO_TPU</option>
+                                <option name="MCPO_CIB" value="MCPO_CIB">MCPO_CIB</option>
+                                <option name="MCPO_IDMB" value="MCPO_IDMB">MCPO_IDMB</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="areaofincident">Area of Incident</label>
-                            <input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>
+                            <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                            <select class="form-control" id="selector">
+                                <option value="">Choose Day</option>
+                                <option name="Sunday" value="Sunday">Sunday</option>
+                                <option name="Monday" value="Monday">Monday</option>
+                                <option name="Tuesday" value="Tuesday">Tuesday</option>
+                                <option name="Wednesday" value="Wednesday">Wednesday</option>
+                                <option name="Thursday" value="Thursday">Thursday</option>
+                                <option name="Friday" value="Friday">Friday</option>
+                                <option name="Saturday" value="Saturday">Saturday</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $barangayError; ?></small>-->
@@ -1317,6 +1444,11 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
                             <input class="form-control" id="longitude" name="longitude" type="text"/>
                         </div>
+                        <!--<div class="form-group col-md-2">
+                            <div>
+                                <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
+                            </div>
+                        </div>-->
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
                             <label class="control-label " for="crimetype">Crime Type</label>
@@ -1748,12 +1880,29 @@ map.setMapTypeId(customMapTypeId);
             </div>
         </div>
     </div>
+
+    <!-- End of Crime Entry modal -->
+
+    <div class="modal fade" id="map-picker" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>New Crime Entry</h3>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="map_canvas" style="width:600px; height: 400px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-<script src="../dist/js/bootstrap-datepicker.js"></script>
-<script src="../dist/js/bootstrap-datepicker.min.js"></script>
+
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
@@ -1768,10 +1917,6 @@ map.setMapTypeId(customMapTypeId);
 <script src="../dist/js/highlight.js"></script>
 <script src="../dist/js/main.js"></script>
 
-<script>
-var d = new Date();
-document.getElementById("demo").innerHTML = d.toString();
-</script>
 
 <script>
 $('.fa.arrow').on('click', function() {
@@ -1783,15 +1928,6 @@ $('.fa.arrow').on('click', function() {
 $(".rotate").click(function(){
     $(this).toggleClass("down")  ; 
 })
-</script>
-
-<script type="text/javascript">
-$(function() {
-  $('#datepicker').datepicker({
-    language: 'pt-BR'
-  });
-  console.log('something');
-});
 </script>
 
 <script type="text/javascript">
@@ -1809,11 +1945,49 @@ $(".checkbox").click(function(){
         });
 </script>
 
+<script type="text/javascript">
+$('#daterange').daterangepicker({
+    "startDate": "04/19/2016",
+    "endDate": "04/25/2016"
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
+
+var date_from = $('#daterange').data('startDate');
+var date_to = $('#daterange').data('endDate');
+</script>
+
+<!--
+<script type="text/javascript">
+$(function() {
+    $('#daterange').daterangepicker();
+});
+</script>-->
+
+<!--<script type="text/javascript">
+$(function() {
+
+    function cb(start, end) {
+        $('#reportrange').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    cb(moment().subtract(29, 'days'), moment());
+
+    $('#reportrange').daterangepicker({
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+});
+</script>
+-->
+
+
 
 </body>
-
 </html>
-<script type="text/javascript">
-document.getElementById('fileinput').addEventListener('change', handleFileSelect, false);
-document.getElementById('fileinput2').addEventListener('change', handleFileSelect2, false);
-</script>

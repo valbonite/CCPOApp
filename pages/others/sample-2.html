@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Include Date Range Picker -->
+    <script src="../dist/js/bootstrap-datepicker.js"></script>
+    <link href="../dist/css/bootstrap-datepicker.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="start" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" />
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+
+<script type="text/javascript">
+$('.input-daterange').datepicker({
+    clearBtn: true,
+    orientation: "bottom right"
+});
+
+</script>
+</body>
+</html>
