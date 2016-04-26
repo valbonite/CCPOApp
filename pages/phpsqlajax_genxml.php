@@ -9,7 +9,7 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if (!$connection) { 
   echo "Error 1"; 
 }
