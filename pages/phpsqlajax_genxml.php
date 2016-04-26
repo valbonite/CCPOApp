@@ -10,20 +10,24 @@ $parnode = $dom->appendChild($node);
 // Opens a connection to a MySQL server
 
 $connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
-if (!$connection) {  die('Not connected : ' . mysql_error());}
+if (!$connection) {  
+  die('Not connected : ' . mysql_error());
+  echo "Error 1";
+}
 
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
 if (!$db_selected) {
   die ('Can\'t use db : ' . mysql_error());
+  echo "Error 2";
 }
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
 $result = mysql_query($query);
 if (!$result) {
-  throw new Exception($connection->error);
+  echo "Error 3";
 }
 
 header("Content-type: text/xml; charset=UTF-8");
