@@ -18,7 +18,7 @@ $connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, 
 
 if(!$connection) {
 	echo "Error!";
-	die("Connection failed: " . mysqli_connect_error() );
+	//die("Connection failed: " . mysqli_connect_error() );
 }
 //echo "Connected successfully!";
 ?>
