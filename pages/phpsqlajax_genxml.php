@@ -1,5 +1,5 @@
 <?php
-include('phpsqlajax_dbinfo.php');
+require('connection.php');
 
 // Start XML file, create parent node
 
@@ -9,8 +9,8 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-if (!$connection) {  die('Not connected : ' . mysql_error());}
+//$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+//if (!$connection) {  die('Not connected : ' . mysql_error());}
 
 // Set the active MySQL database
 
@@ -21,8 +21,10 @@ if (!$db_selected) {
 
 // Select all the rows in the markers table
 
-$query = "SELECT * FROM master_data WHERE 1";
-$result = mysql_query($query);
+//$query = "SELECT * FROM master_data WHERE 1";
+//$result = mysql_query($query);
+$result = $connection->query("SELECT * FROM master_data WHERE 1");
+
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
@@ -32,7 +34,7 @@ header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 
-while ($row = @mysql_fetch_assoc($result)){
+while ($row=$result->fetch_assoc()){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
