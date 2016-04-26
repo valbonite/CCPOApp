@@ -1,5 +1,6 @@
 <?php
-require("connection.php");
+include("connection.php");
+   session_start();
 
 // Start XML file, create parent node
 
