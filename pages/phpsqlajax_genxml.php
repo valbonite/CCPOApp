@@ -1,5 +1,5 @@
 <?php
-require("phpsqlajax_dbinfo.php");
+require("connection.php");
 
 // Start XML file, create parent node
 
@@ -9,10 +9,10 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-if (!$connection) { 
-  echo "Error 1"; 
-}
+//$connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+//if (!$connection) { 
+//  echo "Error 1"; 
+//}
 
 // Set the active MySQL database
 
