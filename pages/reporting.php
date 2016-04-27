@@ -1942,8 +1942,15 @@ $(".checkbox").click(function(){
             {
                 hide(cat);
             }
-        });
+});
 </script>
+
+<script type="text/javascript">
+$('#selector').click(function(){
+    var id = $(this).attr('id');
+});
+</script>
+
 
 <!--
 <script type="text/javascript">
