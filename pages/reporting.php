@@ -1380,7 +1380,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
                             <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
-                            <input id="timepicker1" type="text" class="form-control input-small" name="time">
+                            <input id="timepicker1" type="text" class="form-control" name="time">
                         </div>
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
@@ -1964,23 +1964,23 @@ $(".checkbox").click(function(){
 </script>
 <!-- Singe Datepicker-->
 <script type="text/javascript">
-$('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
+    $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
-});
+    });
 </script>
 
 <!-- Daterange Picker -->
 <script type="text/javascript">
-$('#daterange').daterangepicker({
-    "startDate": "04/19/2016",
-    "endDate": "04/25/2016"
-}, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-});
+    $('#daterange').daterangepicker({
+        "startDate": "04/19/2016",
+        "endDate": "04/25/2016"
+    }, function(start, end, label) {
+      console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+    });
 
-var date_from = $('#daterange').data('startDate');
-var date_to = $('#daterange').data('endDate');
+    var date_from = $('#daterange').data('startDate');
+    var date_to = $('#daterange').data('endDate');
 </script>
 
 <!-- Time Picker -->
