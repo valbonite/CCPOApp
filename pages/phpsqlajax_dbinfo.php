@@ -14,5 +14,9 @@ $db['default']['username'] = $cleardb_username;
 $db['default']['password'] = $cleardb_password;
 $db['default']['database'] = $cleardb_db;
 
+echo $cleardb_url;
 echo $cleardb_server;
+echo $cleardb_username;
+echo $cleardb_password;
+echo $cleardb_db;
 ?>
