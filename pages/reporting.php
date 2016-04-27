@@ -779,7 +779,7 @@ var customMapTypeId = 'custom_style';
             mapTypeId: 'roadmap'
         }); 
 
-        
+
 map2.mapTypes.set(customMapTypeId, customMapType);
 map2.setMapTypeId(customMapTypeId); 
     }
@@ -1967,8 +1967,6 @@ map.setMapTypeId(customMapTypeId);
 <script type="text/javascript">
 $('#map-picker').on('shown.bs.modal', function () {
     google.maps.event.trigger(map2, "resize");
-    map2.setCenter(var_location);
-    console.log('resized');
 });
 </script>
 
