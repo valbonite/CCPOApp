@@ -1947,7 +1947,9 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
+$(function() {
 $("#selector").val();
+});
 console.log($("#selector").val());
 </script>
 
