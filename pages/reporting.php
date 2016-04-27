@@ -1382,8 +1382,8 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
                             <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
-                            <div class="bfh-timepicker" data-mode="12h" name="time">
-</div>
+                            <div class="bfh-timepicker" id="time" data-mode="12h" name="time" type="text">
+                            </div>
 
                         </div>
                         <div class="form-group col-md-2">
