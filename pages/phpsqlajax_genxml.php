@@ -2,11 +2,11 @@
 require("phpsqlajax_dbinfo.php");
 echo "Error 1";
 // Start XML file, create parent node
-/*
+
 $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
-echo "Error 2";*/
+echo "Error 2";
 // Opens a connection to a MySQL server
 
 $connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
@@ -14,8 +14,6 @@ if (!$connection) {
   echo "Error 3"; 
   die('Not connected : ' . mysql_error());
 }
-
-echo "Error 3.5"; 
 
 // Set the active MySQL database
 
@@ -25,28 +23,19 @@ if (!$db_selected) {
   die ('Can\'t use db : ' . mysql_error());
 }
 
-echo "Error 4.5"; 
-
 // Select all the rows in the markers table
 
-$query = "SELECT encoder FROM master_data WHERE crimecategory = 'THEFT' ";
+$query = "SELECT * FROM master_data WHERE 1";
 $result = mysql_query($query);
 if (!$result) {
-  echo "Error 5";
   die('Invalid query: ' . mysql_error());
 }
 
-//header("Content-type: text/xml; charset=UTF-8");
-
-while ($row = mysql_fetch_assoc($result)) {
-    echo $row['encoder'];
-}
-
-echo "Error 5.5"; 
+header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 
-/*while ($row = @mysql_fetch_assoc($result)){
+while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
@@ -60,8 +49,8 @@ echo "Error 5.5";
   $newnode->setAttribute("crimetype",$row['crimetype']);
   $newnode->setAttribute("crimecategory",$row['crimecategory']);
   $newnode->setAttribute("classification",$row['classification']);
-}*/
+}
 
-//echo $dom->saveXML();
+echo $dom->saveXML();
 
 ?>

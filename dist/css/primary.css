@@ -745,9 +745,9 @@ hr {
 .modal-backdrop.in:nth-of-type(even) {
     z-index: 1041 !important;
 }
-    
+
 
 #open-map {
     margin-top: 23px;
-    margin-right: 15px;
+    margin-left: 30px;
 }
