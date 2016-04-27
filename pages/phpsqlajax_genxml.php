@@ -15,6 +15,8 @@ if (!$connection) {
   die('Not connected : ' . mysql_error());
 }
 
+echo "Error 3.5"; 
+
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
@@ -22,6 +24,8 @@ if (!$db_selected) {
   echo "Error 4";
   die ('Can\'t use db : ' . mysql_error());
 }
+
+echo "Error 4.5"; 
 
 // Select all the rows in the markers table
 
@@ -37,6 +41,8 @@ if (!$result) {
 while ($row = mysql_fetch_assoc($result)) {
     echo $row['encoder'];
 }
+
+echo "Error 5.5"; 
 
 // Iterate through the rows, adding XML nodes for each
 
