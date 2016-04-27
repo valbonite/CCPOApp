@@ -1382,11 +1382,7 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
-                            <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
-                            <div class="bfh-timepicker" data-mode="12h">
-                    <input class="form-control" type="text" name="time">
-</div>
-
+                            <input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>
                         </div>
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
@@ -1468,12 +1464,12 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
                             <input class="form-control" id="longitude" name="longitude" type="text"/>
                         </div>
-                        <!--<div class="form-group col-md-2">
+                        <div class="form-group col-md-2">
                             <div>
                                 <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
                             </div>
-                        </div>-->
-                        <div class="form-group col-md-6">
+                        </div>
+                        <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
                             <label class="control-label " for="crimetype">Crime Type</label>
                             <input class="form-control" id="crimetype" name="crimetype" placeholder='i.e. "NON-INDEX CRIME"' type="text"/>
@@ -1907,21 +1903,31 @@ map.setMapTypeId(customMapTypeId);
 
     <!-- End of Crime Entry modal -->
 
-    <div class="modal fade" id="map-picker" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>New Crime Entry</h3>
-                </div>
+    <div class="modal fade" id="modal-picker">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                 <h4 class="modal-title">Modal title</h4>
 
-                <div class="container-fluid">
+            </div>
+            <div class="modal-body">
+                <div class="container">
                     <div class="row">
-                        <div id="map_canvas" style="width:600px; height: 400px"></div>
+                        <div id="map_canvas" class=""></div>
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 
 </div>
@@ -1987,6 +1993,25 @@ $(".checkbox").click(function(){
 
     var date_from = $('#daterange').data('startDate');
     var date_to = $('#daterange').data('endDate');
+</script>
+
+<script type="text/javascript">
+$('#map-picker').on('show.bs.modal', function() {
+   //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
+   resizeMap();
+})
+
+function resizeMap() {
+   if(typeof map =="undefined") return;
+   setTimeout( function(){resizingMap();} , 400);
+}
+
+function resizingMap() {
+   if(typeof map =="undefined") return;
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center); 
+}
 </script>
 
 <!--
