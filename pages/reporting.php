@@ -1338,8 +1338,8 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="source">Source</label>
                             <select class="form-control" id="selector" name="source">
                                 <option value="">Choose Source</option>
-                                <option name="Blotter" value="Blotter">Blotter</option>
-                                <option name="WCPD Blotter" value="WCPD Blotter">WCPD Blotter</option>
+                                <option value="Blotter">Blotter</option>
+                                <option value="WCPD Blotter">WCPD Blotter</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4" id="datepicker">
@@ -1358,13 +1358,13 @@ map.setMapTypeId(customMapTypeId);
                             <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
                             <select class="form-control" id="selector" name="day">
                                 <option value="">Choose Day</option>
-                                <option name="Sunday" value="Sunday">Sunday</option>
-                                <option name="Monday" value="Monday">Monday</option>
-                                <option name="Tuesday" value="Tuesday">Tuesday</option>
-                                <option name="Wednesday" value="Wednesday">Wednesday</option>
-                                <option name="Thursday" value="Thursday">Thursday</option>
-                                <option name="Friday" value="Friday">Friday</option>
-                                <option name="Saturday" value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -1383,13 +1383,13 @@ map.setMapTypeId(customMapTypeId);
                             <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
                             <select class="form-control" id="selector" name="ppo">
                                 <option value="">Choose PPO</option>
-                                <option name="BOHOL" value="BOHOL">BOHOL</option>
-                                <option name="CEBU" value="CEBU">CEBU</option>
-                                <option name="CEBU_CITY" value="CEBU_CITY">CEBU_CITY</option>
-                                <option name="LAPULAPU_CITY" value="LAPULAPU_CITY">LAPULAPU_CITY</option>
-                                <option name="MANDAUE_CITY" value="MANDAUE_CITY">MANDAUE_CITY</option>
-                                <option name="NEGROS_ORIENTAL" value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
-                                <option name="SIQUIJOR_PROV" value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
+                                <option value="BOHOL">BOHOL</option>
+                                <option value="CEBU">CEBU</option>
+                                <option value="CEBU_CITY">CEBU_CITY</option>
+                                <option value="LAPULAPU_CITY">LAPULAPU_CITY</option>
+                                <option value="MANDAUE_CITY">MANDAUE_CITY</option>
+                                <option value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
+                                <option value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -1398,18 +1398,18 @@ map.setMapTypeId(customMapTypeId);
                             <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector" name="unitstation">
                                 <option selected="selected" value="">Choose UNIT/STATION</option>
-                                <option name="STATION1_CENTRO" value="STATION1_CENTRO">STATION1_CENTRO</option>
-                                <option name="STATION2_SUBANGDAKU" value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
-                                <option name="STATION3_BASAK" value="STATION3_BASAK">STATION3_BASAK</option>
-                                <option name="STATION4_CASUNTINGAN" value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
-                                <option name="STATION5_OPAO" value="STATION5_OPAO">STATION5_OPAO</option>
-                                <option name="STATION6_CANDUMAN" value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
-                                <option name="MCPO_WCPD" value="MCPO_WCPD">MCPO_WCPD</option>
-                                <option name="MCPO_TRS" value="MCPO_TRS">MCPO_TRS</option>
-                                <option name="MCPO_HOMICIDE" value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
-                                <option name="MCPO_TPU" value="MCPO_TPU">MCPO_TPU</option>
-                                <option name="MCPO_CIB" value="MCPO_CIB">MCPO_CIB</option>
-                                <option name="MCPO_IDMB" value="MCPO_IDMB">MCPO_IDMB</option>
+                                <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                <option value="MCPO_WCPD">MCPO_WCPD</option>
+                                <option value="MCPO_TRS">MCPO_TRS</option>
+                                <option value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
+                                <option value="MCPO_TPU">MCPO_TPU</option>
+                                <option value="MCPO_CIB">MCPO_CIB</option>
+                                <option value="MCPO_IDMB">MCPO_IDMB</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -1418,13 +1418,13 @@ map.setMapTypeId(customMapTypeId);
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector">
                                 <option value="">Choose Day</option>
-                                <option name="Sunday" value="Sunday">Sunday</option>
-                                <option name="Monday" value="Monday">Monday</option>
-                                <option name="Tuesday" value="Tuesday">Tuesday</option>
-                                <option name="Wednesday" value="Wednesday">Wednesday</option>
-                                <option name="Thursday" value="Thursday">Thursday</option>
-                                <option name="Friday" value="Friday">Friday</option>
-                                <option name="Saturday" value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
