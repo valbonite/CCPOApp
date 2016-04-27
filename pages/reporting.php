@@ -1995,24 +1995,7 @@ $(".checkbox").click(function(){
     var date_to = $('#daterange').data('endDate');
 </script>
 
-<script type="text/javascript">
-$('#map-picker').on('show.bs.modal', function() {
-   //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
-   resizeMap();
-})
 
-function resizeMap() {
-   if(typeof map =="undefined") return;
-   setTimeout( function(){resizingMap();} , 400);
-}
-
-function resizingMap() {
-   if(typeof map =="undefined") return;
-   var center = map.getCenter();
-   google.maps.event.trigger(map, "resize");
-   map.setCenter(center); 
-}
-</script>
 
 <!--
 <script type="text/javascript">
