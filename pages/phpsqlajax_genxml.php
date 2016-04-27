@@ -36,7 +36,7 @@ header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 
-while ($row=$result->fetch_assoc()){
+while ($row=$result->fetch_object()){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
