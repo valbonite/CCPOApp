@@ -1929,7 +1929,7 @@ map.setMapTypeId(customMapTypeId);
 
     <!-- End of Crime Entry modal -->
 
-    <div class="modal fade" id="map-picker" data-backdrop="static">
+    <div class="modal fade" id="map-picker">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
