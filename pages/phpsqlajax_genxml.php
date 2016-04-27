@@ -51,6 +51,7 @@ while ($row=$result->fetch_assoc()){
   $newnode->setAttribute("crimecategory",$row['crimecategory']);
   $newnode->setAttribute("classification",$row['classification']);
 }
+echo $result;
 
 echo $dom->saveXML();
 
