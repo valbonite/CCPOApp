@@ -1947,10 +1947,8 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
-$('#selector').click(function(){
-    var id = $(this).attr('value');
-});
-console.log(id);
+$("#selector").val();
+console.log($("#selector").val());
 </script>
 
 
