@@ -1970,6 +1970,12 @@ $('#map-picker').on('shown.bs.modal', function () {
 });
 </script>
 
+<script type="text/javascript">
+$('#openBtn').click(function(){
+    $('#form-entry').modal({show:true})
+});
+</script>
+
 <script>
 $('.fa.arrow').on('click', function() {
     $(this).closest('a').next('.nav').slideToggle();
