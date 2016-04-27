@@ -1397,7 +1397,7 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="unitstation">Unit/Station</label>
                             <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector" name="unitstation">
-                                <option selected="selected" value="">Choose UNIT/STATION</option>
+                                <option value="">Choose UNIT/STATION</option>
                                 <option value="STATION1_CENTRO">STATION1_CENTRO</option>
                                 <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
                                 <option value="STATION3_BASAK">STATION3_BASAK</option>
@@ -1416,7 +1416,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="areaofincident">Area of Incident</label>
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
-                            <select class="form-control" id="selector">
+                            <select class="form-control" id="selector" name="areaofincident">
                                 <option value="">Choose Day</option>
                                 <option value="Sunday">Sunday</option>
                                 <option value="Monday">Monday</option>
@@ -1947,14 +1947,14 @@ $(".checkbox").click(function(){
             }
 });
 </script>
-
+<!--
 <script type="text/javascript">
 $( "#selector option:selected" ).text();
     
     $(".test").text(selectedText);
 });
 </script>
-
+-->
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
