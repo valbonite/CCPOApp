@@ -21,7 +21,7 @@ mysql_select_db($cleardb_db);
 // Select all the rows in the markers table
 
 //$query = "SELECT * FROM master_data WHERE 1";
-$result = $connection->query("SELECT * FROM heroku_edbd0db618b7e76.master_data WHERE 1");
+$result = $connection->query("SELECT * FROM master_data WHERE 1");
 
 
 header("Content-type: text/xml; charset=UTF-8");
