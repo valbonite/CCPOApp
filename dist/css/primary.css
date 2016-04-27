@@ -733,3 +733,8 @@ hr {
     margin-top: 10px;
     color: #fff;
 }
+
+#map-canvas2 {
+  width:500px;
+  height:480px;
+}

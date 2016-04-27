@@ -779,11 +779,19 @@ mysqli_close($connection);
           name: 'Custom Style'
       });
 
-var customMapTypeId = 'custom_style';        
+var customMapTypeId = 'custom_style';
+
+var map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
+            center: new google.maps.LatLng(10.3216299, 123.9052633),
+            zoom: 14,
+            mapTypeId: 'roadmap'
+        });        
 
 map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
-google.maps.event.addDomListener(window, 'load', initialize);
+
+map2.mapTypes.set(customMapTypeId, customMapType);
+map2.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
@@ -1915,7 +1923,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <div id="map_canvas" style="width:500px; height: 200px"></div>
+                        <div id="map_canvas2"></div>
                     </div>
                 </div>
             </div>
@@ -1948,6 +1956,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <script src="../dist/js/highlight.js"></script>
 <script src="../dist/js/main.js"></script>
 
+<script type="text/javascript">
+$("#map-picker").on("shown.bs.modal", function () {
+    google.maps.event.trigger(map2, "resize");
+});
+</script>
 
 <script>
 $('.fa.arrow').on('click', function() {
