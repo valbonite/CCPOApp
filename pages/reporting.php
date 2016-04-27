@@ -1934,8 +1934,7 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#map-picker" data-dismiss="modal" class="btn">Done</a>
-                
+                <a href="#" data-dismiss="modal" class="btn-primary">Done</a>  
             </div>
         </div>
         <!-- /.modal-content -->
