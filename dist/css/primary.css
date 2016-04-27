@@ -738,3 +738,11 @@ hr {
     width: 560px;
     height:450px;
 }
+
+.modal:nth-of-type(even) {
+    z-index: 1042 !important;
+}
+.modal-backdrop.in:nth-of-type(even) {
+    z-index: 1041 !important;
+}
+    
