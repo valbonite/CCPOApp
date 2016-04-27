@@ -19,7 +19,7 @@ $parnode = $dom->appendChild($node);
 //  die ('Can\'t use db : ' . mysql_error());
 //}
 
-mysqli_select_db($connection, "master_data");
+mysqli_select_db($connection, $cleardb_db);
 
 // Select all the rows in the markers table
 
