@@ -1127,7 +1127,7 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             -->
                 <div class="input-group">
-                    <input type="text" id="date" class="form-control" value="MM/DD/YYYY">
+                    <input type="text" id="birthdate" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
@@ -1974,13 +1974,11 @@ $( "#selector option:selected" ).text();
 -->
 <script type="text/javascript">
 $(function() {
-    $('input[name="date"]').daterangepicker({
+    $('input[name="birthdate"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
-        
     });
 });
-</script>
 
 <!--
 <script type="text/javascript">
