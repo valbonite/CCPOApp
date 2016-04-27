@@ -1127,6 +1127,8 @@ map.setMapTypeId(customMapTypeId);
                 <div id="counter">
                     <h3><span></span></h3>
                 </div>
+                <div class="test">
+                </div>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">
@@ -1335,7 +1337,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="source">Source</label>
                             <select class="form-control" id="selector">
-                                <option value="">Choose Source</option>
+                                <option selected="selected" value="">Choose Source</option>
                                 <option name="Blotter" value="Blotter">Blotter</option>
                                 <option name="WCPD Blotter" value="WCPD Blotter">WCPD Blotter</option>
                             </select>
@@ -1355,7 +1357,7 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="daycomtd">Day Committed</label>
                             <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
                             <select class="form-control" id="selector">
-                                <option value="">Choose Day</option>
+                                <option selected="selected" value="">Choose Day</option>
                                 <option name="Sunday" value="Sunday">Sunday</option>
                                 <option name="Monday" value="Monday">Monday</option>
                                 <option name="Tuesday" value="Tuesday">Tuesday</option>
@@ -1395,7 +1397,7 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="unitstation">Unit/Station</label>
                             <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector">
-                                <option value="">Choose UNIT/STATION</option>
+                                <option selected="selected" value="">Choose UNIT/STATION</option>
                                 <option name="STATION1_CENTRO" value="STATION1_CENTRO">STATION1_CENTRO</option>
                                 <option name="STATION2_SUBANGDAKU" value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
                                 <option name="STATION3_BASAK" value="STATION3_BASAK">STATION3_BASAK</option>
@@ -1947,10 +1949,11 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
-$(function() {
-$("#selector").val();
+$('#selector').change(function () {
+    var selectedText = $(this).find("option:selected").text();
+    
+    $(".test").text(selectedText);
 });
-console.log($("#selector").val());
 </script>
 
 
