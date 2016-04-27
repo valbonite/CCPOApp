@@ -1345,12 +1345,14 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4" id="datepicker">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="datereptd">Date Reported</label>
-                            <input class="form-control" id="datereptd" name="datereptd" placeholder="MM/DD/YYYY" type="text"/>
+                            <!--<input class="form-control" id="datereptd" name="datereptd" placeholder="MM/DD/YYYY" type="text"/>-->
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" />
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="datecomtd">Date Committed</label>
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+                            <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>-->
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" />
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
@@ -1417,14 +1419,19 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="areaofincident">Area of Incident</label>
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector" name="areaofincident">
-                                <option value="">Choose Day</option>
-                                <option value="Sunday">Sunday</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
+                                <option value="">Choose UNIT/STATION</option>
+                                <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                <option value="MCPO_WCPD">MCPO_WCPD</option>
+                                <option value="MCPO_TRS">MCPO_TRS</option>
+                                <option value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
+                                <option value="MCPO_TPU">MCPO_TPU</option>
+                                <option value="MCPO_CIB">MCPO_CIB</option>
+                                <option value="MCPO_IDMB">MCPO_IDMB</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -1955,6 +1962,19 @@ $( "#selector option:selected" ).text();
 });
 </script>
 -->
+<script type="text/javascript">
+$(function() {
+    $("input[name*='date']").daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    }, 
+    function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        alert("You are " + years + " years old.");
+    });
+});
+</script>
+
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
