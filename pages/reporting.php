@@ -1273,7 +1273,7 @@ map.setMapTypeId(customMapTypeId);
                         <li>
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Barangay<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
-                                <div class="form-group" id="barangay-selector">
+                                <div id="barangay-selector">
                                   <select class="form-control" id="selector">
                                     <option>Choose barangay</option>
                                     <option name="Capitol Site" value="Capitol Site">Capitol Site</option>
@@ -1336,8 +1336,8 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="source">Source</label>
-                            <select class="form-control" id="selector">
-                                <option selected="selected" value="">Choose Source</option>
+                            <select id="selector">
+                                <option value="">Choose Source</option>
                                 <option name="Blotter" value="Blotter">Blotter</option>
                                 <option name="WCPD Blotter" value="WCPD Blotter">WCPD Blotter</option>
                             </select>
@@ -1356,8 +1356,8 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
                             <label class="control-label " for="daycomtd">Day Committed</label>
                             <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
-                            <select class="form-control" id="selector">
-                                <option selected="selected" value="">Choose Day</option>
+                            <select id="selector">
+                                <option value="">Choose Day</option>
                                 <option name="Sunday" value="Sunday">Sunday</option>
                                 <option name="Monday" value="Monday">Monday</option>
                                 <option name="Tuesday" value="Tuesday">Tuesday</option>
@@ -1381,7 +1381,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="ppo">PPO</label>
                             <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
-                            <select class="form-control" id="selector">
+                            <select id="selector">
                                 <option value="">Choose PPO</option>
                                 <option name="BOHOL" value="BOHOL">BOHOL</option>
                                 <option name="CEBU" value="CEBU">CEBU</option>
@@ -1396,7 +1396,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="unitstation">Unit/Station</label>
                             <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
-                            <select class="form-control" id="selector">
+                            <select id="selector">
                                 <option selected="selected" value="">Choose UNIT/STATION</option>
                                 <option name="STATION1_CENTRO" value="STATION1_CENTRO">STATION1_CENTRO</option>
                                 <option name="STATION2_SUBANGDAKU" value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
@@ -1416,7 +1416,7 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
                             <label class="control-label " for="areaofincident">Area of Incident</label>
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
-                            <select class="form-control" id="selector">
+                            <select id="selector">
                                 <option value="">Choose Day</option>
                                 <option name="Sunday" value="Sunday">Sunday</option>
                                 <option name="Monday" value="Monday">Monday</option>
@@ -1949,8 +1949,7 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
-$('#selector').change(function () {
-    var selectedText = $(this).find("option:selected").text();
+$( "#selector option:selected" ).text();
     
     $(".test").text(selectedText);
 });
