@@ -205,7 +205,7 @@ map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
-      downloadUrl("phpsqlajax_genxml.php", function(data) {
+      downloadUrl('phpsqlajax_genxml.php', function(data) {
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
