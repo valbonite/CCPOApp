@@ -602,6 +602,10 @@ mysqli_close($connection);
 
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <!-- Time Picker -->
+    <script src="../dist/js/bootstrap-timepicker.min.js"></script>
+    <link href="../dist/css/bootstrap-timepicker.min.css" rel="stylesheet">
+
     <!-- Pace-->
     <script src="../dist/js/pace.min.js"></script>
     <link href="../dist/css/pace-loading-bar.css" rel="stylesheet">
@@ -1350,14 +1354,11 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4" id="datepicker">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="datereptd">Date Reported</label>
-                            <!--<input class="form-control" id="datereptd" name="datereptd" placeholder="MM/DD/YYYY" type="text"/>-->
                             <input class="form-control" id="datereptd" name="datereptd"/>
                         </div>
                         <div class="form-group col-md-4" id="datepicker">
                             <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
                             <label class="control-label " for="datecomtd">Date Committed</label>
-                            <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>-->
-                            <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" />-->
                             <input class="form-control" id="date" name="date" />
                         </div>
                         <div class="form-group col-md-4">
@@ -1375,10 +1376,11 @@ map.setMapTypeId(customMapTypeId);
                                 <option value="Saturday">Saturday</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4 bootstrap-timepicker timepicker">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
-                            <input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>
+                            <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
+                            <input id="timepicker1" type="text" class="form-control input-small" name="time">
                         </div>
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
@@ -1960,14 +1962,7 @@ $(".checkbox").click(function(){
             }
 });
 </script>
-<!--
-<script type="text/javascript">
-$( "#selector option:selected" ).text();
-    
-    $(".test").text(selectedText);
-});
-</script>
--->
+<!-- Singe Datepicker-->
 <script type="text/javascript">
 $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
         singleDatePicker: true,
@@ -1975,6 +1970,7 @@ $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
 });
 </script>
 
+<!-- Daterange Picker -->
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
@@ -1985,6 +1981,11 @@ $('#daterange').daterangepicker({
 
 var date_from = $('#daterange').data('startDate');
 var date_to = $('#daterange').data('endDate');
+</script>
+
+<!-- Time Picker -->
+<script type="text/javascript">
+    $('#timepicker1').timepicker();
 </script>
 
 <!--
