@@ -779,9 +779,13 @@ var customMapTypeId = 'custom_style';
             mapTypeId: 'roadmap'
         }); 
 
+    google.maps.event.addListener(map2,'click',function(event) { 
+        document.getElementById('latitude').value = event.latLng.lat()
+        document.getElementById('longitude').value = event.latLng.lng() 
+    });
 
-map2.mapTypes.set(customMapTypeId, customMapType);
-map2.setMapTypeId(customMapTypeId); 
+    map2.mapTypes.set(customMapTypeId, customMapType);
+    map2.setMapTypeId(customMapTypeId); 
     }
     
     function load() {
