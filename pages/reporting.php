@@ -1914,7 +1914,7 @@ map.setMapTypeId(customMapTypeId);
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <div id="map_canvas" class=""></div>
+                        <div id="map_canvas" style="width:500px; height: 200px></div>
                     </div>
                 </div>
             </div>
