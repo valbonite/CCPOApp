@@ -1118,24 +1118,21 @@ map.setMapTypeId(customMapTypeId);
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
-                <!---]
+               
                 <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>
-            -->
-                <div class="input-group">
+                <!--<div class="input-group" style="position: relative">
                     <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
-                </div>
+                </div>-->
                 <div id="counter">
                     <h3><span></span></h3>
-                </div>
-                <div class="test">
                 </div>
             </div>
 
@@ -1361,8 +1358,7 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="datecomtd">Date Committed</label>
                             <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>-->
                             <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" />-->
-                            <input type="text" id="date" class="form-control">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <input type="text" id="date" name="date" class="form-control">
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
@@ -1974,13 +1970,13 @@ $( "#selector option:selected" ).text();
 -->
 <script type="text/javascript">
 $(function() {
-    $('input[name="birthdate"]').daterangepicker({
+    $('#date').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
     });
 });
 </script>
-<!--
+
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
@@ -1991,7 +1987,7 @@ $('#daterange').daterangepicker({
 
 var date_from = $('#daterange').data('startDate');
 var date_to = $('#daterange').data('endDate');
-</script>-->
+</script>
 
 <!--
 <script type="text/javascript">
