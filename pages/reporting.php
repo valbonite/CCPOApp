@@ -1114,7 +1114,7 @@ map.setMapTypeId(customMapTypeId);
             <!-- /.navbar-top-links -->
             <div class="picker-sidebar" style="position: absolute">
 
-                <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                <div class="form-control" id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>
