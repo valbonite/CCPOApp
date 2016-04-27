@@ -1953,7 +1953,7 @@ map2.setMapTypeId(customMapTypeId);
 
 <script type="text/javascript">
 $('#map-picker').on("shown.bs.modal", function () {
-    google.maps.event.trigger(map2, "resize");
+    google.maps.event.trigger(map2, 'resize');
 });
 </script>
 
