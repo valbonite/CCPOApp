@@ -15,6 +15,7 @@ if (!$connection) {
   die('Not connected : ' . mysql_error());
 }
 
+var_dump($connection);
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
