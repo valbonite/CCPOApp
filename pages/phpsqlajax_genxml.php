@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 require('connection.php');
 
 // Start XML file, create parent node
