@@ -1940,8 +1940,8 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <a href="#map-picker" data-dismiss="modal" class="btn">Done</a>
+                
             </div>
         </div>
         <!-- /.modal-content -->
