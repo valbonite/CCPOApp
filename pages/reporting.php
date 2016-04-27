@@ -1353,7 +1353,8 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="datecomtd">Date Committed</label>
                             <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>-->
                             <!--<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" />-->
-                            <input type="text" name="birthdate" value="10/24/1984" />
+                            <input type="text" id="date" class="form-control">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                         </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
@@ -1965,7 +1966,7 @@ $( "#selector option:selected" ).text();
 -->
 <script type="text/javascript">
 $(function() {
-    $('input[name="birthdate"]').daterangepicker({
+    $('input[name="date"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
     }, 
