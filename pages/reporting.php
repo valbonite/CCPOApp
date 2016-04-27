@@ -1118,8 +1118,16 @@ map.setMapTypeId(customMapTypeId);
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
+                <!---]
                 <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+                    <div class="input-group-addon">
+                        <span class="fa fa-calendar fa-fw"></span>
+                    </div>
+                </div>
+            -->
+                <div class="input-group">
+                    <input type="text" id="date" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
@@ -1969,10 +1977,12 @@ $(function() {
     $('input[name="date"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
-    }, 
+        
+    });
 });
 </script>
 
+<!--
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
@@ -1983,7 +1993,7 @@ $('#daterange').daterangepicker({
 
 var date_from = $('#daterange').data('startDate');
 var date_to = $('#daterange').data('endDate');
-</script>
+</script>-->
 
 <!--
 <script type="text/javascript">
