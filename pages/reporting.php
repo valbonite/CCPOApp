@@ -700,6 +700,8 @@ mysqli_close($connection);
         });  
 
 
+        google.maps.event.addDomListener(window, 'load', initialize);
+
         var infowindow = new google.maps.InfoWindow();
 
         var customMapType = new google.maps.StyledMapType([            
@@ -1957,6 +1959,7 @@ map2.setMapTypeId(customMapTypeId);
 <script type="text/javascript">
 $('#map-picker').on('shown.bs.modal', function () {
     google.maps.event.trigger(map2, "resize");
+    map2.setCenter(var_location);
     console.log('resized');
 });
 </script>
