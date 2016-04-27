@@ -1964,7 +1964,7 @@ $( "#selector option:selected" ).text();
 -->
 <script type="text/javascript">
 $(function() {
-    $('input[name*='date']').daterangepicker({
+    $('input[name*="date"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
     }, 
