@@ -735,5 +735,6 @@ hr {
 }
 
 #map_canvas2 {
+    min-width: 450px;
     height:450px;
 }
