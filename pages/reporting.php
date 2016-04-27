@@ -1127,7 +1127,7 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             -->
                 <div class="input-group">
-                    <input type="text" id="birthdate" name="birthdate" class="form-control" value="MM/DD/YYYY">
+                    <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
