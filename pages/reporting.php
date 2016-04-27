@@ -1911,11 +1911,11 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="progressreport">Progress Report</label>
                             <input class="form-control" id="progressreport" name="progressreport" type="text"/>
                         </div>
-                        <div class="form-group">
-                            <div>
-                                <input style="display:none" type="text"/>
-                                <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
-                            </div>
+                        
+                        <div class="modal-footer">
+                            <a href="#" data-dismiss="modal" class="btn">Close</a>
+                            <input style="display:none" type="text"/>
+                            <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -1936,7 +1936,7 @@ map.setMapTypeId(customMapTypeId);
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="#" data-dismiss="modal" class="btn">Close</a>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
