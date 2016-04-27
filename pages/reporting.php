@@ -22,6 +22,7 @@ if( isset( $_POST["submit"])) {
     } else {
         $source = validateFormData( $_POST["source"]);
     }
+    console.log($source);
 
     if (!$_POST["date"]) {
         $dateError = "Please enter the date <br>";
