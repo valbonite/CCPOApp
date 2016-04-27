@@ -1952,8 +1952,8 @@ map2.setMapTypeId(customMapTypeId);
 <script src="../dist/js/main.js"></script>
 
 <script type="text/javascript">
-$('#map-picker').on("shown.bs.modal", function () {
-    google.maps.event.trigger(map2, 'resize');
+$('#map-picker').on('shown.bs.modal', function () {
+    google.maps.event.trigger(map2, "resize");
 });
 </script>
 
