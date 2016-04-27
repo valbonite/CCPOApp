@@ -783,6 +783,7 @@ var customMapTypeId = 'custom_style';
 
 map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
+google.maps.event.addDomListener(window, 'load', initialize);
 
       // Change this depending on the name of your PHP file
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
