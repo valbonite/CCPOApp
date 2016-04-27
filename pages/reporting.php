@@ -1979,7 +1979,7 @@ $(function() {
         showDropdowns: true
     });
 });
-
+</script>
 <!--
 <script type="text/javascript">
 $('#daterange').daterangepicker({
