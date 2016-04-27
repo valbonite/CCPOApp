@@ -683,28 +683,9 @@ mysqli_close($connection);
     var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
 
     var markers = null;
-    
-    function load() {
+    var map2;
 
-        var count = 0;
-        var map = new google.maps.Map(document.getElementById("map_canvas"), {
-            center: new google.maps.LatLng(10.3216299, 123.9052633),
-            zoom: 14,
-            mapTypeId: 'roadmap'
-        });
-
-        var map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
-            center: new google.maps.LatLng(10.3216299, 123.9052633),
-            zoom: 14,
-            mapTypeId: 'roadmap'
-        });  
-
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-        var infowindow = new google.maps.InfoWindow();
-
-        var customMapType = new google.maps.StyledMapType([            
+    var customMapType = new google.maps.StyledMapType([            
         {
             "featureType": "administrative",
             "elementType": "labels.text.fill",
@@ -787,13 +768,40 @@ mysqli_close($connection);
           name: 'Custom Style'
       });
 
-var customMapTypeId = 'custom_style';      
+var customMapTypeId = 'custom_style';
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function initialize() {
+     map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
+            center: new google.maps.LatLng(10.3216299, 123.9052633),
+            zoom: 14,
+            mapTypeId: 'roadmap'
+        }); 
+
+        
+map2.mapTypes.set(customMapTypeId, customMapType);
+map2.setMapTypeId(customMapTypeId); 
+    }
+    
+    function load() {
+
+        var count = 0;
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            center: new google.maps.LatLng(10.3216299, 123.9052633),
+            zoom: 14,
+            mapTypeId: 'roadmap'
+        });
+
+        
+
+        var infowindow = new google.maps.InfoWindow();
+
+              
 
 map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
-map2.mapTypes.set(customMapTypeId, customMapType);
-map2.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
