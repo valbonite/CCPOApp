@@ -693,6 +693,12 @@ mysqli_close($connection);
             mapTypeId: 'roadmap'
         });
 
+        var map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
+            center: new google.maps.LatLng(10.3216299, 123.9052633),
+            zoom: 14,
+            mapTypeId: 'roadmap'
+        });  
+
 
         var infowindow = new google.maps.InfoWindow();
 
@@ -779,13 +785,7 @@ mysqli_close($connection);
           name: 'Custom Style'
       });
 
-var customMapTypeId = 'custom_style';
-
-var map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
-            center: new google.maps.LatLng(10.3216299, 123.9052633),
-            zoom: 14,
-            mapTypeId: 'roadmap'
-        });        
+var customMapTypeId = 'custom_style';      
 
 map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
@@ -1915,11 +1915,6 @@ map2.setMapTypeId(customMapTypeId);
     <div class="modal fade" id="map-picker">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                 <h4 class="modal-title">Modal title</h4>
-
-            </div>
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
@@ -1957,8 +1952,8 @@ map2.setMapTypeId(customMapTypeId);
 <script src="../dist/js/main.js"></script>
 
 <script type="text/javascript">
-$("#map-picker").on("shown.bs.modal", function () {
-    google.maps.event.trigger(map, "resize");
+$('#map-picker').on("shown.bs.modal", function () {
+    google.maps.event.trigger(map2, "resize");
 });
 </script>
 
@@ -1969,13 +1964,13 @@ $('.fa.arrow').on('click', function() {
 </script>
 
 <script>
-$(".rotate").click(function(){
+$('.rotate').click(function(){
     $(this).toggleClass("down")  ; 
 })
 </script>
 
 <script type="text/javascript">
-$(".checkbox").click(function(){
+$('.checkbox').click(function(){
     var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":checked"))
