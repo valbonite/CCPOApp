@@ -1378,11 +1378,12 @@ map.setMapTypeId(customMapTypeId);
                                 <option value="Saturday">Saturday</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-4 bootstrap-timepicker timepicker">
+                        <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
                             <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
-                            <input class="bfh-timepicker" data-mode="12h" type="text" name="time">
+                            <div class="bfh-timepicker" data-mode="12h" name="time">
+</div>
 
                         </div>
                         <div class="form-group col-md-2">
