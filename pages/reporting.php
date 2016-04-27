@@ -1348,7 +1348,7 @@ map.setMapTypeId(customMapTypeId);
     </div>
     <!-- /#wrapper -->
 
-    <div class="modal fade" id="form-entry" role="dialog">
+    <div class="modal" id="form-entry">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1923,7 +1923,7 @@ map.setMapTypeId(customMapTypeId);
 
     <!-- End of Crime Entry modal -->
 
-    <div class="modal fade" id="map-picker">
+    <div class="modal" id="map-picker" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">

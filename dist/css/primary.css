@@ -739,13 +739,13 @@ hr {
     height:450px;
 }
 
-#form-entry {
-    z-index: 1050;
+.modal:nth-of-type(even) {
+    z-index: 1042 !important;
 }
-
-#map-picker {
-    z-index: 1070;
+.modal-backdrop.in:nth-of-type(even) {
+    z-index: 1041 !important;
 }
+    
 
 #open-map {
     margin-top: 23px;
