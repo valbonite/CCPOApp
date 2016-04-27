@@ -1485,13 +1485,16 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
                             <input class="form-control" id="latitude" name="latitude" type="text"/>
                         </div>
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $longitudeError; ?></small>-->
                             <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
                             <input class="form-control" id="longitude" name="longitude" type="text"/>
-                            <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
                         </div>
-                        
+                        <div class="form-group col-md-2">
+                            <div>
+                                <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="open-map" role="button">Open Map</a>
+                            </div>
+                        </div>
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
                             <label class="control-label " for="crimetype">Crime Type</label>
