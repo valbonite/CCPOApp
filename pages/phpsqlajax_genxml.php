@@ -28,6 +28,8 @@ mysqli_select_db($cleardb_db, $connection);
 //$result = mysql_query($query);
 $result = $connection->query("SELECT * FROM master_data WHERE 1");
 
+echo $result;
+
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
@@ -52,7 +54,6 @@ while ($row=$result->fetch_assoc()){
   $newnode->setAttribute("crimecategory",$row['crimecategory']);
   $newnode->setAttribute("classification",$row['classification']);
 }
-echo $result;
 
 echo $dom->saveXML();
 
