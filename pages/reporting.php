@@ -1669,7 +1669,7 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
                             <label class="control-label " for="datefiled">Date Filed</label>
-                            <input class="form-control" id="datefiled" name="datefiled" type="text"/>
+                            <input class="form-control" id="datefiled" name="datefiled" />
                         </div>
                         <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
@@ -1805,7 +1805,7 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
                             <label class="control-label " for="suspectbday">Suspect Birth Date</label>
-                            <input class="form-control" id="suspectbday" name="suspectbday" type="text"/>
+                            <input class="form-control" id="suspectbday" name="suspectbday"/>
                         </div>
                         <div class="form-group col-md-3">
                             <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
@@ -1969,7 +1969,7 @@ $( "#selector option:selected" ).text();
 </script>
 -->
 <script type="text/javascript">
-$('#datereptd,#date').daterangepicker({
+$('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
 });
