@@ -603,8 +603,8 @@ mysqli_close($connection);
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Time Picker -->
-    <script src="../dist/js/bootstrap-timepicker.min.js"></script>
-    <link href="../dist/css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <script src="../dist/js/bootstrap-formhelpers.js"></script>
+    <link href="../dist/css/bootstrap-formhelpers.min.css" rel="stylesheet">
 
     <!-- Pace-->
     <script src="../dist/js/pace.min.js"></script>
@@ -1135,6 +1135,8 @@ map.setMapTypeId(customMapTypeId);
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>-->
+                <div class="bfh-timepicker" data-mode="12h">
+</div>
                 <div id="counter">
                     <h3><span></span></h3>
                 </div>
@@ -1380,7 +1382,8 @@ map.setMapTypeId(customMapTypeId);
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
                             <label class="control-label " for="timecomtd">Time Committed</label>
                             <!--<input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>-->
-                            <input id="timepicker1" type="text" class="form-control" name="time">
+                            <input class="bfh-timepicker" data-mode="12h" type="text" name="time">
+
                         </div>
                         <div class="form-group col-md-2">
                             <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
@@ -1981,11 +1984,6 @@ $(".checkbox").click(function(){
 
     var date_from = $('#daterange').data('startDate');
     var date_to = $('#daterange').data('endDate');
-</script>
-
-<!-- Time Picker -->
-<script type="text/javascript">
-    $('#timepicker1').timepicker();
 </script>
 
 <!--
