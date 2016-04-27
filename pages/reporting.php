@@ -1158,15 +1158,9 @@ map.setMapTypeId(customMapTypeId);
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>-->
-                <div class="bfh-timepicker" data-mode="12h">
-                    <input class="form-control" type="text" name="">
-</div>
                 <div id="counter">
                     <h3><span></span></h3>
                 </div>
-                <div>
-                                <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="prediction" role="button">Open Map</a>
-                            </div>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">
