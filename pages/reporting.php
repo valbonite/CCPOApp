@@ -1969,11 +1969,9 @@ $( "#selector option:selected" ).text();
 </script>
 -->
 <script type="text/javascript">
-$(function() {
-    $('#date').daterangepicker({
+$('#date').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
-    });
 });
 </script>
 
