@@ -1950,6 +1950,7 @@ $(".checkbox").click(function(){
 $('#selector').click(function(){
     var id = $(this).attr('value');
 });
+console.log(id);
 </script>
 
 
