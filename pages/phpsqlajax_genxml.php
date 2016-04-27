@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-require('connection.php');
+require('phpsqlajax_dbinfo.php');
 
 // Start XML file, create parent node
 
