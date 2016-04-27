@@ -1114,16 +1114,16 @@ map.setMapTypeId(customMapTypeId);
             <!-- /.navbar-top-links -->
             <div class="picker-sidebar" style="position: absolute">
 
-                <div class="form-control" id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                <!--<div class="form-control" id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
-                </div>
-                <!--<div class="input-group">
+                </div>-->
+                <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
-                </div>-->
+                </div>
                 <div id="counter">
                     <h3><span></span></h3>
                 </div>
@@ -1955,8 +1955,6 @@ $( "#selector option:selected" ).text();
 });
 </script>
 
-
-<!--
 <script type="text/javascript">
 $('#daterange').daterangepicker({
     "startDate": "04/19/2016",
@@ -1967,7 +1965,7 @@ $('#daterange').daterangepicker({
 
 var date_from = $('#daterange').data('startDate');
 var date_to = $('#daterange').data('endDate');
-</script>-->
+</script>
 
 <!--
 <script type="text/javascript">
@@ -1976,6 +1974,7 @@ $(function() {
 });
 </script>-->
 
+<!--
 <script type="text/javascript">
 $(function() {
 
@@ -1997,6 +1996,7 @@ $(function() {
 
 });
 </script>
+-->
 
 </body>
 </html>
