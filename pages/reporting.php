@@ -687,7 +687,6 @@ mysqli_close($connection);
 
     var markers = null;
     var map2;
-    var count = 0;
 
     var customMapType = new google.maps.StyledMapType([            
         {
@@ -814,7 +813,7 @@ map.setMapTypeId(customMapTypeId);
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
         console.log(markers)
-        //var count = 0; 
+        var count; 
         //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
@@ -845,8 +844,6 @@ map.setMapTypeId(customMapTypeId);
       }
       markerGroups[crimecategory].push(marker);
       console.log(markerGroups);
-       alert(markerGroups[0]);
-      //$('#counter h2 span').html(markers.length);
 
   });
     document.getElementById('counter').innerHTML = "Number of crimes: " + count;
@@ -1240,57 +1237,57 @@ map.setMapTypeId(customMapTypeId);
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="MURDER" name="MURDER" type="checkbox" value="MURDER"> MURDER
+                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER"> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="THEFT" name="THEFT" type="checkbox" value="THEFT"> THEFT
+                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT"> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ROBBERY" name="ROBBERY" type="checkbox" value="ROBBERY" > ROBBERY
+                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCES" name="ORDINANCES" type="checkbox" value="ORDINANCES" > ORDINANCES
+                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES" > ORDINANCES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CATTLERUSTLING" name="CATTLERUSTLING" type="checkbox" value="CATTLERUSTLING"> CATTLE RUSTLING
+                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING"> CATTLE RUSTLING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="SPECIALLAWS" name="SPECIALLAWS" type="checkbox" value="SPECIALLAWS"> SPECIAL LAWS
+                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS"> SPECIAL LAWS
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="HOMICIDE" name="HOMICIDE" type="checkbox" value="HOMICIDE"> HOMICIDE
+                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE"> HOMICIDE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CARNAPPING" name="CARNAPPING" type="checkbox" value="CARNAPPING"> CARNAPPING
+                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING"> CARNAPPING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="PHYSICALINJURIES" name="PHYSICALINJURIES" type="checkbox" value="PHYSICALINJURIES"> PHYSICAL INJURIES
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES"> PHYSICAL INJURIES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="RAPE" name="RAPE" type="checkbox" value="RAPE"> RAPE
+                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE"> RAPE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERNONINDEX" name="OTHERNONINDEX" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
+                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
                                         </label>
                                     </div>
                                 </li>
@@ -2138,10 +2135,84 @@ $(".checkbox").click(function(){
       console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
     });
 
-    var date_from = $('#daterange').data('startDate');
-    var date_to = $('#daterange').data('endDate');
+    //var date_from = $('#daterange').data('startDate');
+    //var date_to = $('#daterange').data('endDate');
 </script>
 
+<script type="text/javascript">
+function showMarkers() {
+    var date_from = document.getElementById('daterangepicker_start').value;
+    var date_to = document.getElementById('daterangepicker_end').value;
+    if (date_from > date_to) {
+        alert('Starting date must be earlier than ending date.');
+    }
+        for ( var i = 0; i < markers.length; i++) {
+            if ((markers[i].date >= date_from && markers[i].date <= date_to)
+                    && (Date.parse('20 Aug 2000 ' + markers[i].time) >= time_from && Date
+                            .parse('20 Aug 2000 ' + markers[i].time) <= time_to){
+                marker.push(markers[i]);
+            }
+        }
+    }
+    checkBox();
+}
+function checkBox() {
+    var crime_type_search = document.getElementsByName('crime_type_search');
+    for ( var i = 0; i < marker.length; i++) {
+        for ( var x = 0; x < crime_type_search.length; x++) {
+            if (crime_type_search[x].checked == true) {
+                if (marker[i].crime_type == crime_type_search[x].value) {
+                    maps.push(marker[i]);
+                }
+            }
+        }
+    }
+    finalMarker();
+}
+function finalMarker() {
+    if (check_icon == 0) {
+        for ( var i = 0; i < maps.length; i++) {
+            var icon = customIcons[maps[i].crime_type] || {};
+            maps[i].setIcon(icon.icon);
+        }
+    } else if (check_icon == 1) {
+        for ( var i = 0; i < maps.length; i++) {
+            var icons = customIcon[maps[i].crime_type] || {};
+            maps[i].setIcon(icons.icon);
+        }
+    }
+    var counter = 0;
+    var radius = document.getElementById('radius').value;
+    if (radius == 0) {
+        for ( var i = 0; i < maps.length; i++) {
+            maps[i].setMap(map);
+            counter++;
+        }
+    } else {
+        for ( var i = 0; i < maps.length; i++) {
+            maps[i].setMap(null);
+        }
+        for ( var i = 0; i < maps.length; i++) {
+            var inRadius = google.maps.geometry.spherical
+                    .computeDistanceBetween(maps[i].position, center);
+            if (inRadius < radius) {
+                maps[i].setMap(map);
+                counter++;
+            }
+        }
+    }
+}
+
+function resetMarker() {
+    for ( var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    marker.length = 0;
+    maps.length = 0;
+    marker = [];
+    map = [];
+}
+</script>
 
 
 <!--
