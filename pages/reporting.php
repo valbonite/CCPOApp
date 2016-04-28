@@ -842,6 +842,7 @@ map.setMapTypeId(customMapTypeId);
       }
       markerGroups[crimecategory].push(marker);
       console.log(markerGroups);
+       alert(markerGroups[0]);
       //$('#counter h2 span').html(markers.length);
 
   });
