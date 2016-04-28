@@ -926,7 +926,7 @@
         weekData = years[startYearCounter].weeks;
         week = weekData[startWeekCounter].week;
 
-        document.getElementById('date').innerHTML = week + ", " + (startYear + startYearCounter);
+        document.getElementById('date').innerHTML = "Week: " week + ", " + "Year: " + (startYear + startYearCounter);
         showTiles(startYear + startYearCounter, startWeek + startWeekCounter);
         showPredictionTiles(predictionCounter);
         get_accuracy(startYear + startYearCounter, startWeek + startWeekCounter, predictionCounter);
@@ -1190,9 +1190,9 @@
             <!-- /.navbar-top-links -->
 
             <div class="prediction-label" style="position: absolute">
-                <span style="text-align: left"><h1 id="date"></h1></span>
-                <span style="text-align: left"><h2 id="accuracy"></h2></span>
-                <span style="text-align: left"><h2 id="f1scr"></h2></span>
+                <span style="text-align: left; color=#fff"><h2 id="date"></h2></span>
+                <span style="text-align: left; color=#fff"><h3 id="accuracy"></h3></span>
+                <span style="text-align: left; color=#fff"><h3 id="f1scr"></h3></span>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">
@@ -1309,9 +1309,6 @@
             <div class="row">
                 <div id="map_canvas" style="width:50%; height: 100vh; float: left"></div>     
                 <div id="map_canvas2" style="width:50%; height: 100vh; float: right"></div>
-                <span style="text-align: center"><h1 id="date"></h1></span>
-                <span style="text-align: center"><h2 id="accuracy"></h2></span>
-                <span style="text-align: center"><h2 id="f1scr"></h2></span>
             </div>
             <!-- /.row -->
         </div>
