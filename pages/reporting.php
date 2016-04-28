@@ -853,7 +853,7 @@ map.setMapTypeId(customMapTypeId);
 
   function show(crimecategory) {
     if (markerGroups.hasOwnProperty("crimecategory")) {
-        var markersInCategory = markerGroups["crimecategory"];
+        var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
@@ -863,7 +863,7 @@ map.setMapTypeId(customMapTypeId);
 
   function hide(crimecategory) {
     if (markerGroups.hasOwnProperty("crimecategory")) {
-        var markersInCategory = markerGroups["crimecategory"];
+        var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
