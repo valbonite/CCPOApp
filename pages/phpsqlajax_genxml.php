@@ -28,12 +28,12 @@ var_dump($db_selected);
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
-$result = mysqli_query($query);
+$result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
 
-var_dump($result);
+var_dump($query);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
