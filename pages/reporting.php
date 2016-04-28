@@ -883,6 +883,7 @@ console.log(crimecategory);
         }
     }
     console.log(crimecategory);
+    console.log(markerGroups["MURDER"][0]);
   }
 
 /*
