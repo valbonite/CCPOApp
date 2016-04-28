@@ -680,10 +680,10 @@ mysqli_close($connection);
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
+    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
     
-    markerGroups = {};
-    markerGroups["MURDER"] = {};
+    //markerGroups = {};
+    //markerGroups["MURDER"] = {};
 
     var markers = null;
     var map2;
@@ -872,20 +872,6 @@ map.setMapTypeId(customMapTypeId);
     console.log(crimecategory);
   }*/
 
-function show(crimecategory) {
-console.log(crimecategory);
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-    console.log(crimecategory);
-        var markersInCategory = markerGroups["MURDER"];
-        console.log(markersInCategory );
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-        }
-    }
-    console.log(crimecategory);
-    console.log(markerGroups["MURDER"][0]);
-  }
-
 /*
   function hide(crimecategory) {
     if (markerGroups.hasOwnProperty(crimecategory)) {
@@ -900,17 +886,28 @@ console.log(crimecategory);
   }
   */
 
-  function hide(crimecategory) {
-console.log(crimecategory);
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-    console.log(crimecategory);
-        var markersInCategory = markerGroups["MURDER"];
-        console.log(markersInCategory );
+  function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+    
+    console.log('something');
+  }
+
+
+
+  // == hides all markers of a particular category, and ensures the checkbox is cleared ==
+
+  function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
     }
-    console.log(crimecategory);
   }
 
     hide("MURDER");
@@ -2112,7 +2109,7 @@ $('.rotate').click(function(){
 </script>
 
 <script type="text/javascript">
-$('.checkbox').click(function(){
+$(".checkbox").click(function(){
     var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":checked"))
@@ -2123,7 +2120,7 @@ $('.checkbox').click(function(){
             {
                 hide(cat);
             }
-});
+        });
 </script>
 
 <!-- Singe Datepicker-->
