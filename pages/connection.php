@@ -1,9 +1,9 @@
 <?php
 $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$cleardb_server = $cleardb_url["hostname"];
-$cleardb_username = $cleardb_url["username"];
-$cleardb_password = $cleardb_url["password"];
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
 $cleardb_db = substr($cleardb_url["path"], 1);
 
 $active_group = 'default';
@@ -17,9 +17,8 @@ $db['default']['database'] = $cleardb_db;
 $connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 if(!$connection) {
-	echo "Error!";
 	die("Connection failed: " . mysqli_connect_error() );
 }
+
 //echo "Connected successfully!";
-var_dump($connection);
 ?>
