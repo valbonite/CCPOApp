@@ -1910,10 +1910,11 @@ map.setMapTypeId(customMapTypeId);
                             <input class="form-control" id="progressreport" name="progressreport" type="text"/>
                         </div>
                         
-                        <div class="modal-footer">
-                            <a href="#" data-dismiss="modal" class="btn">Close</a>
-                            <input style="display:none" type="text"/>
-                            <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                        <div class="form-group">
+                            <div>
+                                <input style="display:none" type="text"/>
+                                <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                            </div>
                         </div>
                     </form>
                 </div>
