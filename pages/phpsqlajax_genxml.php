@@ -1,12 +1,12 @@
 <?php
 require("phpsqlajax_dbinfo.php");
-echo "Error 1";
+//echo "Error 1";
 // Start XML file, create parent node
 
 $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
-echo "Error 2";
+//echo "Error 2";
 // Opens a connection to a MySQL server
 
 $connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
@@ -34,7 +34,7 @@ if (!$result) {
 }
 $row_cnt = mysqli_num_rows($result);
 
-var_dump($row_cnt);
+var_dump($query);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each

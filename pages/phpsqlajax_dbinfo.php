@@ -20,5 +20,5 @@ echo $cleardb_username;
 echo $cleardb_password;
 echo $cleardb_db;*/
 
-var_dump($cleardb_url);
+//var_dump($cleardb_url);
 ?>
