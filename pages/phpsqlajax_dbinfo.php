@@ -13,4 +13,6 @@ $db['default']['hostname'] = $cleardb_server;
 $db['default']['username'] = $cleardb_username;
 $db['default']['password'] = $cleardb_password;
 $db['default']['database'] = $cleardb_db;
+
+var_dump($cleardb_url);
 ?>
