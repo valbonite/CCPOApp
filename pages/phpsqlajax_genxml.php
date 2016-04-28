@@ -4,7 +4,7 @@ require("phpsqlajax_dbinfo.php");
 // Start XML file, create parent node
 //var_dump($cleardb_url);
 $dom = new DOMDocument("1.0");
-$node = $dom->createElement("markers");
+$node = $dom->createElement("marker");
 $parnode = $dom->appendChild($node);
 //echo "Error 2";
 // Opens a connection to a MySQL server
