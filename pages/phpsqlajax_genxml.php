@@ -9,7 +9,7 @@ $parnode = $dom->appendChild($node);
 echo "Error 2";
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password);
+$connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if (!$connection) { 
   echo "Error 3"; 
   die('Not connected : ' . mysql_error());
@@ -18,7 +18,7 @@ if (!$connection) {
 var_dump($connection);
 // Set the active MySQL database
 
-$db_selected = mysql_select_db($cleardb_db, $connection);
+$db_selected = mysql_select_db($connection, $cleardb_db);
 if (!$db_selected) {
   echo "Error 4";
   die ('Can\'t use db : ' . mysql_error());
@@ -27,7 +27,7 @@ if (!$db_selected) {
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
-$result = mysql_query($query);
+$result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
@@ -36,7 +36,7 @@ header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 
-while ($row = @mysql_fetch_assoc($result)){
+while ($row = mysqli_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
