@@ -26,7 +26,7 @@ if (!$db_selected) {
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
-$result = mysql_query($query);
+$result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
@@ -35,7 +35,7 @@ header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 ini_set('memory_limit', '-1');
-while ($row = mysql_fetch_assoc($result)){
+while ($row = mysqli_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);

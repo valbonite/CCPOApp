@@ -684,6 +684,7 @@ mysqli_close($connection);
 
     var markers = null;
     var map2;
+    var count = 0;
 
     var customMapType = new google.maps.StyledMapType([            
         {
@@ -789,8 +790,6 @@ var customMapTypeId = 'custom_style';
     }
     
     function load() {
-
-        var count = 0;
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -2058,6 +2057,7 @@ $( '.modal' ).on( 'shown.bs.modal', function ( event ) {
 
         
         });
+</script>
 
 <script>
 $('.fa.arrow').on('click', function() {
