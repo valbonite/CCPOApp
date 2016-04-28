@@ -680,8 +680,11 @@ mysqli_close($connection);
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
-    console.log(markerGroups);
+    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
+    
+    markerGroups = {};
+    markerGroup["MURDER"] = {};
+
     var markers = null;
     var map2;
     var count = 0;
@@ -853,7 +856,7 @@ map.setMapTypeId(customMapTypeId);
 
 
 
-  function show(crimecategory) {
+  /*function show(crimecategory) {
     console.log(crimecategory);
     if (markerGroups.hasOwnProperty(crimecategory)) {
         console.log(crimecategory);
@@ -867,7 +870,21 @@ map.setMapTypeId(customMapTypeId);
         }
     }
     console.log(crimecategory);
+  }*/
+
+function show(crimecategory) {
+console.log(crimecategory);
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+    console.log(crimecategory);
+        var markersInCategory = markerGroups["MURDER"];
+        console.log(markersInCategory );
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+    console.log(crimecategory);
   }
+
 
   function hide(crimecategory) {
     if (markerGroups.hasOwnProperty(crimecategory)) {
