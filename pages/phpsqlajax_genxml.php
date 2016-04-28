@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_assoc($result)){
   $newnode = $parnode->appendChild($node);
   $newnode->setAttribute("date",$row['date']);
   $newnode->setAttribute("day",$row['day']);
-  $newnode->setAttribute("time",$row['time']);
+  //$newnode->setAttribute("time",$row['time']);
   $newnode->setAttribute("areaofincident",$row['areaofincident']);
   $newnode->setAttribute("barangay",$row['barangay']);
   $newnode->setAttribute("latitude",$row['latitude']);
