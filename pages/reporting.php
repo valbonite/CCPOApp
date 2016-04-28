@@ -885,7 +885,7 @@ console.log(crimecategory);
     console.log(crimecategory);
   }
 
-
+/*
   function hide(crimecategory) {
     if (markerGroups.hasOwnProperty(crimecategory)) {
         var markersInCategory = markerGroups[crimecategory];
@@ -893,6 +893,20 @@ console.log(crimecategory);
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
             console.log(markersInCategory[i]);
+        }
+    }
+    console.log(crimecategory);
+  }
+  */
+
+  function show(crimecategory) {
+console.log(crimecategory);
+    if (markerGroups.hasOwnProperty(crimecategory)) {
+    console.log(crimecategory);
+        var markersInCategory = markerGroups["MURDER"];
+        console.log(markersInCategory );
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(false);
         }
     }
     console.log(crimecategory);
