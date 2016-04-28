@@ -1,7 +1,7 @@
 <?php
-//ini_set('display_startup_errors',1);
-//ini_set('display_errors',1);
-//error_reporting(-1);
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(-1);
 require("phpsqlajax_dbinfo.php");
 
 // Start XML file, create parent node
@@ -16,7 +16,6 @@ $parnode = $dom->appendChild($node);
 $connection=mysqli_connect ('us-cdbr-iron-east-03.cleardb.net', 'b63bd21b2fbdc5', '5f51cc51', 'heroku_edbd0db618b7e76');
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
-var_dump($connection);
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
