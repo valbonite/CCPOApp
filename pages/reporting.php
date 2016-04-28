@@ -856,6 +856,7 @@ map.setMapTypeId(customMapTypeId);
         var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
+            console.log(markersInCategory[i]);
         }
     }
     console.log(crimecategory);
@@ -866,6 +867,7 @@ map.setMapTypeId(customMapTypeId);
         var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
+            console.log(markersInCategory[i]);
         }
     }
     console.log(crimecategory);
