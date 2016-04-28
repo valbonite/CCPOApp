@@ -1,6 +1,7 @@
 <?php
 error_reporting(-1);
 require("phpsqlajax_dbinfo.php");
+echo "Hello!";
 
 // Start XML file, create parent node
 
@@ -12,7 +13,7 @@ $parnode = $dom->appendChild($node);
 
 $connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
 if (!$connection) {  die('Not connected : ' . mysql_error());}
-
+echo "Error!";
 // Set the active MySQL database
 var_dump($connection);
 $db_selected = mysql_select_db($cleardb_db, $connection);
