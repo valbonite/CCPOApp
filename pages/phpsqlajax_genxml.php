@@ -16,7 +16,7 @@ $parnode = $dom->appendChild($node);
 $connection=mysqli_connect ('us-cdbr-iron-east-03.cleardb.net', 'b63bd21b2fbdc5', '5f51cc51', 'heroku_edbd0db618b7e76');
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
-
+var_dump($connection);
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM master_data WHERE 1";
