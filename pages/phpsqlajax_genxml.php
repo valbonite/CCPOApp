@@ -15,7 +15,7 @@ if (!$connection) {
   die('Not connected : ' . mysql_error());
 }
 
-//var_dump($connection);
+var_dump($connection);
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($connection, $cleardb_db);
@@ -32,9 +32,7 @@ $result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
-$row_cnt = mysqli_num_rows($result);
 
-var_dump($query);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
