@@ -683,7 +683,7 @@ mysqli_close($connection);
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
     
     markerGroups = {};
-    markerGroup["MURDER"] = {};
+    markerGroups["MURDER"] = {};
 
     var markers = null;
     var map2;
