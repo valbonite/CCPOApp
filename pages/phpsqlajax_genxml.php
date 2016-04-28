@@ -9,7 +9,7 @@ $parnode = $dom->appendChild($node);
 echo "Error 2";
 // Opens a connection to a MySQL server
 
-$connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
+$connection=@mysql_connect($cleardb_server, $cleardb_username, $cleardb_password);
 if (!$connection) { 
   echo "Error 3"; 
   die('Not connected : ' . mysql_error());
