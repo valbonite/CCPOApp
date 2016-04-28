@@ -2071,7 +2071,7 @@ $('.rotate').click(function(){
 
 <script type="text/javascript">
 $('.checkbox').click(function(){
-    var cat = $(this).attr("value");    
+    var cat = $(this).attr("name");    
             // If checked
             if ($(this).is(":checked"))
             {
