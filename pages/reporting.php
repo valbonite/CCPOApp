@@ -853,7 +853,9 @@ map.setMapTypeId(customMapTypeId);
 
   function show(crimecategory) {
     if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
+        //var markersInCategory = markerGroups[crimecategory];
+        var markersInCategory = markerGroups["MURDER"];
+
         console.log(markersInCategory);
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
