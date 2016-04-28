@@ -2071,7 +2071,7 @@ $('.rotate').click(function(){
 
 <script type="text/javascript">
 $('.checkbox').click(function(){
-    var cat = $(this).attr("name");    
+    var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":checked"))
             {
@@ -2083,6 +2083,7 @@ $('.checkbox').click(function(){
             }
 });
 </script>
+
 <!-- Singe Datepicker-->
 <script type="text/javascript">
     $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
