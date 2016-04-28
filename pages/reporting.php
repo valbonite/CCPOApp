@@ -1335,6 +1335,7 @@ map.setMapTypeId(customMapTypeId);
                                 </li>
                             </ul>                          
                         </li>
+                        <!--
                         <li>
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Barangay<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
@@ -1349,6 +1350,7 @@ map.setMapTypeId(customMapTypeId);
                             </div>
                             </ul>                          
                         </li>
+                    -->
                         <!-- /.nav-second-level -->
                         <!-- /.
                         <li>
