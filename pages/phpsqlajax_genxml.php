@@ -10,12 +10,12 @@ $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
-
+var_dump($cleardb_url);
 $connection=@mysql_connect ($cleardb_server, $cleardb_username, $cleardb_password);
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 echo "Error!";
 // Set the active MySQL database
-
+var_dump($cleardb_url);
 var_dump($connection);
 
 $db_selected = mysql_select_db($cleardb_db, $connection);
