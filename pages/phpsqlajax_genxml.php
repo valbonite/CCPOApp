@@ -2,7 +2,7 @@
 require("phpsqlajax_dbinfo.php");
 //echo "Error 1";
 // Start XML file, create parent node
-var_dump($cleardb_url);
+//var_dump($cleardb_url);
 $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
@@ -32,6 +32,8 @@ $result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
+
+var_dump($query);
 
 header("Content-type: text/xml; charset=UTF-8");
 
