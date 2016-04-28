@@ -15,7 +15,7 @@ if (!$connection) {
   die('Not connected : ' . mysql_error());
 }
 
-var_dump($connection);
+//var_dump($connection);
 // Set the active MySQL database
 
 $db_selected = mysql_select_db($connection, $cleardb_db);
@@ -23,7 +23,7 @@ if (!$db_selected) {
   echo "Error 4";
   die ('Can\'t use db : ' . mysql_error());
 }
-var_dump($db_selected);
+//var_dump($db_selected);
 
 // Select all the rows in the markers table
 
@@ -34,7 +34,7 @@ if (!$result) {
 }
 $row_cnt = mysqli_num_rows($result);
 
-printf("Result set has %d rows.\n", $row_cnt);
+var_dump($row_cnt);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
