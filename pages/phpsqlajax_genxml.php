@@ -32,13 +32,16 @@ while ($row = mysqli_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
-  $newnode->setAttribute("day", utf8_encode($row['day']));
-  $newnode->setAttribute("barangay", utf8_encode($row['barangay']));
-  $newnode->setAttribute("classification", utf8_encode($row['classification']));
-  $newnode->setAttribute("areaofincident", utf8_encode($row['areaofincident']));
-  $newnode->setAttribute("latitude", utf8_encode($row['latitude']));
-  $newnode->setAttribute("longitude", utf8_encode($row['longitude']));
-  $newnode->setAttribute("crimetype", utf8_encode($row['crimetype']));
+  $newnode->setAttribute("date",$row['date']);
+  $newnode->setAttribute("day",$row['day']);
+  $newnode->setAttribute("time",$row['time']);
+  $newnode->setAttribute("areaofincident",$row['areaofincident']);
+  $newnode->setAttribute("barangay",$row['barangay']);
+  $newnode->setAttribute("latitude",$row['latitude']);
+  $newnode->setAttribute("longitude",$row['longitude']);
+  $newnode->setAttribute("crimetype",$row['crimetype']);
+  $newnode->setAttribute("crimecategory",$row['crimecategory']);
+  $newnode->setAttribute("classification",$row['classification']);
 }
 
 echo $dom->saveXML();
