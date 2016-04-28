@@ -1484,7 +1484,7 @@ map.setMapTypeId(customMapTypeId);
                             <label class="control-label " for="areaofincident">Area of Incident</label>
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector" name="areaofincident">
-                                <option value="">Choose UNIT/STATION</option>
+                                <option value="">Choose AREAOFINCIDENT</option>
                                 <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                 <option value="STATION2_FUENTE">STATION2_FUENTE</option>
                                 <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
