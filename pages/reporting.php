@@ -893,8 +893,8 @@ map.setMapTypeId(customMapTypeId);
             markersInCategory[i].setVisible(true);
         }
     }
-    
-    console.log('something');
+    console.log(markersInCategory)
+    console.log(category);
   }
 
 
@@ -2046,10 +2046,8 @@ $('#openBtn').click(function(){
 </script>-->
 
 <script type='text/javascript'>
-        
-        $(document).ready(function() {
-        
-            $('#openBtn').click(function(){
+$(document).ready(function() {
+    $('#openBtn').click(function(){
     $('#form-entry').modal({show:true})
 });
 
