@@ -1523,7 +1523,6 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $crimecategoryError; ?></small>-->
                             <label class="control-label " for="crimecategory">Crime Category</label>
-                            <input class="form-control" id="crimecategory" name="crimecategory" placeholder='i.e. "OTHERNONINDEX"' type="text"/>
                             <select class="form-control" id="selector" name="crimecategory">
                                 <option value="">Choose Crime Category</option>
                                 <option value="MURDER">MURDER</option>
