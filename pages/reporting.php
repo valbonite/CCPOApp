@@ -1450,18 +1450,28 @@ map.setMapTypeId(customMapTypeId);
                             <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
                             <select class="form-control" id="selector" name="areaofincident">
                                 <option value="">Choose UNIT/STATION</option>
+                                <option value="STATION1_PARIAN">STATION1_PARIAN</option>
+                                <option value="STATION2_FUENTE">STATION2_FUENTE</option>
+                                <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
+                                <option value="STATION4_MABOLO">STATION4_MABOLO</option>
+                                <option value="STATION5_CARBON">STATION5_CARBON</option>
+                                <option value="STATION6_PASIL">STATION6_PASIL</option>
+                                <option value="STATION7_PARDO">STATION7_PARDO</option>
+                                <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
+                                <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
+                                <option value="STATION10_PUNTA">STATION10_PUNTA</option>
+                                <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
                                 <option value="STATION1_CENTRO">STATION1_CENTRO</option>
                                 <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
                                 <option value="STATION3_BASAK">STATION3_BASAK</option>
                                 <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
                                 <option value="STATION5_OPAO">STATION5_OPAO</option>
                                 <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
-                                <option value="MCPO_WCPD">MCPO_WCPD</option>
-                                <option value="MCPO_TRS">MCPO_TRS</option>
-                                <option value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
-                                <option value="MCPO_TPU">MCPO_TPU</option>
-                                <option value="MCPO_CIB">MCPO_CIB</option>
-                                <option value="MCPO_IDMB">MCPO_IDMB</option>
+                                <option value="STATION1_OLANGO">STATION1_OLANGO</option>
+                                <option value="STATION2_MACTAN">STATION2_MACTAN</option>
+                                <option value="STATION3_GUNOB">STATION3_GUNOB</option>
+                                <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
+                                <option value="STATION5_PUSOK">STATION5_PUSOK</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -1492,17 +1502,43 @@ map.setMapTypeId(customMapTypeId);
                         <div class="form-group col-md-4">
                             <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
                             <label class="control-label " for="crimetype">Crime Type</label>
-                            <input class="form-control" id="crimetype" name="crimetype" placeholder='i.e. "NON-INDEX CRIME"' type="text"/>
+                            <select class="form-control" id="selector" name="crimetype">
+                                <option value="">Choose Crime Type</option>
+                                <option value="INDEX CRIME">INDEX CRIME</option>
+                                <option value="NON-INDEX CRIME">NON-INDEX CRIME</option>
+                                <option value="CEBU_CITY">CEBU_CITY</option>
+                                <option value="ORDINANCE">ORDINANCE</option>
+                                <option value="OTHERINCIDENTS(Non Crime)">OTHERINCIDENTS(Non Crime)</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $indexcrimetypeError; ?></small>-->
                             <label class="control-label " for="indexcrimetype">Index Crime Type</label>
-                            <input class="form-control" id="indexcrimetype" name="indexcrimetype" type="text"/>
+                            <select class="form-control" id="selector" name="indexcrimetype">
+                                <option value="">Choose Index Crime Type</option>
+                                <option value="ICrime Against Property">Crime Against Property</option>
+                                <option value="Crime Against Person">Crime Against Person</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <!--<small class="text-danger">* <?php echo $crimecategoryError; ?></small>-->
                             <label class="control-label " for="crimecategory">Crime Category</label>
                             <input class="form-control" id="crimecategory" name="crimecategory" placeholder='i.e. "OTHERNONINDEX"' type="text"/>
+                            <select class="form-control" id="selector" name="crimecategory">
+                                <option value="">Choose Crime Category</option>
+                                <option value="MURDER">MURDER</option>
+                                <option value="HOMICIDE">HOMICIDE</option>
+                                <option value="PHYSICALINJURIES">PHYSICALINJURIES</option>
+                                <option value="RAPE">RAPE</option>
+                                <option value="ROBBERY">ROBBERY</option>
+                                <option value="THEFT">THEFT</option>
+                                <option value="CARNAPPING">CARNAPPING</option>
+                                <option value="CATTLERUSTLING">CATTLERUSTLING</option>
+                                <option value="SPECIALLAWS">SPECIALLAWS</option>
+                                <option value="OTHERNONINDEX">OTHERNONINDEX</option>
+                                <option value="ORDINANCES">ORDINANCES</option>
+                                <option value="OTHERINCIDENTS">OTHERINCIDENTS</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-8">
                             <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
