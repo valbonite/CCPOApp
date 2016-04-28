@@ -21,7 +21,7 @@ include("connection.php");
          //session_register("username");
          $_SESSION['login_user'] = $username;
          
-         header("location: daily.html");
+         header("location: weekly.html");
       }else {
          $error = "Your Login Name or Password is invalid";
          //echo "error";
