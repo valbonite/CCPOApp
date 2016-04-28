@@ -842,7 +842,6 @@ map.setMapTypeId(customMapTypeId);
       }
       markerGroups[crimecategory].push(marker);
       //$('#counter h2 span').html(markers.length);
-      var markerCluster = new MarkerClusterer(map, marker);
 
   });
     document.getElementById('counter').innerHTML = "Number of crimes: " + count;
@@ -853,7 +852,7 @@ map.setMapTypeId(customMapTypeId);
 
 
   function show(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
+    if (markerGroups.hasOwnProperty("crimecategory")) {
         var markersInCategory = markerGroups[crimecategory];
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
