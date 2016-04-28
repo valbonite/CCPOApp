@@ -30,18 +30,18 @@ if (!$result) {
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
-
+ini_set('memory_limit', '-1');
 while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
-  $newnode->setAttribute("day",$row['day']);
-  $newnode->setAttribute("barangay",$row['barangay']);
-  $newnode->setAttribute("classification",$row['classification']);
-  $newnode->setAttribute("areaofincident", $row['areaofincident']);
-  $newnode->setAttribute("latitude", $row['latitude']);
-  $newnode->setAttribute("longitude", $row['longitude']);
-  $newnode->setAttribute("crimetype", $row['crimetype']);
+  $newnode->setAttribute("day", utf8_encode($row['day']));
+  $newnode->setAttribute("barangay", utf8_encode($row['barangay']));
+  $newnode->setAttribute("classification", utf8_encode($row['classification']));
+  $newnode->setAttribute("areaofincident", utf8_encode($row['areaofincident']));
+  $newnode->setAttribute("latitude", utf8_encode($row['latitude']));
+  $newnode->setAttribute("longitude", utf8_encode($row['longitude']));
+  $newnode->setAttribute("crimetype", utf8_encode($row['crimetype']));
 }
 
 echo $dom->saveXML();
