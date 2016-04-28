@@ -32,8 +32,9 @@ $result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
+$row_cnt = mysqli_num_rows($result);
 
-var_dump($query);
+printf("Result set has %d rows.\n", $row_cnt);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
