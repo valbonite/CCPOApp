@@ -16,7 +16,6 @@ $db['default']['database'] = $cleardb_db;
 
 $connection = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-var_dump($connection);
 if(!$connection) {
 	die("Connection failed: " . mysqli_connect_error() );
 }

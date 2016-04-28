@@ -31,7 +31,7 @@ header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
 ini_set('memory_limit', '-1');
-while ($row = @mysql_fetch_assoc($result)){
+while ($row = mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
