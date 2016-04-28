@@ -17,7 +17,7 @@ $connection=mysqli_connect ('us-cdbr-iron-east-03.cleardb.net', 'b63bd21b2fbdc5'
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
 // Select all the rows in the markers table
-header("Content-type: text/xml; charset=UTF-8");
+header('Content-type: text/xml; charset=UTF-8');
 
 $query = "SELECT * FROM master_data WHERE 1";
 $result = mysqli_query($connection, $query);
@@ -35,9 +35,9 @@ while ($row = mysqli_fetch_assoc($result)){
   $newnode = $parnode->appendChild($node);
   $newnode->setAttribute("date",$row['date']);
   $newnode->setAttribute("day",$row['day']);
-  //$newnode->setAttribute("time",$row['time']);
+  $newnode->setAttribute("time",$row['time']);
   $newnode->setAttribute("areaofincident",$row['areaofincident']);
-  $newnode->setAttribute("barangay",$row['barangay']);
+  $newnode->setAttribute("barangay", utf8_encode($row['barangay']));
   $newnode->setAttribute("latitude",$row['latitude']);
   $newnode->setAttribute("longitude",$row['longitude']);
   $newnode->setAttribute("crimetype",$row['crimetype']);
