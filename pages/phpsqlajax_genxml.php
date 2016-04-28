@@ -23,6 +23,7 @@ if (!$db_selected) {
   echo "Error 4";
   die ('Can\'t use db : ' . mysql_error());
 }
+var_dump($db_selected);
 
 // Select all the rows in the markers table
 
@@ -32,6 +33,7 @@ if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
 
+var_dump($result);
 header("Content-type: text/xml; charset=UTF-8");
 
 // Iterate through the rows, adding XML nodes for each
