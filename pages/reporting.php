@@ -899,7 +899,7 @@ console.log(crimecategory);
   }
   */
 
-  function show(crimecategory) {
+  function hide(crimecategory) {
 console.log(crimecategory);
     if (markerGroups.hasOwnProperty(crimecategory)) {
     console.log(crimecategory);
