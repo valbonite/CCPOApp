@@ -711,11 +711,13 @@ hr {
     right: 30px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 5px;
     min-height: 50px;
     width: 300px;
     background-color: #383d4a;
     z-index: 3;
     margin: 70px -10px 0 0;
+    color: #fff;
 }
 
 .actual-label {
