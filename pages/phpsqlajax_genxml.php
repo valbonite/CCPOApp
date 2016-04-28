@@ -13,7 +13,7 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=mysqli_connect ('us-cdbr-iron-east-03.cleardb.net', 'bdc69c2b521cb1', '3e21324b', 'heroku_1dc2f276f9a9d07');
+$connection=mysqli_connect ('us-cdbr-iron-east-03.cleardb.net', 'b63bd21b2fbdc5', '5f51cc51', 'heroku_edbd0db618b7e76');
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
 
