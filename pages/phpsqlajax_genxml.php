@@ -1,4 +1,5 @@
 <?php
+error_reporting(-1);
 require("phpsqlajax_dbinfo.php");
 
 // Start XML file, create parent node
