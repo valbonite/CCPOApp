@@ -636,7 +636,7 @@ mysqli_close($connection);
         <![endif]-->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
         <script type="text/javascript" src="proj4.js"></script>
-        <script type="text/javascript">
+              <script type="text/javascript">
         var customIcons = [];
 
         var customIcons = {
@@ -681,13 +681,27 @@ mysqli_close($connection);
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
-    var markerGroups = { MURDER : [], THEFT : [], ROBBERY : [], ORDINANCES : [], SPECIALLAWS : [], HOMICIDE : [], CARNAPPING : [], PHYSICALINJURIES : [], RAPE : [], OTHERNONINDEX : []};
+    var markerGroups = {
+
+        MURDER : [],
+        THEFT : [],
+        ROBBERY : [],
+        ORDINANCES : [],
+        SPECIALLAWS : [],
+        HOMICIDE : [],
+        CARNAPPING : [],
+        PHYSICALINJURIES : [],
+        RAPE : [],
+        OTHERNONINDEX : []
+
+    }
 
     //markerGroups = {};
     //markerGroups["MURDER"] = {};
 
     var markers = null;
     var map2;
+    var count = 0;
 
     var customMapType = new google.maps.StyledMapType([            
         {
@@ -792,7 +806,8 @@ var customMapTypeId = 'custom_style';
     map2.setMapTypeId(customMapTypeId); 
     }
     
-    function load() {
+    function load() 
+    {
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
@@ -837,18 +852,36 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          console.log(crimecategory);
-          
+
           //markerGroups[barangay].push(marker);
           
           bindInfoWindow(marker, map, infowindow, html);
           count++;
       }
-      console.log(markerGroups);
+     
+      //alert(markerGroups[crimecategory]);
+      
+      //$('#counter h2 span').html(markers.length);
 
   });
     document.getElementById('counter').innerHTML = "Number of crimes: " + count;
     console.log(count);
+
+    google.maps.event.addListenerOnce( map, 'idle', function() {
+        
+        hide('MURDER');
+        hide('THEFT');
+        hide('ROBBERY');
+        hide('ORDINANCES');
+        hide('SPECIALLAWS');
+        hide('HOMICIDE');
+        hide('CARNAPPING');
+        hide('PHYSICALINJURIES');
+        hide('OTHERNONINDEX');
+
+    });
+
+    
 
 }
 
@@ -885,8 +918,10 @@ map.setMapTypeId(customMapTypeId);
   */
 
   function show(category) {
+
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
+        console.dir(markersInCategory);
         for (var i=1; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
@@ -906,10 +941,7 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
-    hide("MURDER");
-    hide("THEFT");
-    hide("ROBBERY");
-    hide("ORDINANCES");
+    
 
   function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
