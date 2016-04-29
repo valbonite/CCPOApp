@@ -680,8 +680,22 @@ mysqli_close($connection);
 
     //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
     //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
-    
+    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
+    var markerGroups = {
+
+        MURDER : [],
+        THEFT : [],
+        ROBBERY : [],
+        ORDINANCES : [],
+        SPECIALLAWS : [],
+        HOMICIDE : [],
+        CARNAPPING : [],
+        PHYSICALINJURIES : [],
+        RAPE : [],
+        OTHERNONINDEX : []
+
+    }
+
     //markerGroups = {};
     //markerGroups["MURDER"] = {};
 
@@ -812,8 +826,8 @@ map.setMapTypeId(customMapTypeId);
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
-        console.log(markers)
-        var count; 
+        var gooMark = [];
+        //var count = 0; 
         //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
@@ -829,6 +843,7 @@ map.setMapTypeId(customMapTypeId);
           var crime = markers[i].getAttribute("classification");
           var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Time: " + time + "</b> <br/>" + "Barangay: "+ barangay + "</b> <br/>" + "Precinct: "+ address;
           var icon = customIcons[crimecategory] || {};
+          markerGroups[crimecategory].push(marker);
           var marker = new google.maps.Marker({
             map: map,
             position: point,
