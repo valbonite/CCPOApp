@@ -853,11 +853,11 @@ map.setMapTypeId(customMapTypeId);
         });
 
           //markerGroups[barangay].push(marker);
-          markerGroups[crimecategory].push(marker);
           bindInfoWindow(marker, map, infowindow, html);
           count++;
       }
      
+       markerGroups[crimecategory].push(marker);
       //alert(markerGroups[crimecategory]);
       
       //$('#counter h2 span').html(markers.length);
