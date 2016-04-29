@@ -845,7 +845,6 @@ map.setMapTypeId(customMapTypeId);
           var crime = markers[i].getAttribute("classification");
           var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Time: " + time + "</b> <br/>" + "Barangay: "+ barangay + "</b> <br/>" + "Precinct: "+ address;
           var icon = customIcons[crimecategory] || {};
-          markerGroups[crimecategory].push(marker);
           var marker = new google.maps.Marker({
             map: map,
             position: point,
@@ -854,7 +853,7 @@ map.setMapTypeId(customMapTypeId);
         });
 
           //markerGroups[barangay].push(marker);
-          
+          markerGroups[crimecategory].push(marker);
           bindInfoWindow(marker, map, infowindow, html);
           count++;
       }
