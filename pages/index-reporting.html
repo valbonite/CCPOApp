@@ -133,8 +133,6 @@ require('../vendor/autoload.php');
         var input = document.getElementById('places-search');
         var searchBox = new google.maps.places.SearchBox(input);
 
-        var autocomplete = new google.maps.places.Autocomplete
-
         map.addListener('bounds_changed', function() {
             searchBox.setBounds(map.getBounds());
         });
