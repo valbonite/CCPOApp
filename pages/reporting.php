@@ -942,17 +942,17 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
-        hide('THEFT');
-        hide('ROBBERY');
-        hide('ORDINANCES');
-        hide('SPECIALLAWS');
-        hide('HOMICIDE');
-        hide('CARNAPPING');
-        hide('PHYSICALINJURIES');
-        hide('OTHERNONINDEX');
-        hide('CATTLERUSTLING');
-        hide('RAPE');
-        hide('OTHERINCIDENTS');
+        hide(THEFT);
+        hide(ROBBERY);
+        hide(ORDINANCES);
+        hide(SPECIALLAWS);
+        hide(HOMICIDE);
+        hide(CARNAPPING);
+        hide(PHYSICALINJURIES);
+        hide(OTHERNONINDEX);
+        hide(CATTLERUSTLING);
+        hide(RAPE);
+        hide(OTHERINCIDENTS);
     
 
   function downloadUrl(url, callback) {
@@ -1331,6 +1331,11 @@ map.setMapTypeId(customMapTypeId);
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
                                             <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="crimefilter">
+                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS"> OTHER INCIDENTS
                                         </label>
                                     </div>
                                 </li>
