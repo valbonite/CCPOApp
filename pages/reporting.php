@@ -817,23 +817,18 @@ var customMapTypeId = 'custom_style';
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
             mapTypeId: 'roadmap'
-        });
+        });    
 
-        
+        var infowindow = new google.maps.InfoWindow();      
 
-        var infowindow = new google.maps.InfoWindow();
-
-              
-
-map.mapTypes.set(customMapTypeId, customMapType);
-map.setMapTypeId(customMapTypeId);
-
+        map.mapTypes.set(customMapTypeId, customMapType);
+        map.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
-        var gooMark = [];
+        //var gooMark = [];
         //var count = 0; 
         //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
