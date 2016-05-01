@@ -942,17 +942,17 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
-        hide(THEFT);
-        hide(ROBBERY);
-        hide(ORDINANCES);
-        hide(SPECIALLAWS);
-        hide(HOMICIDE);
-        hide(CARNAPPING);
-        hide(PHYSICALINJURIES);
-        hide(OTHERNONINDEX);
-        hide(CATTLERUSTLING);
-        hide(RAPE);
-        hide(OTHERINCIDENTS);
+        hide("THEFT");
+        hide("ROBBERY");
+        hide("ORDINANCES");
+        hide("SPECIALLAWS");
+        hide("HOMICIDE");
+        hide("CARNAPPING");
+        hide("PHYSICALINJURIES");
+        hide("OTHERNONINDEX");
+        hide("CATTLERUSTLING");
+        hide("RAPE");
+        hide("OTHERINCIDENTS");
     
 
   function downloadUrl(url, callback) {
