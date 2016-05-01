@@ -650,11 +650,8 @@ input[readonly] {
 }
 
 .login-btn:visited {
-<<<<<<< HEAD
     color: #204d74;
-=======
     color: #fff;
->>>>>>> 8eb00190e84a7d98d2858e009528f9e24ee390ff
     text-decoration: none !important;
 }
 
@@ -668,7 +665,7 @@ input[readonly] {
     min-height: 300px;
     width: 300px;
     background-color: #36a9e0;
-    z-index: 11111111;
+    z-index: 1;
     margin: 40px 0 0 40px;
 }
 
