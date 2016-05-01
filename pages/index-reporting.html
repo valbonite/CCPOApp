@@ -236,6 +236,19 @@ map.setMapTypeId(customMapTypeId);
             return;
           }
 
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+        }
+        map.fitBounds(bounds);
+    }
+
       // Change this depending on the name of your PHP file
       downloadUrl('phpsqlajax_genxml.php', function(data) {
         var xml = data.responseXML;
