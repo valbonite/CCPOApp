@@ -852,12 +852,19 @@ map.setMapTypeId(customMapTypeId);
             title: 'Click to show crime info'
         });
 
-          //markerGroups[barangay].push(marker);
-          bindInfoWindow(marker, map, infowindow, html);
-          count++;
+        if (markerGroups.hasOwnProperty(crimecategory)) {
+            markerGroups[crimecategory].push(marker);
+            count++;
+        } else {
+            doNothing();
+        }
+        //markerGroups[crimecategory].push(marker);
+        //markerGroups[barangay].push(marker);
+        bindInfoWindow(marker, map, infowindow, html);
+          
       }
      
-       markerGroups[crimecategory].push(marker);
+       //markerGroups[crimecategory].push(marker);
       //alert(markerGroups[crimecategory]);
       
       //$('#counter h2 span').html(markers.length);

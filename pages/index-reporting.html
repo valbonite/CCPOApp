@@ -204,6 +204,22 @@ var customMapTypeId = 'custom_style';
 map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
+        var input = document.getElementById('places-search');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
       // Change this depending on the name of your PHP file
       downloadUrl('phpsqlajax_genxml.php', function(data) {
         var xml = data.responseXML;
@@ -310,7 +326,7 @@ map.setMapTypeId(customMapTypeId);
                <hr></hr>
                <div id="barangay-selector">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search for barangay...">
+                                <input id="places-search" type="text" class="form-control" placeholder="Search for barangay...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
