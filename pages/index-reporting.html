@@ -54,7 +54,8 @@ require('../vendor/autoload.php');
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=places&callback=load"
+         async defer></script>
 <script type="text/javascript" src="proj4.js"></script>
 <script type="text/javascript">
         var customIcons = [];
@@ -363,7 +364,7 @@ map.setMapTypeId(customMapTypeId);
                <hr></hr>
                <div id="barangay-selector">
                             <div class="input-group custom-search-form">
-                                <input id="places-search" type="text" class="form-control" placeholder="Search for barangay...">
+                                <input id="places-search" type="text" class="controls" placeholder="Search for barangay...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
