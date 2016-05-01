@@ -129,8 +129,22 @@ require('../vendor/autoload.php');
             mapTypeId: 'roadmap'
         });
 
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(10.521568, 123.511047),
+            new google.maps.LatLng(10.086501, 124.21691)
+            );
+
+        var options = {
+            bounds: defaultBounds
+        }
+
         var input = document.getElementById('places-search');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+        /*var input = document.getElementById('places-search');
         var searchBox = new google.maps.places.SearchBox(input);
+
+        var autocomplete = new google.maps.places.Autocomplete
 
         map.addListener('bounds_changed', function() {
             searchBox.setBounds(map.getBounds());
@@ -166,7 +180,7 @@ require('../vendor/autoload.php');
       }
     });
     map.fitBounds(bounds);
-  });
+  });*/
 
         var infowindow = new google.maps.InfoWindow();
 
