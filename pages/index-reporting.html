@@ -121,7 +121,7 @@ require('../vendor/autoload.php');
 
     var markers = null;
     
-    function load() {
+    function load() {        
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3078222, 123.9052633),
             zoom: 14,
@@ -169,7 +169,8 @@ require('../vendor/autoload.php');
       }
     });
     map.fitBounds(bounds);
-  });
+  }
+
 
         var infowindow = new google.maps.InfoWindow();
 
