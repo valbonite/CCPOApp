@@ -646,6 +646,9 @@ mysqli_close($connection);
             'THEFT': {
                 icon: 'images/theft.png'
             },
+            'Theft': {
+                icon: 'images/theft.png'
+            },
             'ROBBERY': {
                 icon: 'images/robbery.png'
             },
@@ -685,6 +688,7 @@ mysqli_close($connection);
 
         MURDER : [],
         THEFT : [],
+        Theft : [],
         ROBBERY : [],
         ORDINANCES : [],
         SPECIALLAWS : [],
@@ -692,7 +696,8 @@ mysqli_close($connection);
         CARNAPPING : [],
         PHYSICALINJURIES : [],
         RAPE : [],
-        OTHERNONINDEX : []
+        OTHERNONINDEX : [],
+        OTHERINCIDENTS : []
 
     }
 
@@ -874,16 +879,6 @@ map.setMapTypeId(customMapTypeId);
     console.log(count);
 
     google.maps.event.addListenerOnce( map, 'idle', function() {
-        
-        hide('MURDER');
-        hide('THEFT');
-        hide('ROBBERY');
-        hide('ORDINANCES');
-        hide('SPECIALLAWS');
-        hide('HOMICIDE');
-        hide('CARNAPPING');
-        hide('PHYSICALINJURIES');
-        hide('OTHERNONINDEX');
 
     });
 
@@ -947,6 +942,17 @@ map.setMapTypeId(customMapTypeId);
     }
   }
 
+        hide('THEFT');
+        hide('ROBBERY');
+        hide('ORDINANCES');
+        hide('SPECIALLAWS');
+        hide('HOMICIDE');
+        hide('CARNAPPING');
+        hide('PHYSICALINJURIES');
+        hide('OTHERNONINDEX');
+        hide('CATTLERUSTLING');
+        hide('RAPE');
+        hide('OTHERINCIDENTS');
     
 
   function downloadUrl(url, callback) {
@@ -1274,7 +1280,7 @@ map.setMapTypeId(customMapTypeId);
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER"> MURDER
+                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER" checked> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
