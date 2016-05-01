@@ -131,21 +131,42 @@ require('../vendor/autoload.php');
 
         var input = document.getElementById('places-search');
         var searchBox = new google.maps.places.SearchBox(input);
-        google.maps.event.addListener(searchBox, 'places_changed', function(){
-            var places = searchBox.getPlaces();
-            var bounds = google.maps.LatLngBounds();
 
-            var i, place;
-
-            for(i = 0; place = places[i]; i++){
-                bounds.extend(place.geometry.location);
-            }
-
-            map.fitBounds(bounds);
-            map.setZoom(15);
-
+        map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
         });
+        
+    searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
 
+    if (places.length == 0) {
+      return;
+    }
+
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 
         var infowindow = new google.maps.InfoWindow();
 
@@ -354,16 +375,10 @@ map.setMapTypeId(customMapTypeId);
                     <h3><i class="fa fa-map-marker fa-fw"></i> MAP FILTERS</h3>
                </div>
                <hr></hr>
+               
                <div id="barangay-selector">
-                            <div class="input-group custom-search-form">
-                                <input id="places-search" type="text" class="form-control" placeholder="Search for barangay...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
+                           
+                            <input id="places-search" type="text" class="form-control" placeholder="Search for barangay...">
                         </div>
                 <div class="form-group" id="barangay-selector">
                     <select class="form-control" id="selector" onchange="hide(this.value);">
