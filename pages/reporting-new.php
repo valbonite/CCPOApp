@@ -854,6 +854,11 @@ var customMapTypeId = 'custom_style';
             title: 'Click to show crime info'
         });
 
+        marker.crimecategory = crimecategory;
+        marker.date = markers[i].getAttribute("date");
+        marker.time = markers[i].getAttribute("time");
+        gmarkers.push(marker);
+
         if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
             count++;
@@ -951,6 +956,22 @@ var customMapTypeId = 'custom_style';
         hide("RAPE");
         hide("OTHERINCIDENTS");
     
+function dateFilter() {
+    var date_from = document.getElementById('daterangepicker_start').value;
+    var date_to = document.getElementById('daterangepicker_end').value;
+    if (date_from > date_to) {
+        alert('Starting date must be earlier than ending date.');
+    }
+        for ( var i = 0; i < markers.length; i++) {
+            if ((gmarkers[i].date >= date_from && gmarkers[i].date <= date_to)
+                    && (Date.parse('20 Aug 2000 ' + gmarkers[i].time) >= time_from && Date
+                            .parse('20 Aug 2000 ' + gmarkers[i].time) <= time_to){
+                gmarkers[i].setVisible(true);
+            }
+        }
+    }
+}
+
 
   function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
@@ -2186,80 +2207,6 @@ $(".checkbox").click(function(){
     //var date_to = $('#daterange').data('endDate');
 </script>
 
-<script type="text/javascript">
-function showMarkers() {
-    var date_from = document.getElementById('daterangepicker_start').value;
-    var date_to = document.getElementById('daterangepicker_end').value;
-    if (date_from > date_to) {
-        alert('Starting date must be earlier than ending date.');
-    }
-        for ( var i = 0; i < markers.length; i++) {
-            if ((markers[i].date >= date_from && markers[i].date <= date_to)
-                    && (Date.parse('20 Aug 2000 ' + markers[i].time) >= time_from && Date
-                            .parse('20 Aug 2000 ' + markers[i].time) <= time_to){
-                marker.push(markers[i]);
-            }
-        }
-    }
-    checkBox();
-}
-function checkBox() {
-    var crime_type_search = document.getElementsByName('crime_type_search');
-    for ( var i = 0; i < marker.length; i++) {
-        for ( var x = 0; x < crime_type_search.length; x++) {
-            if (crime_type_search[x].checked == true) {
-                if (marker[i].crime_type == crime_type_search[x].value) {
-                    maps.push(marker[i]);
-                }
-            }
-        }
-    }
-    finalMarker();
-}
-function finalMarker() {
-    if (check_icon == 0) {
-        for ( var i = 0; i < maps.length; i++) {
-            var icon = customIcons[maps[i].crime_type] || {};
-            maps[i].setIcon(icon.icon);
-        }
-    } else if (check_icon == 1) {
-        for ( var i = 0; i < maps.length; i++) {
-            var icons = customIcon[maps[i].crime_type] || {};
-            maps[i].setIcon(icons.icon);
-        }
-    }
-    var counter = 0;
-    var radius = document.getElementById('radius').value;
-    if (radius == 0) {
-        for ( var i = 0; i < maps.length; i++) {
-            maps[i].setMap(map);
-            counter++;
-        }
-    } else {
-        for ( var i = 0; i < maps.length; i++) {
-            maps[i].setMap(null);
-        }
-        for ( var i = 0; i < maps.length; i++) {
-            var inRadius = google.maps.geometry.spherical
-                    .computeDistanceBetween(maps[i].position, center);
-            if (inRadius < radius) {
-                maps[i].setMap(map);
-                counter++;
-            }
-        }
-    }
-}
-
-function resetMarker() {
-    for ( var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-    }
-    marker.length = 0;
-    maps.length = 0;
-    marker = [];
-    map = [];
-}
-</script>
 
 
 <!--
