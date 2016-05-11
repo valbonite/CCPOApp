@@ -897,17 +897,17 @@ var customMapTypeId = 'custom_style';
    
 
   });
-       hide(THEFT);
-    hide(ROBBERY);
-        hide(ORDINANCES);
-        hide(SPECIALLAWS);
-        hide(HOMICIDE);
-        hide(CARNAPPING);
-        hide(PHYSICALINJURIES);
-        hide(OTHERNONINDEX);
-        hide(CATTLERUSTLING);
-        hide(RAPE);
-        hide(OTHERINCIDENTS);
+        hide("THEFT");
+        hide("ROBBERY");
+        hide("ORDINANCES");
+        hide("SPECIALLAWS");
+        hide("HOMICIDE");
+        hide("CARNAPPING");
+        hide("PHYSICALINJURIES");
+        hide("OTHERNONINDEX");
+        hide("CATTLERUSTLING");
+        hide("RAPE");
+        hide("OTHERINCIDENTS");
     //console.log(count);
 
     google.maps.event.addListenerOnce( map, 'idle', function() {
@@ -2166,7 +2166,7 @@ $(".checkbox").click(function(){
 </script>
 
 <script type="text/javascript">
-$("#precinctSelector").on(function(){
+$("#precinctSelector").click(function(){
     var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":selected"))
