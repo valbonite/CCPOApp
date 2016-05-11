@@ -872,8 +872,8 @@ var customMapTypeId = 'custom_style';
       //$('#counter h2 span').html(markers.length);
 
   });
-    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
-    console.log(count);
+    
+    //console.log(count);
 
     google.maps.event.addListenerOnce( map, 'idle', function() {
 
@@ -926,6 +926,7 @@ var customMapTypeId = 'custom_style';
         }
     }
     console.log(count);
+    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
   }
 
 
