@@ -877,6 +877,13 @@ var customMapTypeId = 'custom_style';
         } else {
             doNothing();
         }
+
+        if (markerGroups.hasOwnProperty(address)) {
+            markerGroups[address].push(marker);
+            //count++;
+        } else {
+            doNothing();
+        }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
@@ -887,6 +894,17 @@ var customMapTypeId = 'custom_style';
       //alert(markerGroups[crimecategory]);
       
       //$('#counter h2 span').html(markers.length);
+      hide(THEFT);
+    hide(ROBBERY);
+        hide(ORDINANCES);
+        hide(SPECIALLAWS);
+        hide(HOMICIDE);
+        hide(CARNAPPING);
+        hide(PHYSICALINJURIES);
+        hide(OTHERNONINDEX);
+        hide(CATTLERUSTLING);
+        hide(RAPE);
+        hide(OTHERINCIDENTS);
 
   });
     
@@ -958,18 +976,6 @@ var customMapTypeId = 'custom_style';
         }
     }
   }
-
-        hide(THEFT);
-        hide(ROBBERY);
-        hide(ORDINANCES);
-        hide(SPECIALLAWS);
-        hide(HOMICIDE);
-        hide(CARNAPPING);
-        hide(PHYSICALINJURIES);
-        hide(OTHERNONINDEX);
-        hide(CATTLERUSTLING);
-        hide(RAPE);
-        hide(OTHERINCIDENTS);
     
 
   function downloadUrl(url, callback) {
