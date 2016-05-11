@@ -697,8 +697,29 @@ mysqli_close($connection);
         PHYSICALINJURIES : [],
         RAPE : [],
         OTHERNONINDEX : [],
-        OTHERINCIDENTS : []
-
+        OTHERINCIDENTS : [],
+        STATION1_PARIAN : [],
+        STATION2_FUENTE : [],
+        STATION3_WATERFRONT : [],
+        STATION4_MABOLO : [],
+        STATION5_CARBON : [],
+        STATION6_PASIL : [],
+        STATION7_PARDO : [],
+        STATION8_TALAMBAN : [],
+        STATION9_GUADALUPE : [],
+        STATION10_PUNTA : [],
+        STATION11_MAMBALING : [],
+        STATION1_CENTRO : [],
+        STATION2_SUBANGDAKU : [],
+        STATION3_BASAK : [],
+        STATION4_CASUNTINGAN : [],
+        STATION5_OPAO : [],
+        STATION6_CANDUMAN : [],
+        STATION1_OLANGO : [],
+        STATION2_MACTAN : [],
+        STATION3_GUNOB : [],
+        STATION4_MARIGONDON : [],
+        STATION5_PUSOK : []
     }
 
     var gmarkers = [], gmarker = [];
@@ -1342,63 +1363,37 @@ var customMapTypeId = 'custom_style';
                             </ul>                          
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Day<span class="fa arrow rotate"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Sunday" name="Sunday" type="checkbox" value="Sunday"> SUNDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Monday" name="Monday" type="checkbox" value="Monday"> MONDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Tuesday" name="Tuesday" type="checkbox" value="Tuesday"> TUESDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Wednesday" name="Wednesday" type="checkbox" value="Wednesday"> WEDNESDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Thursday" name="Thursday" type="checkbox" value="Thursday"> THURSDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Friday" name="Friday" type="checkbox" value="Friday"> FRIDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Saturday" name="Saturday" type="checkbox" value="Saturday"> SATURDAY
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>                          
-                        </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Barangay<span class="fa arrow rotate"></span></a>
+                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="selector">
+                                  <select class="form-control" id="selector" onchange="hide(this.value);">
                                     <option>Choose barangay</option>
-                                    <option name="Capitol Site" value="Capitol Site">Capitol Site</option>
-                                    <option name="Apas" value="Apas">Apas</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                    <option value="STATION1_PARIAN">STATION1_PARIAN</option>
+                                    <option value="STATION2_FUENTE">STATION2_FUENTE</option>
+                                    <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
+                                    <option value="STATION4_MABOLO">STATION4_MABOLO</option>
+                                    <option value="STATION5_CARBON">STATION5_CARBON</option>
+                                    <option value="STATION6_PASIL">STATION6_PASIL</option>
+                                    <option value="STATION7_PARDO">STATION7_PARDO</option>
+                                    <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
+                                    <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
+                                    <option value="STATION10_PUNTA">STATION10_PUNTA</option>
+                                    <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
+                                    <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                    <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                    <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                    <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                    <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                    <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                    <option value="STATION1_OLANGO">STATION1_OLANGO</option>
+                                    <option value="STATION2_MACTAN">STATION2_MACTAN</option>
+                                    <option value="STATION3_GUNOB">STATION3_GUNOB</option>
+                                    <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
+                                    <option value="STATION5_PUSOK">STATION5_PUSOK</option>
                                 </select>
                             </div>
                             </ul>                          
                         </li>
-                    -->
                         <!-- /.nav-second-level -->
                         <!-- /.
                         <li>
