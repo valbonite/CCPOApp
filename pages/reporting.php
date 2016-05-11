@@ -708,7 +708,7 @@ mysqli_close($connection);
 
     var markers = null;
     var map2;
-    var count = 0;
+    //var count = 0;
 
     var customMapType = new google.maps.StyledMapType([            
         {
@@ -856,7 +856,7 @@ var customMapTypeId = 'custom_style';
 
         if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
-            count++;
+            //count++;
         } else {
             doNothing();
         }
@@ -916,14 +916,16 @@ var customMapTypeId = 'custom_style';
   */
 
   function show(category) {
-
+    var count = 0;
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         console.dir(markersInCategory);
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
+            count++;
         }
     }
+    console.log(count);
   }
 
 
