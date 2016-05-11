@@ -872,13 +872,18 @@ var customMapTypeId = 'custom_style';
         });
 
         if (markerGroups.hasOwnProperty(crimecategory)) {
-            if (markerGroups.hasOwnProperty(address)) {
             markerGroups[crimecategory].push(marker);
-            }
+            //count++;
         } else {
             doNothing();
         }
 
+        if (markerGroups.hasOwnProperty(address)) {
+            markerGroups[address].push(marker);
+            //count++;
+        } else {
+            doNothing();
+        }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
@@ -1363,7 +1368,7 @@ var customMapTypeId = 'custom_style';
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="selector" onchange="show(this.value);">
+                                  <select class="form-control" id="precinctSelector">
                                     <option>Choose Precinct</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                     <option value="STATION2_FUENTE">STATION2_FUENTE</option>
@@ -2150,6 +2155,21 @@ $(".checkbox").click(function(){
     var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":checked"))
+            {
+                show(cat);
+            }
+            else
+            {
+                hide(cat);
+            }
+        });
+</script>
+
+<script type="text/javascript">
+$("#precinctSelector").on(function(){
+    var cat = $(this).attr("value");    
+            // If checked
+            if ($(this).is(":selected"))
             {
                 show(cat);
             }
