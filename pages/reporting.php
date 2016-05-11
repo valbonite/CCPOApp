@@ -872,18 +872,13 @@ var customMapTypeId = 'custom_style';
         });
 
         if (markerGroups.hasOwnProperty(crimecategory)) {
+            if (markerGroups.hasOwnProperty(address)) {
             markerGroups[crimecategory].push(marker);
-            //count++;
+            }
         } else {
             doNothing();
         }
 
-        if (markerGroups.hasOwnProperty(address)) {
-            markerGroups[address].push(marker);
-            //count++;
-        } else {
-            doNothing();
-        }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
@@ -894,7 +889,10 @@ var customMapTypeId = 'custom_style';
       //alert(markerGroups[crimecategory]);
       
       //$('#counter h2 span').html(markers.length);
-      hide(THEFT);
+   
+
+  });
+       hide(THEFT);
     hide(ROBBERY);
         hide(ORDINANCES);
         hide(SPECIALLAWS);
@@ -905,9 +903,6 @@ var customMapTypeId = 'custom_style';
         hide(CATTLERUSTLING);
         hide(RAPE);
         hide(OTHERINCIDENTS);
-
-  });
-    
     //console.log(count);
 
     google.maps.event.addListenerOnce( map, 'idle', function() {
