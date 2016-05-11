@@ -887,16 +887,6 @@ var customMapTypeId = 'custom_style';
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
-          
-      }
-     
-       //markerGroups[crimecategory].push(marker);
-      //alert(markerGroups[crimecategory]);
-      
-      //$('#counter h2 span').html(markers.length);
-   
-
-  });
         hide("THEFT");
         hide("ROBBERY");
         hide("ORDINANCES");
@@ -908,6 +898,17 @@ var customMapTypeId = 'custom_style';
         hide("CATTLERUSTLING");
         hide("RAPE");
         hide("OTHERINCIDENTS");
+          
+      }
+     
+       //markerGroups[crimecategory].push(marker);
+      //alert(markerGroups[crimecategory]);
+      
+      //$('#counter h2 span').html(markers.length);
+   
+
+  });
+        
     //console.log(count);
 
     google.maps.event.addListenerOnce( map, 'idle', function() {
@@ -1368,7 +1369,7 @@ var customMapTypeId = 'custom_style';
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="precinctSelector">
+                                  <select class="form-control" id="precinctSelector" onchange="hide(this.value)">
                                     <option>Choose Precinct</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                     <option value="STATION2_FUENTE">STATION2_FUENTE</option>
