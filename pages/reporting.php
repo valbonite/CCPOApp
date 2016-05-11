@@ -646,9 +646,6 @@ mysqli_close($connection);
             'THEFT': {
                 icon: 'images/theft.png'
             },
-            'Theft': {
-                icon: 'images/theft.png'
-            },
             'ROBBERY': {
                 icon: 'images/robbery.png'
             },
@@ -688,7 +685,6 @@ mysqli_close($connection);
 
         MURDER : [],
         THEFT : [],
-        Theft : [],
         ROBBERY : [],
         ORDINANCES : [],
         SPECIALLAWS : [],
@@ -1366,7 +1362,7 @@ var customMapTypeId = 'custom_style';
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="selector" onchange="hide(this.value);">
+                                  <select class="form-control" id="selector" onchange="show(this.value);">
                                     <option>Choose barangay</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                     <option value="STATION2_FUENTE">STATION2_FUENTE</option>
