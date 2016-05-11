@@ -920,7 +920,7 @@ var customMapTypeId = 'custom_style';
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         console.dir(markersInCategory);
-        for (var i=1; i<markersInCategory.length; i++) {
+        for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
     }
@@ -933,23 +933,23 @@ var customMapTypeId = 'custom_style';
   function hide(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
-        for (var i=1; i<markersInCategory.length; i++) {
+        for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
     }
   }
 
-        hide("THEFT");
-        hide("ROBBERY");
-        hide("ORDINANCES");
-        hide("SPECIALLAWS");
-        hide("HOMICIDE");
-        hide("CARNAPPING");
-        hide("PHYSICALINJURIES");
-        hide("OTHERNONINDEX");
-        hide("CATTLERUSTLING");
-        hide("RAPE");
-        hide("OTHERINCIDENTS");
+        hide(THEFT);
+        hide(ROBBERY);
+        hide(ORDINANCES);
+        hide(SPECIALLAWS);
+        hide(HOMICIDE);
+        hide(CARNAPPING);
+        hide(PHYSICALINJURIES);
+        hide(OTHERNONINDEX);
+        hide(CATTLERUSTLING);
+        hide(RAPE);
+        hide(OTHERINCIDENTS);
     
 
   function downloadUrl(url, callback) {
