@@ -2161,34 +2161,6 @@ $(".checkbox").click(function(){
         });
 </script>
 
-<script type="text/javascript">
-$("#precinctSelector").click(function(){
-    var cat = $(this).attr("value");    
-            // If checked
-            if ($(this).is(":selected"))
-            {
-                show(cat);
-            }
-            else
-            {
-                hide(cat);
-            }
-        });
-
-console.log(markerGroups);
-        hide("THEFT");
-        hide("ROBBERY");
-        hide("ORDINANCES");
-        hide("SPECIALLAWS");
-        hide("HOMICIDE");
-        hide("CARNAPPING");
-        hide("PHYSICALINJURIES");
-        hide("OTHERNONINDEX");
-        hide("CATTLERUSTLING");
-        hide("RAPE");
-        hide("OTHERINCIDENTS");
-</script>
-
 <!-- Singe Datepicker-->
 <script type="text/javascript">
     $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
