@@ -2049,7 +2049,7 @@ var customMapTypeId = 'custom_style';
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-lg" data-dismiss="modal" data-number="2">Done</button>  
+                <button class="btn btn-primary btn-lg" data-number="2">Done</button>  
             </div>
         </div>
         <!-- /.modal-content -->
