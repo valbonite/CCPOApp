@@ -693,7 +693,29 @@ mysqli_close($connection);
         PHYSICALINJURIES : [],
         RAPE : [],
         OTHERNONINDEX : [],
-        OTHERINCIDENTS : []
+        OTHERINCIDENTS : [],
+        STATION1_PARIAN : [],
+        STATION2_FUENTE : [],
+        STATION3_WATERFRONT : [],
+        STATION4_MABOLO : [],
+        STATION5_CARBON : [],
+        STATION6_PASIL : [],
+        STATION7_PARDO : [],
+        STATION8_TALAMBAN : [],
+        STATION9_GUADALUPE : [],
+        STATION10_PUNTA : [],
+        STATION11_MAMBALING : [],
+        STATION1_CENTRO : [],
+        STATION2_SUBANGDAKU : [],
+        STATION3_BASAK : [],
+        STATION4_CASUNTINGAN : [],
+        STATION5_OPAO : [],
+        STATION6_CANDUMAN : [],
+        STATION1_OLANGO : [],
+        STATION2_MACTAN : [],
+        STATION3_GUNOB : [],
+        STATION4_MARIGONDON : [],
+        STATION5_PUSOK : []
     }
 
     //var gmarkers = [], gmarker = [];
