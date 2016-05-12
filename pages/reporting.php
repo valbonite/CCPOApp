@@ -887,72 +887,16 @@ var customMapTypeId = 'custom_style';
         }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
-        bindInfoWindow(marker, map, infowindow, html);
-        /**/
-          
-      }
-     
-       //markerGroups[crimecategory].push(marker);
-      //alert(markerGroups[crimecategory]);
-      
-      //$('#counter h2 span').html(markers.length);
-   
-
-  });
-        console.log(markerGroups);
-        hide("THEFT");
-        hide("ROBBERY");
-        hide("ORDINANCES");
-        hide("SPECIALLAWS");
-        hide("HOMICIDE");
-        hide("CARNAPPING");
-        hide("PHYSICALINJURIES");
-        hide("OTHERNONINDEX");
-        hide("CATTLERUSTLING");
-        hide("RAPE");
-        hide("OTHERINCIDENTS");
-        
+        bindInfoWindow(marker, map, infowindow, html); 
+      } 
+    //markerGroups[crimecategory].push(marker);
+    //alert(markerGroups[crimecategory]);    
+    //$('#counter h2 span').html(markers.length);
+  });    
     //console.log(count);
-
     google.maps.event.addListenerOnce( map, 'idle', function() {
-
     });
-
-    
-
 }
-
-
-
-  /*function show(crimecategory) {
-    console.log(crimecategory);
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        console.log(crimecategory);
-        //var markersInCategory = markerGroups[crimecategory];
-        var markersInCategory = markerGroups["MURDER"];
-
-        console.log(markersInCategory);
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-            console.log(markersInCategory[i]);
-        }
-    }
-    console.log(crimecategory);
-  }*/
-
-/*
-  function hide(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
-        console.log(markersInCategory);
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(false);
-            console.log(markersInCategory[i]);
-        }
-    }
-    console.log(crimecategory);
-  }
-  */
 
   function show(category) {
     var count = 0;
@@ -968,10 +912,6 @@ var customMapTypeId = 'custom_style';
     document.getElementById('counter').innerHTML = "Number of crimes: " + count;
   }
 
-
-
-  // == hides all markers of a particular category, and ensures the checkbox is cleared ==
-
   function hide(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
@@ -980,6 +920,19 @@ var customMapTypeId = 'custom_style';
         }
     }
   }
+
+  console.log(markerGroups);
+        hide("THEFT");
+        hide("ROBBERY");
+        hide("ORDINANCES");
+        hide("SPECIALLAWS");
+        hide("HOMICIDE");
+        hide("CARNAPPING");
+        hide("PHYSICALINJURIES");
+        hide("OTHERNONINDEX");
+        hide("CATTLERUSTLING");
+        hide("RAPE");
+        hide("OTHERINCIDENTS");
     
 
   function downloadUrl(url, callback) {
