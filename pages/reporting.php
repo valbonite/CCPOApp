@@ -899,7 +899,7 @@ var customMapTypeId = 'custom_style';
    
 
   });
-
+        console.log(markerGroups);
         hide("THEFT");
         hide("ROBBERY");
         hide("ORDINANCES");
