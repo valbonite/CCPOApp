@@ -2027,6 +2027,7 @@ var customMapTypeId = 'custom_style';
                             <div>
                                 <input style="display:none" type="text"/>
                                 <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                                <a href="#" data-dismiss="modal" class="btn btn-primary">Done</a>
                             </div>
                         </div>
                     </form>
