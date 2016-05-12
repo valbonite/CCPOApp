@@ -1352,7 +1352,7 @@ var customMapTypeId = 'custom_style';
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="precinctSelector" onchange="hide(this.value)">
+                                  <select class="form-control" id="precinctSelector" onchange="show(this.value)">
                                     <option>Choose Precinct</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                     <option value="STATION2_FUENTE">STATION2_FUENTE</option>
