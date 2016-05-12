@@ -2027,7 +2027,7 @@ var customMapTypeId = 'custom_style';
                             <div>
                                 <input style="display:none" type="text"/>
                                 <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
-                                <a href="#" data-dismiss="modal" class="btn btn-primary">Done</a>
+                                <button class="btn btn-default btn-lg" data-number="1">Cancel</button>
                             </div>
                         </div>
                     </form>
@@ -2049,7 +2049,7 @@ var customMapTypeId = 'custom_style';
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-primary">Done</a>  
+                <button class="btn btn-primary btn-lg" data-dismiss="modal" data-number="2">Done</button>  
             </div>
         </div>
         <!-- /.modal-content -->
@@ -2082,13 +2082,24 @@ $('#map-picker').on('shown.bs.modal', function () {
 });
 </script>
 
+<script type="text/javascript">
+$("button[data-number=1]").click(function(){
+    $('#form-entry').modal('hide');
+});
+
+$("button[data-number=2]").click(function(){
+    $('#map-picker').modal('hide');
+});
+</script>
+
 <!--<script type="text/javascript">
 $('#openBtn').click(function(){
     $('#form-entry').modal({show:true})
 });
 </script>-->
 
-<script type='text/javascript'>
+
+<!--<script type='text/javascript'>
 $(document).ready(function() {
     $('#openBtn').click(function(){
     $('#form-entry').modal({show:true})
@@ -2135,7 +2146,7 @@ $( '.modal' ).on( 'shown.bs.modal', function ( event ) {
 
         
         });
-</script>
+</script>-->
 
 <script>
 $('.fa.arrow').on('click', function() {
