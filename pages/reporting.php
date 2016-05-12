@@ -725,6 +725,7 @@ mysqli_close($connection);
         STATION5_PUSOK : []*/
 
     var markers = null;
+    var map;
     var map2;
     //var count = 0;
 
@@ -833,7 +834,7 @@ var customMapTypeId = 'custom_style';
     
     function load() 
     {
-        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+        map = new google.maps.Map(document.getElementById("map_canvas"), {
             center: new google.maps.LatLng(10.3216299, 123.9052633),
             zoom: 14,
             mapTypeId: 'roadmap'
