@@ -693,7 +693,14 @@ mysqli_close($connection);
         PHYSICALINJURIES : [],
         RAPE : [],
         OTHERNONINDEX : [],
-        OTHERINCIDENTS : [],
+        OTHERINCIDENTS : []
+    }
+
+    var gmarkers = [], gmarker = [];
+
+    //markerGroups = {};
+    //markerGroups["MURDER"] = {};
+    /*,
         STATION1_PARIAN : [],
         STATION2_FUENTE : [],
         STATION3_WATERFRONT : [],
@@ -715,13 +722,7 @@ mysqli_close($connection);
         STATION2_MACTAN : [],
         STATION3_GUNOB : [],
         STATION4_MARIGONDON : [],
-        STATION5_PUSOK : []
-    }
-
-    var gmarkers = [], gmarker = [];
-
-    //markerGroups = {};
-    //markerGroups["MURDER"] = {};
+        STATION5_PUSOK : []*/
 
     var markers = null;
     var map2;
@@ -886,7 +887,7 @@ var customMapTypeId = 'custom_style';
         }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
-        bindInfoWindow(marker, map, infowindow, html);
+        /*bindInfoWindow(marker, map, infowindow, html);
         hide("THEFT");
         hide("ROBBERY");
         hide("ORDINANCES");
@@ -897,7 +898,7 @@ var customMapTypeId = 'custom_style';
         hide("OTHERNONINDEX");
         hide("CATTLERUSTLING");
         hide("RAPE");
-        hide("OTHERINCIDENTS");
+        hide("OTHERINCIDENTS");*/
           
       }
      
@@ -1023,10 +1024,6 @@ var customMapTypeId = 'custom_style';
                 <div class="navbar-brand">
                     <img src="images/logo-small.png" class="center-block" alt="Logo Small">
                 </div>
-            </div>
-            <div class="navbar-clock">
-                <span id="date_time"></span>
-                <script type="text/javascript">window.onload = date_time('date_time');</script>
             </div>
             <!-- /.navbar-header -->
 
