@@ -888,17 +888,7 @@ var customMapTypeId = 'custom_style';
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
-        /*hide("THEFT");
-        hide("ROBBERY");
-        hide("ORDINANCES");
-        hide("SPECIALLAWS");
-        hide("HOMICIDE");
-        hide("CARNAPPING");
-        hide("PHYSICALINJURIES");
-        hide("OTHERNONINDEX");
-        hide("CATTLERUSTLING");
-        hide("RAPE");
-        hide("OTHERINCIDENTS");*/
+        /**/
           
       }
      
@@ -909,6 +899,18 @@ var customMapTypeId = 'custom_style';
    
 
   });
+
+        hide("THEFT");
+        hide("ROBBERY");
+        hide("ORDINANCES");
+        hide("SPECIALLAWS");
+        hide("HOMICIDE");
+        hide("CARNAPPING");
+        hide("PHYSICALINJURIES");
+        hide("OTHERNONINDEX");
+        hide("CATTLERUSTLING");
+        hide("RAPE");
+        hide("OTHERINCIDENTS");
         
     //console.log(count);
 
@@ -2027,7 +2029,7 @@ var customMapTypeId = 'custom_style';
                             <div>
                                 <input style="display:none" type="text"/>
                                 <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
-                                <button class="btn btn-default btn-lg" data-number="1">Cancel</button>
+                                <button class="btn btn-default btn-lg" data-dismiss="modal" data-number="1">Cancel</button>
                             </div>
                         </div>
                     </form>
