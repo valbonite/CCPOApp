@@ -696,7 +696,7 @@ mysqli_close($connection);
         OTHERINCIDENTS : []
     }
 
-    var gmarkers = [], gmarker = [];
+    //var gmarkers = [], gmarker = [];
 
     //markerGroups = {};
     //markerGroups["MURDER"] = {};
@@ -895,21 +895,22 @@ var customMapTypeId = 'custom_style';
   });    
     //console.log(count);
     google.maps.event.addListenerOnce( map, 'idle', function() {
+        showVisibleMarkers();
     });
 }
 
   function show(category) {
-    var count = 0;
+    //var count = 0;
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         console.dir(markersInCategory);
         for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
-            count++;
+            //count++;
         }
     }
-    console.log(count);
-    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
+    //console.log(count);
+    //document.getElementById('counter').innerHTML = "Number of crimes: " + count;
   }
 
   function hide(category) {
@@ -920,6 +921,26 @@ var customMapTypeId = 'custom_style';
         }
     }
   }
+
+  function showVisibleMarkers() {
+    var bounds = map.getBounds(),
+        count = 0;
+                                   
+    for (var i = 0; i < markers.length; i++) {
+        var marker = markers[i],
+            infoPanel = $('.info-' + (i+1) ); // array indexes start at zero, but not our class names :)
+                                           
+        if(bounds.contains(marker.getPosition())===true) {
+            infoPanel.show();
+            count++;
+        }
+        else {
+            infoPanel.hide();
+        }
+    }
+    
+    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
+}
     
 
   function downloadUrl(url, callback) {
