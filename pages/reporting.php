@@ -888,7 +888,7 @@ var customMapTypeId = 'custom_style';
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html);
-        hide("THEFT");
+        /*hide("THEFT");
         hide("ROBBERY");
         hide("ORDINANCES");
         hide("SPECIALLAWS");
@@ -898,7 +898,7 @@ var customMapTypeId = 'custom_style';
         hide("OTHERNONINDEX");
         hide("CATTLERUSTLING");
         hide("RAPE");
-        hide("OTHERINCIDENTS");
+        hide("OTHERINCIDENTS");*/
           
       }
      
