@@ -537,6 +537,10 @@ input[readonly] {
     margin-top: 10px;
 }
 
+.modal {
+    overflow-y: scroll;
+}
+
 .modal-header {
     background-color: #36a9e0;
     font-weight: bold;
