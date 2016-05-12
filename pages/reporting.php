@@ -887,7 +887,7 @@ var customMapTypeId = 'custom_style';
         }
         //markerGroups[crimecategory].push(marker);
         //markerGroups[barangay].push(marker);
-        /*bindInfoWindow(marker, map, infowindow, html);
+        bindInfoWindow(marker, map, infowindow, html);
         hide("THEFT");
         hide("ROBBERY");
         hide("ORDINANCES");
@@ -898,7 +898,7 @@ var customMapTypeId = 'custom_style';
         hide("OTHERNONINDEX");
         hide("CATTLERUSTLING");
         hide("RAPE");
-        hide("OTHERINCIDENTS");*/
+        hide("OTHERINCIDENTS");
           
       }
      
