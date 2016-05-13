@@ -2045,7 +2045,7 @@ function doNothing() {}
     })
     </script>
 
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
     $(".checkbox").click(function(){
         var cat = $(this).attr("value");    
             // If checked
@@ -2058,7 +2058,7 @@ function doNothing() {}
                 hide(cat);
             }
         });
-    </script>-->
+    </script>
 
     <!-- Singe Datepicker-->
     <script type="text/javascript">
