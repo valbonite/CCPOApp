@@ -678,9 +678,6 @@ mysqli_close($connection);
             }
         };
 
-    //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
     /*var markerGroups = {
 
         MURDER : [],
@@ -723,32 +720,6 @@ mysqli_close($connection);
     var map;
     var map2;
 
-    //markerGroups = {};
-    //markerGroups["MURDER"] = {};
-    /*,
-        STATION1_PARIAN : [],
-        STATION2_FUENTE : [],
-        STATION3_WATERFRONT : [],
-        STATION4_MABOLO : [],
-        STATION5_CARBON : [],
-        STATION6_PASIL : [],
-        STATION7_PARDO : [],
-        STATION8_TALAMBAN : [],
-        STATION9_GUADALUPE : [],
-        STATION10_PUNTA : [],
-        STATION11_MAMBALING : [],
-        STATION1_CENTRO : [],
-        STATION2_SUBANGDAKU : [],
-        STATION3_BASAK : [],
-        STATION4_CASUNTINGAN : [],
-        STATION5_OPAO : [],
-        STATION6_CANDUMAN : [],
-        STATION1_OLANGO : [],
-        STATION2_MACTAN : [],
-        STATION3_GUNOB : [],
-        STATION4_MARIGONDON : [],
-        STATION5_PUSOK : []*/
-    //var count = 0;
 
     var customMapType = new google.maps.StyledMapType([            
     {
@@ -866,13 +837,9 @@ function load()
     map.mapTypes.set(customMapTypeId, customMapType);
     map.setMapTypeId(customMapTypeId);
 
-      // Change this depending on the name of your PHP file
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
-        //var gooMark = [];
-        //var count = 0; 
-        //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
@@ -913,13 +880,8 @@ function load()
         } else {
             doNothing();
         }*/
-        //markerGroups[crimecategory].push(marker);
-        //markerGroups[barangay].push(marker);
         bindInfoWindow(marker, map, infowindow, html); 
     } 
-    //markerGroups[crimecategory].push(marker);
-    //alert(markerGroups[crimecategory]);    
-    //$('#counter h2 span').html(markers.length);
 });    
     google.maps.event.addListenerOnce( map, 'idle', function() {
     });
@@ -2079,7 +2041,7 @@ function doNothing() {}
     })
     </script>
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     $(".checkbox").click(function(){
         var cat = $(this).attr("value");    
             // If checked
@@ -2092,7 +2054,7 @@ function doNothing() {}
                 hide(cat);
             }
         });
-    </script>
+    </script>-->
 
     <!-- Singe Datepicker-->
     <script type="text/javascript">
