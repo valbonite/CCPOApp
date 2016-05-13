@@ -2061,8 +2061,14 @@ function doNothing() {}
     </script>
 
     <script type="text/javascript">
+    var currentValue = $(this).attr("value");
     $("#precinctSelector").change(function(){
-        var cat = $(this).attr("value");    
+        hide(currentValue);
+        console.log(currentValue);
+        currentValue = cat;
+        show(cat);
+        console.log(currentValue);
+        /*var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":selected"))
             {
@@ -2073,7 +2079,7 @@ function doNothing() {}
             {
                 hide(cat);
             }
-            console.log($(this).is(":selected"));
+            console.log($(this).is(":selected"));*/
         });
     </script>
 
