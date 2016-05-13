@@ -678,7 +678,7 @@ mysqli_close($connection);
             }
         };
 
-    /*var markerGroups = {
+    var markerGroups = {
 
         MURDER : [],
         THEFT : [],
@@ -713,7 +713,7 @@ mysqli_close($connection);
         STATION3_GUNOB : [],
         STATION4_MARIGONDON : [],
         STATION5_PUSOK : []
-    }*/
+    }
 
     var gmarkers = [], gmarker = [];   
     var markers = [];
