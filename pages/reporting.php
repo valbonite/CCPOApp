@@ -887,7 +887,7 @@ function load()
     });
 }
 
-/*function checkCrime() { //Check if user checked the Checkbox
+function checkCrime() { //Check if user checked the Checkbox
     var crimeChecked = document.getElementsByName('crimefilter');
     for ( var i = 0; i < gmarkers.length; i++) {
         for ( var x = 0; x < crimeChecked.length; x++) {
@@ -896,11 +896,13 @@ function load()
                     gmarkers[i].setMap(map);
                 } 
             } else {
-
+                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
+                    gmarkers[i].setMap(null);
+                } 
             }
         }
     }
-}*/
+}
 
 /*function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
