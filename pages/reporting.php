@@ -2061,8 +2061,9 @@ function doNothing() {}
     </script>
 
     <script type="text/javascript">
-    var currentValue = $(this).attr("value");
     $("#precinctSelector").change(function(){
+        var currentValue = $(this).attr("value");
+        var cat;
         hide(currentValue);
         console.log(currentValue);
         currentValue = cat;
