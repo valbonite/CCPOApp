@@ -2067,6 +2067,7 @@ function doNothing() {}
             if ($(this).is(":selected"))
             {
                 show(cat);
+                console.log(nothing);
             }
             else
             {
