@@ -1309,7 +1309,7 @@ function doNothing() {}
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="precinctSelector">
+                                  <select class="form-control" id="precinctSelector" onchange="hide(this.value)">
                                     <option>Choose Precinct</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
                                     <option value="STATION2_FUENTE">STATION2_FUENTE</option>
@@ -2057,30 +2057,6 @@ function doNothing() {}
             {
                 hide(cat);
             }
-        });
-    </script>
-
-    <script type="text/javascript">
-    $("#precinctSelector").change(function(){
-        var currentValue = $(this).attr("value");
-        var cat;
-        hide(currentValue);
-        console.log(currentValue);
-        currentValue = cat;
-        show(cat);
-        console.log(currentValue);
-        /*var cat = $(this).attr("value");    
-            // If checked
-            if ($(this).is(":selected"))
-            {
-                show(cat);
-                console.log($(this).is(":selected"));
-            }
-            else
-            {
-                hide(cat);
-            }
-            console.log($(this).is(":selected"));*/
         });
     </script>
 
