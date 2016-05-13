@@ -2067,13 +2067,13 @@ function doNothing() {}
             if ($(this).is(":selected"))
             {
                 show(cat);
-                console.log(nothing);
+                console.log($(this).is(":selected"));
             }
             else
             {
                 hide(cat);
             }
-            console.log(nothing);
+            console.log($(this).is(":selected"));
         });
     </script>
 
