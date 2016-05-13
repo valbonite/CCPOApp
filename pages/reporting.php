@@ -867,7 +867,7 @@ function load()
           marker.address = markers[i].getAttribute("address");
           gmarkers.push(marker);
 
-        /*if (markerGroups.hasOwnProperty(crimecategory)) {
+        if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
             //count++;
         } else {
@@ -879,7 +879,7 @@ function load()
             //count++;
         } else {
             doNothing();
-        }*/
+        }
         bindInfoWindow(marker, map, infowindow, html); 
     } 
 });    
@@ -887,13 +887,13 @@ function load()
     });
 }
 
-function checkCrime() { //Check if user checked the Checkbox
+/*function checkCrime() { //Check if user checked the Checkbox
     var crimeChecked = document.getElementsByName('crimefilter');
     for ( var i = 0; i < gmarkers.length; i++) {
         for ( var x = 0; x < crimeChecked.length; x++) {
             if (crimeChecked[x].checked == true) {
                 if (gmarkers[i].crimecategory == crimeChecked[x].value) {
-                    gmarkers[i].setMap(map);
+                    cr[i].setMap(map);
                 } 
             } else {
                 if (gmarkers[i].crimecategory == crimeChecked[x].value) {
@@ -902,9 +902,9 @@ function checkCrime() { //Check if user checked the Checkbox
             }
         }
     }
-}
+}*/
 
-/*function show(category) {
+function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
@@ -920,7 +920,7 @@ function hide(category) {
             markersInCategory[i].setVisible(false);
         }
     }
-}*/
+}
 
 
 function downloadUrl(url, callback) {
