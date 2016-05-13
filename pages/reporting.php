@@ -894,6 +894,8 @@ function checkCrime() { //Check if user checked the Checkbox
             if (crimeChecked[x].checked == true) {
                 if (gmarkers[i].crimecategory == crimeChecked[x].value) {
                     gmarkers[i].setMap(map);
+                } else {
+                    gmarkers[i].setMap(null);
                 }
             }
         }
