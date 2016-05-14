@@ -950,7 +950,7 @@ function bindInfoWindow(marker, map, infoWindow, html) {
 
 
 var start_date = document.getElementsByName('daterangepicker_start').value;
-console.log(start_date);
+console.log(daterangepicker_start);
 
 function doNothing() {}
 
