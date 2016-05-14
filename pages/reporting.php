@@ -2076,7 +2076,7 @@ function doNothing() {}
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-      console.log("New date range selected: " + start.format('YYYY-MM-DD') + " to " + end.format('YYYY-MM-DD') + " (predefined range: " + label + ")");
+      console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
     </script>
 
