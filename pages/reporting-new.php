@@ -1281,62 +1281,62 @@ function doNothing() {}
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER" checked> MURDER
+                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER" onclick="showMarkers()" checked="checked"> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT" checked> THEFT
+                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT" onclick="showMarkers()" checked="checked"> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" checked > ROBBERY
+                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" onclick="showMarkers()" checked="checked" > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES"  checked> ORDINANCES
+                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES"  onclick="showMarkers()" checked="checked"> ORDINANCES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING" checked> CATTLE RUSTLING
+                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING" onclick="showMarkers()" checked="checked"> CATTLE RUSTLING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS" checked> SPECIAL LAWS
+                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS" onclick="showMarkers()" checked="checked"> SPECIAL LAWS
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE" checked> HOMICIDE
+                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE" onclick="showMarkers()" checked="checked"> HOMICIDE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING" checked> CARNAPPING
+                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING" onclick="showMarkers()" checked="checked"> CARNAPPING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES" checked> PHYSICAL INJURIES
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES" onclick="showMarkers()" checked="checked"> PHYSICAL INJURIES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE" checked> RAPE
+                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE" onclick="showMarkers()" checked="checked"> RAPE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX" checked> OTHER NON-INDEX
+                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX" onclick="showMarkers()" checked="checked"> OTHER NON-INDEX
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS" checked> OTHER INCIDENTS
+                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS" onclick="showMarkers()" checked="checked"> OTHER INCIDENTS
                                         </label>
                                     </div>
                                 </li>
