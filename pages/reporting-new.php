@@ -907,7 +907,7 @@ function hide(category) {
 }*/
 
 function showMarkers() {
-    //resetMarker();
+    resetMarker();
     //var date_from = document.getElementById('daterangepicker_start').value;
     //var date_to = document.getElementById('daterangepicker_end').value;
     console.log(start_date);
