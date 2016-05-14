@@ -2073,8 +2073,8 @@ function doNothing() {}
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-        var start_date = start.format('DD/MM/YYYY');
-        var end_date = end.format('DD/MM/YYYY');
+        var start_date = start.format('MM/DD/YYYY');
+        var end_date = end.format('MM/DD/YYYY');
         console.log(start_date);
       //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });

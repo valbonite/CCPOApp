@@ -715,7 +715,7 @@ mysqli_close($connection);
         STATION5_PUSOK : []
     }
 
-    var gmarkers = [], gmarker = [];   
+    var gmarkers = [], gmarker = [], maps = [];   
     var markers = [];
     var map;
     var map2;
@@ -867,7 +867,7 @@ function load()
           marker.address = markers[i].getAttribute("address");
           gmarkers.push(marker);
 
-        if (markerGroups.hasOwnProperty(crimecategory)) {
+        /*if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
             //count++;
         } else {
@@ -879,7 +879,7 @@ function load()
             //count++;
         } else {
             doNothing();
-        }
+        }*/
         bindInfoWindow(marker, map, infowindow, html); 
     } 
 });    
@@ -887,24 +887,7 @@ function load()
     });
 }
 
-/*function checkCrime() { //Check if user checked the Checkbox
-    var crimeChecked = document.getElementsByName('crimefilter');
-    for ( var i = 0; i < gmarkers.length; i++) {
-        for ( var x = 0; x < crimeChecked.length; x++) {
-            if (crimeChecked[x].checked == true) {
-                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
-                    cr[i].setMap(map);
-                } 
-            } else {
-                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
-                    gmarkers[i].setMap(null);
-                } 
-            }
-        }
-    }
-}*/
-
-function show(category) {
+/*function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
@@ -920,6 +903,56 @@ function hide(category) {
             markersInCategory[i].setVisible(false);
         }
     }
+}*/
+
+function showMarkers() {
+    resetMarker();
+    var date_from = document.getElementById('daterangepicker_start').value;
+    var date_to = document.getElementById('daterangepicker_end').value;
+    var ppo = document.getElementById('province').value;
+    if (date_from > date_to) {
+        alert('Starting date must be earlier than ending date.');
+    }
+        for ( var i = 0; i < gmarkers.length; i++) {
+            if ((gmarkers[i].date >= date_from && gmarkers[i].date <= date_to)
+                    && (Date.parse('20 Aug 2000 ' + gmarkers[i].time) >= time_from && Date
+                            .parse('20 Aug 2000 ' + gmarkers[i].time) <= time_to)
+                    && gmarkers[i].province == ppo) {
+                gmarker.push(gmarkers[i]);
+            }
+        }
+    checkBox();
+}
+function checkBox() {
+    var crime_filter = document.getElementsByName('crimefilter');
+    for ( var i = 0; i < gmarker.length; i++) {
+        for ( var x = 0; x < crime_filter.length; x++) {
+            if (crime_filter[x].checked == true) {
+                if (gmarker[i].crimecategory == crime_filter[x].value) {
+                    maps.push(gmarker[i]);
+                }
+            }
+        }
+    }
+    finalMarker();
+}
+function finalMarker() {
+    var counter = 0;
+        for ( var i = 0; i < maps.length; i++) {
+            maps[i].setMap(map);
+            counter++;
+        }
+        console.log(counter);
+}
+
+function resetMarker() {
+    for ( var i = 0; i < gmarkers.length; i++) {
+        gmarkers[i].setMap(null);
+    }
+    gmarker.length = 0;
+    maps.length = 0;
+    gmarker = [];
+    maps = [];
 }
 
 
@@ -947,8 +980,6 @@ function bindInfoWindow(marker, map, infoWindow, html) {
     infoWindow.open(map, marker);
 });
 }
-
-
 
 
 function doNothing() {}
@@ -2071,10 +2102,14 @@ function doNothing() {}
     <!-- Daterange Picker -->
     <script type="text/javascript">
     $('#daterange').daterangepicker({
+        "linkedCalendars": false,
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-      console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        var start_date = start.format('MM/DD/YYYY');
+        var end_date = end.format('MM/DD/YYYY');
+        console.log(start_date);
+      //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
     </script>
 

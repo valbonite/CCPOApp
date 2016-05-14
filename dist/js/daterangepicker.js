@@ -1349,6 +1349,7 @@
         clickApply: function(e) {
             this.hide();
             this.element.trigger('apply.daterangepicker', this);
+            this.showMarkers();
         },
 
         clickCancel: function(e) {
