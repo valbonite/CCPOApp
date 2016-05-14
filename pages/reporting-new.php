@@ -943,6 +943,7 @@ function finalMarker() {
             counter++;
         }
         console.log(counter);
+        document.getElementById('crimeCount').innerHTML = "Number of crimes: " + counter;
 }
 
 function resetMarker() {
@@ -1232,7 +1233,7 @@ function doNothing() {}
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>-->
-                <div id="counter">
+                <div id="crimeCount">
                     <h3><span></span></h3>
                 </div>
             </div>
