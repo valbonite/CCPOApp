@@ -935,7 +935,7 @@ function checkBox() {
         }
     }
     finalMarker();
-    console.log(gmarkers);
+    console.log(maps);
 }
 function finalMarker() {
     var counter = 0;
