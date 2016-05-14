@@ -1217,12 +1217,15 @@ function doNothing() {}
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
-                <div class="form-inline">
+                <form class="form-inline">
                     <div class="input-group">
-                        <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+                    <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+                    <div class="input-group-addon">
+                        <span class="fa fa-calendar fa-fw"></span>
                     </div>
-                    <button class="btn btn-primary btn-md" onclick="showMarkers()">Apply</button>
                 </div>
+                    <button class="btn btn-primary" onclick="showMarkers()">Apply</button>
+                </form>
                 <!--<div class="input-group" style="position: relative">
                     <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
