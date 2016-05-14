@@ -909,6 +909,8 @@ function showMarkers() {
     resetMarker();
     var date_from = document.getElementById('daterangepicker_start').value;
     var date_to = document.getElementById('daterangepicker_end').value;
+    console.log(date_from);
+    console.log(date_to);
     var ppo = document.getElementById('province').value;
     if (date_from > date_to) {
         alert('Starting date must be earlier than ending date.');
@@ -925,6 +927,7 @@ function showMarkers() {
 }
 function checkBox() {
     var crime_filter = document.getElementsByName('crimefilter');
+    console.log(crime_filter);
     for ( var i = 0; i < gmarker.length; i++) {
         for ( var x = 0; x < crime_filter.length; x++) {
             if (crime_filter[x].checked == true) {
@@ -2076,7 +2079,7 @@ function doNothing() {}
     })
     </script>
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     $(".checkbox").click(function(){
         var cat = $(this).attr("value");    
             // If checked
@@ -2089,7 +2092,7 @@ function doNothing() {}
                 hide(cat);
             }
         });
-    </script>
+    </script>-->
 
     <!-- Singe Datepicker-->
     <script type="text/javascript">
