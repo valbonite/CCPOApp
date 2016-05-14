@@ -715,7 +715,8 @@ mysqli_close($connection);
         STATION5_PUSOK : []
     }
 
-    var gmarkers = [], gmarker = [], maps = [];   
+    var gmarkers = [], gmarker = [];
+    var maps = [];   
     var markers = [];
     var map;
     var map2;
@@ -921,6 +922,7 @@ function showMarkers() {
             }
         }
     checkBox();
+    console.log(gmarker);
 }
 function checkBox() {
     var crime_filter = document.getElementsByName('crimefilter');
