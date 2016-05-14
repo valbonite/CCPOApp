@@ -1226,6 +1226,9 @@ function doNothing() {}
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>
+                <div>
+                    <button class="btn btn-primary btn-md" onclick="showMarkers()">Apply</button>
+                </div>
                 <!--<div class="input-group" style="position: relative">
                     <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
