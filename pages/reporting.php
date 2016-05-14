@@ -949,9 +949,6 @@ function bindInfoWindow(marker, map, infoWindow, html) {
 }
 
 
-var start_date = document.getElementById('daterangepicker_start').value;
-console.log(start_date);
-
 function doNothing() {}
 
 </script>
@@ -2076,7 +2073,10 @@ function doNothing() {}
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-      console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
+        var start_date = start.format('DD/MM/YYYY');
+        var end_date = end.format('DD/MM/YYYY');
+        console.log(start_date);
+      //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
     </script>
 
