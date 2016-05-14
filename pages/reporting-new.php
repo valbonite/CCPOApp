@@ -946,7 +946,7 @@ function finalMarker() {
         document.getElementById('crimeCount').innerHTML = "Number of crimes: " + counter;
 }
 
-/*function resetMarker() {
+function resetMarker() {
     for ( var i = 0; i < gmarkers.length; i++) {
         gmarkers[i].setMap(null);
     }
@@ -954,7 +954,7 @@ function finalMarker() {
     maps.length = 0;
     gmarker = [];
     maps = [];
-}*/
+}
 
 
 function downloadUrl(url, callback) {
