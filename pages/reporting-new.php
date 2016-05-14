@@ -907,8 +907,8 @@ function hide(category) {
 
 function showMarkers() {
     resetMarker();
-    var date_from = document.getElementById('daterangepicker_start').value;
-    var date_to = document.getElementById('daterangepicker_end').value;
+    var date_from = moment(this.container.find('input[name="daterangepicker_start"]').val(), this.locale.format);
+    var date_to = moment(this.container.find('input[name="daterangepicker_end"]').val(), this.locale.format);
     console.log(date_from);
     console.log(date_to);
     var ppo = document.getElementById('province').value;
