@@ -946,7 +946,7 @@ function finalMarker() {
         document.getElementById('crimeCount').innerHTML = "Number of crimes: " + counter;
 }
 
-function resetMarker() {
+/*function resetMarker() {
     for ( var i = 0; i < gmarkers.length; i++) {
         gmarkers[i].setMap(null);
     }
@@ -954,7 +954,7 @@ function resetMarker() {
     maps.length = 0;
     gmarker = [];
     maps = [];
-}
+}*/
 
 
 function downloadUrl(url, callback) {
@@ -1217,7 +1217,7 @@ function doNothing() {}
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
-                <form class="form-inline">
+                <div class="form-inline">
                     <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
@@ -1225,7 +1225,7 @@ function doNothing() {}
                     </div>
                 </div>
                     <button class="btn btn-primary" onclick="showMarkers()">Apply</button>
-                </form>
+                </div>
                 <!--<div class="input-group" style="position: relative">
                     <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
                     <div class="input-group-addon">
