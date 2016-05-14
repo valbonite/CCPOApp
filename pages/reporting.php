@@ -2071,6 +2071,7 @@ function doNothing() {}
     <!-- Daterange Picker -->
     <script type="text/javascript">
     $('#daterange').daterangepicker({
+        "linkedCalendars": false,
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {

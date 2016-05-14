@@ -595,7 +595,7 @@ mysqli_close($connection);
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
- 
+
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
@@ -636,7 +636,7 @@ mysqli_close($connection);
         <![endif]-->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=geometry&sensor=false"></script>
         <script type="text/javascript" src="proj4.js"></script>
-              <script type="text/javascript">
+        <script type="text/javascript">
         var customIcons = [];
 
         var customIcons = {
@@ -644,9 +644,6 @@ mysqli_close($connection);
                 icon: 'images/murder.png'
             },
             'THEFT': {
-                icon: 'images/theft.png'
-            },
-            'Theft': {
                 icon: 'images/theft.png'
             },
             'ROBBERY': {
@@ -681,14 +678,10 @@ mysqli_close($connection);
             }
         };
 
-    //var markerGroups = { "NON-INDEX CRIME": [], "INDEX CRIME": [], "OTHERINCIDENTS(Non Crime)": [], "ORDINANCE": []};
-    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": [], "Sunday": [], "Monday": [], "Tuesday": [], "Wednesday": [], "Thursday": [], "Friday": [], "Saturday": [], "Adlawon": [], "Agsungot": [], "Apas": [], "Bacayan": [], "Banilad": [], "Binaliw": [], "Budla-an": [], "Busay": [], "Cambinocot": [], "Capitol Site": [], "Carreta": [], "Cogon Ramos": [], "Day-as": [], "Ermita": [], "Guba": [], "Hipodromo": []};
-    //var markerGroups = { "MURDER": [], "THEFT": [], "ROBBERY": [], "ORDINANCES": [], "CATTLERUSTLING": [], "SPECIALLAWS": [], "HOMICIDE": [], "CARNAPPING": [], "PHYSICALINJURIES": [], "RAPE": [], "OTHERNONINDEX": []};
     var markerGroups = {
 
         MURDER : [],
         THEFT : [],
-        Theft : [],
         ROBBERY : [],
         ORDINANCES : [],
         SPECIALLAWS : [],
@@ -697,142 +690,156 @@ mysqli_close($connection);
         PHYSICALINJURIES : [],
         RAPE : [],
         OTHERNONINDEX : [],
-        OTHERINCIDENTS : []
-
+        OTHERINCIDENTS : [],
+        STATION1_PARIAN : [],
+        STATION2_FUENTE : [],
+        STATION3_WATERFRONT : [],
+        STATION4_MABOLO : [],
+        STATION5_CARBON : [],
+        STATION6_PASIL : [],
+        STATION7_PARDO : [],
+        STATION8_TALAMBAN : [],
+        STATION9_GUADALUPE : [],
+        STATION10_PUNTA : [],
+        STATION11_MAMBALING : [],
+        STATION1_CENTRO : [],
+        STATION2_SUBANGDAKU : [],
+        STATION3_BASAK : [],
+        STATION4_CASUNTINGAN : [],
+        STATION5_OPAO : [],
+        STATION6_CANDUMAN : [],
+        STATION1_OLANGO : [],
+        STATION2_MACTAN : [],
+        STATION3_GUNOB : [],
+        STATION4_MARIGONDON : [],
+        STATION5_PUSOK : []
     }
 
-    var gmarkers = [], gmarker = [];
-
-    //markerGroups = {};
-    //markerGroups["MURDER"] = {};
-
-    var markers = null;
+    var gmarkers = [], gmarker = [];   
+    var markers = [];
+    var map;
     var map2;
-    var count = 0;
+
 
     var customMapType = new google.maps.StyledMapType([            
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
         {
-            "featureType": "administrative",
-            "elementType": "labels.text.fill",
-            "stylers": [
-            {
-                "color": "#444444"
-            }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "all",
-            "stylers": [
-            {
-                "color": "#f2f2f2"
-            }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "all",
-            "stylers": [
-            {
-                "visibility": "off"
-            }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "all",
-            "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 45
-            }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "all",
-            "stylers": [
-            {
-                "visibility": "simplified"
-            }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "labels.icon",
-            "stylers": [
-            {
-                "visibility": "off"
-            }
-            ]
-        },
-        {
-            "featureType": "transit",
-            "elementType": "all",
-            "stylers": [
-            {
-                "visibility": "off"
-            }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "geometry.fill",
-            "stylers": [
-            {
-                "color": "#46bcec"
-            },
-            {
-                "visibility": "on"
-            }
-            ]
+            "color": "#444444"
         }
-        ], {
-          name: 'Custom Style'
-      });
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+        {
+            "color": "#f2f2f2"
+        }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+        {
+            "visibility": "off"
+        }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+        {
+            "saturation": -100
+        },
+        {
+            "lightness": 45
+        }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+        {
+            "visibility": "simplified"
+        }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+        {
+            "visibility": "off"
+        }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+        {
+            "visibility": "off"
+        }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+        {
+            "color": "#46bcec"
+        },
+        {
+            "visibility": "on"
+        }
+        ]
+    }
+    ], {
+      name: 'Custom Style'
+  });
 
 var customMapTypeId = 'custom_style';
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
 
-    function initialize() {
-     map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
-            center: new google.maps.LatLng(10.3216299, 123.9052633),
-            zoom: 14,
-            mapTypeId: 'roadmap'
-        }); 
+function initialize() {
+   map2 = new google.maps.Map(document.getElementById("map_canvas2"), {
+    center: new google.maps.LatLng(10.3216299, 123.9052633),
+    zoom: 14,
+    mapTypeId: 'roadmap'
+}); 
 
-    google.maps.event.addListener(map2,'click',function(event) { 
-        document.getElementById('latitude').value = event.latLng.lat()
-        document.getElementById('longitude').value = event.latLng.lng() 
-    });
+   google.maps.event.addListener(map2,'click',function(event) { 
+    document.getElementById('latitude').value = event.latLng.lat()
+    document.getElementById('longitude').value = event.latLng.lng() 
+});
 
-    map2.mapTypes.set(customMapTypeId, customMapType);
-    map2.setMapTypeId(customMapTypeId); 
-    }
-    
-    function load() 
-    {
-        var map = new google.maps.Map(document.getElementById("map_canvas"), {
-            center: new google.maps.LatLng(10.3216299, 123.9052633),
-            zoom: 14,
-            mapTypeId: 'roadmap'
-        });    
+   map2.mapTypes.set(customMapTypeId, customMapType);
+   map2.setMapTypeId(customMapTypeId); 
+}
 
-        var infowindow = new google.maps.InfoWindow();      
+function load() 
+{
+    map = new google.maps.Map(document.getElementById("map_canvas"), {
+        center: new google.maps.LatLng(10.3216299, 123.9052633),
+        zoom: 14,
+        mapTypeId: 'roadmap'
+    });    
 
-        map.mapTypes.set(customMapTypeId, customMapType);
-        map.setMapTypeId(customMapTypeId);
+    var infowindow = new google.maps.InfoWindow();      
 
-      // Change this depending on the name of your PHP file
+    map.mapTypes.set(customMapTypeId, customMapType);
+    map.setMapTypeId(customMapTypeId);
+
       downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
-        //var gooMark = [];
-        //var count = 0; 
-        //count = markers.length;
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
@@ -854,156 +861,99 @@ var customMapTypeId = 'custom_style';
             title: 'Click to show crime info'
         });
 
-        marker.crimecategory = crimecategory;
-        marker.date = markers[i].getAttribute("date");
-        marker.time = markers[i].getAttribute("time");
-        gmarkers.push(marker);
+          marker.crimecategory = crimecategory;
+          marker.date = markers[i].getAttribute("date");
+          marker.time = markers[i].getAttribute("time");
+          marker.address = markers[i].getAttribute("address");
+          gmarkers.push(marker);
 
         if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
-            count++;
+            //count++;
         } else {
             doNothing();
         }
-        //markerGroups[crimecategory].push(marker);
-        //markerGroups[barangay].push(marker);
-        bindInfoWindow(marker, map, infowindow, html);
-          
-      }
-     
-       //markerGroups[crimecategory].push(marker);
-      //alert(markerGroups[crimecategory]);
-      
-      //$('#counter h2 span').html(markers.length);
 
-  });
-    document.getElementById('counter').innerHTML = "Number of crimes: " + count;
-    console.log(count);
-
+        if (markerGroups.hasOwnProperty(address)) {
+            markerGroups[address].push(marker);
+            //count++;
+        } else {
+            doNothing();
+        }
+        bindInfoWindow(marker, map, infowindow, html); 
+    } 
+});    
     google.maps.event.addListenerOnce( map, 'idle', function() {
-
     });
-
-    
-
 }
 
-
-
-  /*function show(crimecategory) {
-    console.log(crimecategory);
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        console.log(crimecategory);
-        //var markersInCategory = markerGroups[crimecategory];
-        var markersInCategory = markerGroups["MURDER"];
-
-        console.log(markersInCategory);
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-            console.log(markersInCategory[i]);
-        }
-    }
-    console.log(crimecategory);
-  }*/
-
-/*
-  function hide(crimecategory) {
-    if (markerGroups.hasOwnProperty(crimecategory)) {
-        var markersInCategory = markerGroups[crimecategory];
-        console.log(markersInCategory);
-        for (var i=0; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(false);
-            console.log(markersInCategory[i]);
-        }
-    }
-    console.log(crimecategory);
-  }
-  */
-
-  function show(category) {
-
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        console.dir(markersInCategory);
-        for (var i=1; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(true);
-        }
-    }
-  }
-
-
-
-  // == hides all markers of a particular category, and ensures the checkbox is cleared ==
-
-  function hide(category) {
-    if (markerGroups.hasOwnProperty(category)) {
-        var markersInCategory = markerGroups[category];
-        for (var i=1; i<markersInCategory.length; i++) {
-            markersInCategory[i].setVisible(false);
-        }
-    }
-  }
-
-        hide("THEFT");
-        hide("ROBBERY");
-        hide("ORDINANCES");
-        hide("SPECIALLAWS");
-        hide("HOMICIDE");
-        hide("CARNAPPING");
-        hide("PHYSICALINJURIES");
-        hide("OTHERNONINDEX");
-        hide("CATTLERUSTLING");
-        hide("RAPE");
-        hide("OTHERINCIDENTS");
-    
-function dateFilter() {
-    var date_from = document.getElementById('daterangepicker_start').value;
-    var date_to = document.getElementById('daterangepicker_end').value;
-    if (date_from > date_to) {
-        alert('Starting date must be earlier than ending date.');
-    }
-        for ( var i = 0; i < markers.length; i++) {
-            if ((gmarkers[i].date >= date_from && gmarkers[i].date <= date_to)
-                    && (Date.parse('20 Aug 2000 ' + gmarkers[i].time) >= time_from && Date
-                            .parse('20 Aug 2000 ' + gmarkers[i].time) <= time_to){
-                gmarkers[i].setVisible(true);
+/*function checkCrime() { //Check if user checked the Checkbox
+    var crimeChecked = document.getElementsByName('crimefilter');
+    for ( var i = 0; i < gmarkers.length; i++) {
+        for ( var x = 0; x < crimeChecked.length; x++) {
+            if (crimeChecked[x].checked == true) {
+                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
+                    cr[i].setMap(map);
+                } 
+            } else {
+                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
+                    gmarkers[i].setMap(null);
+                } 
             }
         }
     }
+}*/
+
+function show(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(true);
+        }
+    }
+}
+
+function hide(category) {
+    if (markerGroups.hasOwnProperty(category)) {
+        var markersInCategory = markerGroups[category];
+        for (var i=0; i<markersInCategory.length; i++) {
+            markersInCategory[i].setVisible(false);
+        }
+    }
 }
 
 
-  function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-      new ActiveXObject('Microsoft.XMLHTTP') :
-      new XMLHttpRequest;
+function downloadUrl(url, callback) {
+  var request = window.ActiveXObject ?
+  new ActiveXObject('Microsoft.XMLHTTP') :
+  new XMLHttpRequest;
 
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-      }
-  };
-
-  request.open('GET', url, true);
-  request.send(null);
-}
-
-  
-
-  function bindInfoWindow(marker, map, infoWindow, html) {
-      google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent(html);
-        infoWindow.open(map, marker);
-    });
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
   }
+};
+
+request.open('GET', url, true);
+request.send(null);
+}
+
+
+
+function bindInfoWindow(marker, map, infoWindow, html) {
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker);
+});
+}
 
 
 
 
-    function doNothing() {}
+function doNothing() {}
 
-    </script>
+</script>
 
 </head>
 
@@ -1017,10 +967,6 @@ function dateFilter() {
                 <div class="navbar-brand">
                     <img src="images/logo-small.png" class="center-block" alt="Logo Small">
                 </div>
-            </div>
-            <div class="navbar-clock">
-                <span id="date_time"></span>
-                <script type="text/javascript">window.onload = date_time('date_time');</script>
             </div>
             <!-- /.navbar-header -->
 
@@ -1239,7 +1185,7 @@ function dateFilter() {
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
-               
+
                 <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
@@ -1303,121 +1249,95 @@ function dateFilter() {
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT"> THEFT
+                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT" checked> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" > ROBBERY
+                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" checked > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES" > ORDINANCES
+                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES"  checked> ORDINANCES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING"> CATTLE RUSTLING
+                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING" checked> CATTLE RUSTLING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS"> SPECIAL LAWS
+                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS" checked> SPECIAL LAWS
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE"> HOMICIDE
+                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE" checked> HOMICIDE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING"> CARNAPPING
+                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING" checked> CARNAPPING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES"> PHYSICAL INJURIES
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES" checked> PHYSICAL INJURIES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE"> RAPE
+                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE" checked> RAPE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX"> OTHER NON-INDEX
+                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX" checked> OTHER NON-INDEX
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS"> OTHER INCIDENTS
+                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS" checked> OTHER INCIDENTS
                                         </label>
                                     </div>
                                 </li>
                             </ul>                          
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Day<span class="fa arrow rotate"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Sunday" name="Sunday" type="checkbox" value="Sunday"> SUNDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Monday" name="Monday" type="checkbox" value="Monday"> MONDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Tuesday" name="Tuesday" type="checkbox" value="Tuesday"> TUESDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Wednesday" name="Wednesday" type="checkbox" value="Wednesday"> WEDNESDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Thursday" name="Thursday" type="checkbox" value="Thursday"> THURSDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Friday" name="Friday" type="checkbox" value="Friday"> FRIDAY
-                                        </label>
-                                    </div>
-                                    <div class="filters">
-                                        <label class="control-label " for="dayfilter">
-                                            <input class="checkbox" id="Saturday" name="Saturday" type="checkbox" value="Saturday"> SATURDAY
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>                          
-                        </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Barangay<span class="fa arrow rotate"></span></a>
+                            <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
-                                  <select class="form-control" id="selector">
-                                    <option>Choose barangay</option>
-                                    <option name="Capitol Site" value="Capitol Site">Capitol Site</option>
-                                    <option name="Apas" value="Apas">Apas</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                  <select class="form-control" id="precinctSelector" onchange="hide(this.value)">
+                                    <option>Choose Precinct</option>
+                                    <option value="STATION1_PARIAN">STATION1_PARIAN</option>
+                                    <option value="STATION2_FUENTE">STATION2_FUENTE</option>
+                                    <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
+                                    <option value="STATION4_MABOLO">STATION4_MABOLO</option>
+                                    <option value="STATION5_CARBON">STATION5_CARBON</option>
+                                    <option value="STATION6_PASIL">STATION6_PASIL</option>
+                                    <option value="STATION7_PARDO">STATION7_PARDO</option>
+                                    <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
+                                    <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
+                                    <option value="STATION10_PUNTA">STATION10_PUNTA</option>
+                                    <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
+                                    <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                    <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                    <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                    <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                    <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                    <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                    <option value="STATION1_OLANGO">STATION1_OLANGO</option>
+                                    <option value="STATION2_MACTAN">STATION2_MACTAN</option>
+                                    <option value="STATION3_GUNOB">STATION3_GUNOB</option>
+                                    <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
+                                    <option value="STATION5_PUSOK">STATION5_PUSOK</option>
                                 </select>
                             </div>
-                            </ul>                          
-                        </li>
-                    -->
-                        <!-- /.nav-second-level -->
+                        </ul>                          
+                    </li>
+                    <!-- /.nav-second-level -->
                         <!-- /.
                         <li>
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Filter Location<span class="fa arrow rotate"></span></a>
@@ -1458,722 +1378,676 @@ function dateFilter() {
                 <div class="container-fluid">
                     <div class="row">
                         <form action="<?php echo htmlspecialchars( $_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="modal-subheader">
-                            <h4>General Info</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
-                            <label class="control-label " for="encoder">Encoder</label>
-                            <input class="form-control" id="encoder" name="encoder" placeholder="P01 Juan Dela Cruz" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
-                            <label class="control-label " for="source">Source</label>
-                            <select class="form-control" id="selector" name="source">
-                                <option value="">Choose Source</option>
-                                <option value="Blotter">Blotter</option>
-                                <option value="WCPD Blotter">WCPD Blotter</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4" id="datepicker">
-                            <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
-                            <label class="control-label " for="datereptd">Date Reported</label>
-                            <input class="form-control" id="datereptd" name="datereptd"/>
-                        </div>
-                        <div class="form-group col-md-4" id="datepicker">
-                            <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
-                            <label class="control-label " for="datecomtd">Date Committed</label>
-                            <input class="form-control" id="date" name="date" />
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
-                            <label class="control-label " for="daycomtd">Day Committed</label>
-                            <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
-                            <select class="form-control" id="selector" name="day">
-                                <option value="">Choose Day</option>
-                                <option value="Sunday">Sunday</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
-                            <label class="control-label " for="timecomtd">Time Committed</label>
-                            <input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
-                            <label class="control-label " for="entryno">Entry No.</label>
-                            <input class="form-control" id="entryno" name="entryno" placeholder="0123" type="text"/>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
-                            <label class="control-label " for="ppo">PPO</label>
-                            <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
-                            <select class="form-control" id="selector" name="ppo">
-                                <option value="">Choose PPO</option>
-                                <option value="BOHOL">BOHOL</option>
-                                <option value="CEBU">CEBU</option>
-                                <option value="CEBU_CITY">CEBU_CITY</option>
-                                <option value="LAPULAPU_CITY">LAPULAPU_CITY</option>
-                                <option value="MANDAUE_CITY">MANDAUE_CITY</option>
-                                <option value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
-                                <option value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
-                            <label class="control-label " for="unitstation">Unit/Station</label>
-                            <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
-                            <select class="form-control" id="selector" name="unitstation">
-                                <option value="">Choose UNIT/STATION</option>
-                                <option value="STATION1_CENTRO">STATION1_CENTRO</option>
-                                <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
-                                <option value="STATION3_BASAK">STATION3_BASAK</option>
-                                <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
-                                <option value="STATION5_OPAO">STATION5_OPAO</option>
-                                <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
-                                <option value="MCPO_WCPD">MCPO_WCPD</option>
-                                <option value="MCPO_TRS">MCPO_TRS</option>
-                                <option value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
-                                <option value="MCPO_TPU">MCPO_TPU</option>
-                                <option value="MCPO_CIB">MCPO_CIB</option>
-                                <option value="MCPO_IDMB">MCPO_IDMB</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
-                            <label class="control-label " for="areaofincident">Area of Incident</label>
-                            <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
-                            <select class="form-control" id="selector" name="areaofincident">
-                                <option value="">Choose AREAOFINCIDENT</option>
-                                <option value="STATION1_PARIAN">STATION1_PARIAN</option>
-                                <option value="STATION2_FUENTE">STATION2_FUENTE</option>
-                                <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
-                                <option value="STATION4_MABOLO">STATION4_MABOLO</option>
-                                <option value="STATION5_CARBON">STATION5_CARBON</option>
-                                <option value="STATION6_PASIL">STATION6_PASIL</option>
-                                <option value="STATION7_PARDO">STATION7_PARDO</option>
-                                <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
-                                <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
-                                <option value="STATION10_PUNTA">STATION10_PUNTA</option>
-                                <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
-                                <option value="STATION1_CENTRO">STATION1_CENTRO</option>
-                                <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
-                                <option value="STATION3_BASAK">STATION3_BASAK</option>
-                                <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
-                                <option value="STATION5_OPAO">STATION5_OPAO</option>
-                                <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
-                                <option value="STATION1_OLANGO">STATION1_OLANGO</option>
-                                <option value="STATION2_MACTAN">STATION2_MACTAN</option>
-                                <option value="STATION3_GUNOB">STATION3_GUNOB</option>
-                                <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
-                                <option value="STATION5_PUSOK">STATION5_PUSOK</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $barangayError; ?></small>-->
-                            <label class="control-label " for="barangay">Barangay</label>
-                            <input class="form-control" id="barangay" name="barangay" placeholder='i.e. "Pasil," "Tisa"' type="text"/>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <!--<small class="text-danger">* <?php echo $streetError; ?></small>-->
-                            <label class="control-label " for="street">Building/House No/Street/Sitio</label>
-                            <input class="form-control" id="street" name="street" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $latitudeError; ?></small>-->
-                            <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
-                            <input class="form-control" id="latitude" name="latitude" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $longitudeError; ?></small>-->
-                            <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
-                            <input class="form-control" id="longitude" name="longitude" type="text"/>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <div>
-                                <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="open-map" role="button">Open Map</a>
+                            <div class="modal-subheader">
+                                <h4>General Info</h4>
                             </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
-                            <label class="control-label " for="crimetype">Crime Type</label>
-                            <select class="form-control" id="selector" name="crimetype">
-                                <option value="">Choose Crime Type</option>
-                                <option value="INDEX CRIME">INDEX CRIME</option>
-                                <option value="NON-INDEX CRIME">NON-INDEX CRIME</option>
-                                <option value="CEBU_CITY">CEBU_CITY</option>
-                                <option value="ORDINANCE">ORDINANCE</option>
-                                <option value="OTHERINCIDENTS(Non Crime)">OTHERINCIDENTS(Non Crime)</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $indexcrimetypeError; ?></small>-->
-                            <label class="control-label " for="indexcrimetype">Index Crime Type</label>
-                            <select class="form-control" id="selector" name="indexcrimetype">
-                                <option value="">Choose Index Crime Type</option>
-                                <option value="ICrime Against Property">Crime Against Property</option>
-                                <option value="Crime Against Person">Crime Against Person</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $crimecategoryError; ?></small>-->
-                            <label class="control-label " for="crimecategory">Crime Category</label>
-                            <select class="form-control" id="selector" name="crimecategory">
-                                <option value="">Choose Crime Category</option>
-                                <option value="MURDER">MURDER</option>
-                                <option value="HOMICIDE">HOMICIDE</option>
-                                <option value="PHYSICALINJURIES">PHYSICALINJURIES</option>
-                                <option value="RAPE">RAPE</option>
-                                <option value="ROBBERY">ROBBERY</option>
-                                <option value="THEFT">THEFT</option>
-                                <option value="CARNAPPING">CARNAPPING</option>
-                                <option value="CATTLERUSTLING">CATTLERUSTLING</option>
-                                <option value="SPECIALLAWS">SPECIALLAWS</option>
-                                <option value="OTHERNONINDEX">OTHERNONINDEX</option>
-                                <option value="ORDINANCES">ORDINANCES</option>
-                                <option value="OTHERINCIDENTS">OTHERINCIDENTS</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="classification">Classification</label>
-                            <input class="form-control" id="classification" name="classification" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="modeofcommission">Mode of Commission</label>
-                            <input class="form-control" id="modeofcommission" name="modeofcommission" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="streetcrime">Street Crime</label>
-                            <input class="form-control" id="streetcrime" name="streetcrime" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="involveminor">Involve Minor?</label>
-                            <input class="form-control" id="involveminor" name="involveminor" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="specialcase">Special Case</label>
-                            <input class="form-control" id="specialcase" name="specialcase" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Weapon Info</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="weaponused">Weapon(s) Used</label>
-                            <input class="form-control" id="weaponused" name="weaponused" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="facaliber">Firearm Caliber</label>
-                            <input class="form-control" id="facaliber" name="facaliber" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="fastatus">Firearm Status</label>
-                            <input class="form-control" id="fastatus" name="fastatus" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="falicenseno">Firearm License Number</label>
-                            <input class="form-control" id="falicenseno" name="falicenseno" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="crsfirearms">C-R-S Firearms</label>
-                            <input class="form-control" id="crsfirearms" name="crsfirearms" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="fadisposition">Firearm Disposition</label>
-                            <input class="form-control" id="fadisposition" name="fadisposition" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Transportation Info</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="transport">Transport</label>
-                            <input class="form-control" id="transport" name="transport" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="motorcycleridingcriminals">Motorcycle Riding Criminals</label>
-                            <input class="form-control" id="motorcycleridingcriminals" name="motorcycleridingcriminals" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="driversuspect">Driver Suspect</label>
-                            <input class="form-control" id="driversuspect" name="driversuspect" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="vehowner">Vehicle Owner</label>
-                            <input class="form-control" id="vehowner" name="vehowner" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="vehtype">Vehicle Type</label>
-                            <input class="form-control" id="vehtype" name="vehtype" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="vehplatenum">Vehicle Plate Number</label>
-                            <input class="form-control" id="vehplatenum" name="vehplatenum" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Drug Use Info</h4>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="drugs">Drugs</label>
-                            <input class="form-control" id="drugs" name="drugs" type="text"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="drugconfiscateditem">Drug Confiscated Item</label>
-                            <input class="form-control" id="drugconfiscateditem" name="drugconfiscateditem" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Gambling Info</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="gambling">Gambling</label>
-                            <input class="form-control" id="gambling" name="gambling" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="gamblingconfiscateditem">Gambling Confiscated Item</label>
-                            <input class="form-control" id="gamblingconfiscateditem" name="gamblingconfiscateditem" type="text"/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="gamblingamountconfiscated">Gambling Amount Confiscated</label>
-                            <input class="form-control" id="gamblingamountconfiscated" name="gamblingamountconfiscated" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Carnapping Info</h4>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="rec_unrec">Recovered/Unrecovered</label>
-                            <input class="form-control" id="rec_unrec" name="rec_unrec" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Robbery Info</h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="robberytype">Robbery Type</label>
-                            <input class="form-control" id="robberytype" name="robberytype" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="bankrobberyamount">Bank Robbery Amount</label>
-                            <input class="form-control" id="bankrobberyamount" name="bankrobberyamount" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="establishmenttype">Establishment Type</label>
-                            <input class="form-control" id="establishmenttype" name="establishmenttype" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="establishmentname">Establishment Name</label>
-                            <input class="form-control" id="establishmentname" name="establishmentname" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Case Info</h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="casestatus">Case Status</label>
-                            <input class="form-control" id="casestatus" name="casestatus" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="solved">Solved?</label>
-                            <input class="form-control" id="solved" name="solved" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="cleared">Cleared?</label>
-                            <input class="form-control" id="cleared" name="cleared" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="uncleared_unsolved">Uncleared/Unsolved</label>
-                            <input class="form-control" id="uncleared_unsolved" name="uncleared_unsolved" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="arrest">Arrest</label>
-                            <input class="form-control" id="arrest" name="arrest" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="numarrested">No. of Arrested Suspect(s)</label>
-                            <input class="form-control" id="numarrested" name="numarrested" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="datefiled">Date Filed</label>
-                            <input class="form-control" id="datefiled" name="datefiled" />
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="iscasenum">IS/Case Number</label>
-                            <input class="form-control" id="iscasenum" name="iscasenum" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Victim Info</h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="numvictim">Number of Victims</label>
-                            <input class="form-control" id="numvictim" name="numvictim" type="text"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="namevictim">Victim Name</label>
-                            <input class="form-control" id="namevictim" name="namevictim" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="addressvictim">Victim Address</label>
-                            <input class="form-control" id="addressvictim" name="addressvictim" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimoccupation">Victim Occupation</label>
-                            <input class="form-control" id="victimoccupation" name="victimoccupation" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimoccupationagency">Victim Occupation Agency</label>
-                            <input class="form-control" id="victimoccupationagency" name="victimoccupationagency" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimage">Victim Age</label>
-                            <input class="form-control" id="victimage" name="victimage" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimagegroup">Victim Age Group</label>
-                            <input class="form-control" id="victimagegroup" name="victimagegroup" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimsex">Victim Sex</label>
-                            <input class="form-control" id="victimsex" name="victimsex" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimcs">Victim Civil Status</label>
-                            <input class="form-control" id="victimcs" name="victimcs" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimtourist">Victim a Tourist?</label>
-                            <input class="form-control" id="victimtourist" name="victimtourist" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimnationality">Victim Nationality</label>
-                            <input class="form-control" id="victimnationality" name="victimnationality" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimethnicity">Victim Ethnicity</label>
-                            <input class="form-control" id="victimethnicity" name="victimethnicity" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimdefect">Victim Defect</label>
-                            <input class="form-control" id="victimdefect" name="victimdefect" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimstatus">Victim Status</label>
-                            <input class="form-control" id="victimstatus" name="victimstatus" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="victimdrugalcohol">Victim Drug/Alcohol Use</label>
-                            <input class="form-control" id="victimdrugalcohol" name="victimdrugalcohol" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Suspect Info</h4>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="numsuspect">Number of Suspect(s)</label>
-                            <input class="form-control" id="numsuspect" name="numsuspect" type="text"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="namesuspect">Suspect Name</label>
-                            <input class="form-control" id="namesuspect" name="namesuspect" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="addresssuspect">Suspect Address</label>
-                            <input class="form-control" id="addresssuspect" name="addresssuspect" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectbirthplace">Victim Birthplace</label>
-                            <input class="form-control" id="suspectbirthplace" name="suspectbirthplace" type="text"/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectdistinctmark">Suspect Distinct Mark</label>
-                            <input class="form-control" id="suspectdistinctmark" name="suspectdistinctmark" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectsex">Suspect Sex</label>
-                            <input class="form-control" id="suspectsex" name="suspectsex" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectcs">Suspect Civil Status</label>
-                            <input class="form-control" id="suspectcs" name="suspectcs" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectheight">Suspect Height</label>
-                            <input class="form-control" id="suspectheight" name="suspectheight" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectweight">Suspect Weight</label>
-                            <input class="form-control" id="suspectweight" name="suspectweight" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectbday">Suspect Birth Date</label>
-                            <input class="form-control" id="suspectbday" name="suspectbday"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectage">Suspect Age</label>
-                            <input class="form-control" id="suspectage" name="suspectage" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspecthaircolor">Suspect Hair Color</label>
-                            <input class="form-control" id="suspecthaircolor" name="suspecthaircolor" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectoccupation">Suspect Occupation</label>
-                            <input class="form-control" id="suspectoccupation" name="suspectoccupation" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectoccupationagency">Suspect Occupation Agency</label>
-                            <input class="form-control" id="suspectoccupationagency" name="suspectoccupationagency" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectnationality">Suspect Nationality</label>
-                            <input class="form-control" id="suspectnationality" name="suspectnationality" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectethnicity">Suspect Ethnicity</label>
-                            <input class="form-control" id="suspectethnicity" name="suspectethnicity" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectforeigner">Suspect a Foreigner?</label>
-                            <input class="form-control" id="suspectforeigner" name="suspectforeigner" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectgang">Suspect Gang</label>
-                            <input class="form-control" id="suspectgang" name="suspectgang" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectprevcriminal">Suspect Previous Criminal</label>
-                            <input class="form-control" id="suspectprevcriminal" name="suspectprevcriminal" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectpnpmember">Suspect PNP Member</label>
-                            <input class="form-control" id="suspectpnpmember" name="suspectpnpmember" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectdrugalcohol">Suspect Drug/Alcohol Use</label>
-                            <input class="form-control" id="suspectdrugalcohol" name="suspectdrugalcohol" type="text"/>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="suspectdisposition">Suspect Disposition</label>
-                            <input class="form-control" id="suspectdisposition" name="suspectdisposition" type="text"/>
-                        </div>
-                        <div class="modal-subheader">
-                            <h4>Entry Info</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="investigator">Investigator</label>
-                            <input class="form-control" id="investigator" name="investigator" type="text"/>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="narrative">Narrative</label>
-                            <input class="form-control" id="narrative" name="narrative" type="text"/>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
-                            <label class="control-label " for="progressreport">Progress Report</label>
-                            <input class="form-control" id="progressreport" name="progressreport" type="text"/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div>
-                                <input style="display:none" type="text"/>
-                                <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
+                                <label class="control-label " for="encoder">Encoder</label>
+                                <input class="form-control" id="encoder" name="encoder" placeholder="P01 Juan Dela Cruz" type="text"/>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
+                                <label class="control-label " for="source">Source</label>
+                                <select class="form-control" id="selector" name="source">
+                                    <option value="">Choose Source</option>
+                                    <option value="Blotter">Blotter</option>
+                                    <option value="WCPD Blotter">WCPD Blotter</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4" id="datepicker">
+                                <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
+                                <label class="control-label " for="datereptd">Date Reported</label>
+                                <input class="form-control" id="datereptd" name="datereptd"/>
+                            </div>
+                            <div class="form-group col-md-4" id="datepicker">
+                                <!--<small class="text-danger">* <?php echo $dateError; ?></small>-->
+                                <label class="control-label " for="datecomtd">Date Committed</label>
+                                <input class="form-control" id="date" name="date" />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $dayError; ?></small>-->
+                                <label class="control-label " for="daycomtd">Day Committed</label>
+                                <!--<input class="form-control" id="day" name="day" placeholder='i.e. "Monday"' type="text"/>-->
+                                <select class="form-control" id="selector" name="day">
+                                    <option value="">Choose Day</option>
+                                    <option value="Sunday">Sunday</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
+                                <label class="control-label " for="timecomtd">Time Committed</label>
+                                <input class="form-control" id="time" name="time" placeholder='i.e. "11:00 AM"' type="text"/>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
+                                <label class="control-label " for="entryno">Entry No.</label>
+                                <input class="form-control" id="entryno" name="entryno" placeholder="0123" type="text"/>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <!--<small class="text-danger">* <?php echo $timeError; ?></small>-->
+                                <label class="control-label " for="ppo">PPO</label>
+                                <!--<input class="form-control" id="ppo" name="ppo" placeholder="CEBU_CITY" type="text"/>-->
+                                <select class="form-control" id="selector" name="ppo">
+                                    <option value="">Choose PPO</option>
+                                    <option value="BOHOL">BOHOL</option>
+                                    <option value="CEBU">CEBU</option>
+                                    <option value="CEBU_CITY">CEBU_CITY</option>
+                                    <option value="LAPULAPU_CITY">LAPULAPU_CITY</option>
+                                    <option value="MANDAUE_CITY">MANDAUE_CITY</option>
+                                    <option value="NEGROS_ORIENTAL">NEGROS_ORIENTAL</option>
+                                    <option value="SIQUIJOR_PROV">SIGUIJOR_PROV</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
+                                <label class="control-label " for="unitstation">Unit/Station</label>
+                                <!--<input class="form-control" id="unitstation" name="unitstation" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                                <select class="form-control" id="selector" name="unitstation">
+                                    <option value="">Choose UNIT/STATION</option>
+                                    <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                    <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                    <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                    <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                    <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                    <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                    <option value="MCPO_WCPD">MCPO_WCPD</option>
+                                    <option value="MCPO_TRS">MCPO_TRS</option>
+                                    <option value="MCPO_HOMICIDE">MCPO_HOMICIDE</option>
+                                    <option value="MCPO_TPU">MCPO_TPU</option>
+                                    <option value="MCPO_CIB">MCPO_CIB</option>
+                                    <option value="MCPO_IDMB">MCPO_IDMB</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $areaofincidentError; ?></small>-->
+                                <label class="control-label " for="areaofincident">Area of Incident</label>
+                                <!--<input class="form-control" id="areaofincident" name="areaofincident" placeholder='i.e. "STATION1_PARIAN"' type="text"/>-->
+                                <select class="form-control" id="selector" name="areaofincident">
+                                    <option value="">Choose AREAOFINCIDENT</option>
+                                    <option value="STATION1_PARIAN">STATION1_PARIAN</option>
+                                    <option value="STATION2_FUENTE">STATION2_FUENTE</option>
+                                    <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
+                                    <option value="STATION4_MABOLO">STATION4_MABOLO</option>
+                                    <option value="STATION5_CARBON">STATION5_CARBON</option>
+                                    <option value="STATION6_PASIL">STATION6_PASIL</option>
+                                    <option value="STATION7_PARDO">STATION7_PARDO</option>
+                                    <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
+                                    <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
+                                    <option value="STATION10_PUNTA">STATION10_PUNTA</option>
+                                    <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
+                                    <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                    <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                    <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                    <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                    <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                    <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                    <option value="STATION1_OLANGO">STATION1_OLANGO</option>
+                                    <option value="STATION2_MACTAN">STATION2_MACTAN</option>
+                                    <option value="STATION3_GUNOB">STATION3_GUNOB</option>
+                                    <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
+                                    <option value="STATION5_PUSOK">STATION5_PUSOK</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $barangayError; ?></small>-->
+                                <label class="control-label " for="barangay">Barangay</label>
+                                <input class="form-control" id="barangay" name="barangay" placeholder='i.e. "Pasil," "Tisa"' type="text"/>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <!--<small class="text-danger">* <?php echo $streetError; ?></small>-->
+                                <label class="control-label " for="street">Building/House No/Street/Sitio</label>
+                                <input class="form-control" id="street" name="street" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $latitudeError; ?></small>-->
+                                <label class="control-label " for="latitude">Latitudinal Coordinates (X)</label>
+                                <input class="form-control" id="latitude" name="latitude" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $longitudeError; ?></small>-->
+                                <label class="control-label " for="longitude">Longitudinal Coordinates (Y)</label>
+                                <input class="form-control" id="longitude" name="longitude" type="text"/>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <div>
+                                    <a href="#map-picker" data-toggle="modal" class="btn btn-md btn-primary" id="open-map" role="button">Open Map</a>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $crimetypeError; ?></small>-->
+                                <label class="control-label " for="crimetype">Crime Type</label>
+                                <select class="form-control" id="selector" name="crimetype">
+                                    <option value="">Choose Crime Type</option>
+                                    <option value="INDEX CRIME">INDEX CRIME</option>
+                                    <option value="NON-INDEX CRIME">NON-INDEX CRIME</option>
+                                    <option value="CEBU_CITY">CEBU_CITY</option>
+                                    <option value="ORDINANCE">ORDINANCE</option>
+                                    <option value="OTHERINCIDENTS(Non Crime)">OTHERINCIDENTS(Non Crime)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $indexcrimetypeError; ?></small>-->
+                                <label class="control-label " for="indexcrimetype">Index Crime Type</label>
+                                <select class="form-control" id="selector" name="indexcrimetype">
+                                    <option value="">Choose Index Crime Type</option>
+                                    <option value="ICrime Against Property">Crime Against Property</option>
+                                    <option value="Crime Against Person">Crime Against Person</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $crimecategoryError; ?></small>-->
+                                <label class="control-label " for="crimecategory">Crime Category</label>
+                                <select class="form-control" id="selector" name="crimecategory">
+                                    <option value="">Choose Crime Category</option>
+                                    <option value="MURDER">MURDER</option>
+                                    <option value="HOMICIDE">HOMICIDE</option>
+                                    <option value="PHYSICALINJURIES">PHYSICALINJURIES</option>
+                                    <option value="RAPE">RAPE</option>
+                                    <option value="ROBBERY">ROBBERY</option>
+                                    <option value="THEFT">THEFT</option>
+                                    <option value="CARNAPPING">CARNAPPING</option>
+                                    <option value="CATTLERUSTLING">CATTLERUSTLING</option>
+                                    <option value="SPECIALLAWS">SPECIALLAWS</option>
+                                    <option value="OTHERNONINDEX">OTHERNONINDEX</option>
+                                    <option value="ORDINANCES">ORDINANCES</option>
+                                    <option value="OTHERINCIDENTS">OTHERINCIDENTS</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="classification">Classification</label>
+                                <input class="form-control" id="classification" name="classification" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="modeofcommission">Mode of Commission</label>
+                                <input class="form-control" id="modeofcommission" name="modeofcommission" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="streetcrime">Street Crime</label>
+                                <input class="form-control" id="streetcrime" name="streetcrime" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="involveminor">Involve Minor?</label>
+                                <input class="form-control" id="involveminor" name="involveminor" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="specialcase">Special Case</label>
+                                <input class="form-control" id="specialcase" name="specialcase" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Weapon Info</h4>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="weaponused">Weapon(s) Used</label>
+                                <input class="form-control" id="weaponused" name="weaponused" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="facaliber">Firearm Caliber</label>
+                                <input class="form-control" id="facaliber" name="facaliber" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="fastatus">Firearm Status</label>
+                                <input class="form-control" id="fastatus" name="fastatus" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="falicenseno">Firearm License Number</label>
+                                <input class="form-control" id="falicenseno" name="falicenseno" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="crsfirearms">C-R-S Firearms</label>
+                                <input class="form-control" id="crsfirearms" name="crsfirearms" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="fadisposition">Firearm Disposition</label>
+                                <input class="form-control" id="fadisposition" name="fadisposition" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Transportation Info</h4>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="transport">Transport</label>
+                                <input class="form-control" id="transport" name="transport" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="motorcycleridingcriminals">Motorcycle Riding Criminals</label>
+                                <input class="form-control" id="motorcycleridingcriminals" name="motorcycleridingcriminals" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="driversuspect">Driver Suspect</label>
+                                <input class="form-control" id="driversuspect" name="driversuspect" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="vehowner">Vehicle Owner</label>
+                                <input class="form-control" id="vehowner" name="vehowner" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="vehtype">Vehicle Type</label>
+                                <input class="form-control" id="vehtype" name="vehtype" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="vehplatenum">Vehicle Plate Number</label>
+                                <input class="form-control" id="vehplatenum" name="vehplatenum" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Drug Use Info</h4>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="drugs">Drugs</label>
+                                <input class="form-control" id="drugs" name="drugs" type="text"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="drugconfiscateditem">Drug Confiscated Item</label>
+                                <input class="form-control" id="drugconfiscateditem" name="drugconfiscateditem" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Gambling Info</h4>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="gambling">Gambling</label>
+                                <input class="form-control" id="gambling" name="gambling" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="gamblingconfiscateditem">Gambling Confiscated Item</label>
+                                <input class="form-control" id="gamblingconfiscateditem" name="gamblingconfiscateditem" type="text"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="gamblingamountconfiscated">Gambling Amount Confiscated</label>
+                                <input class="form-control" id="gamblingamountconfiscated" name="gamblingamountconfiscated" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Carnapping Info</h4>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="rec_unrec">Recovered/Unrecovered</label>
+                                <input class="form-control" id="rec_unrec" name="rec_unrec" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Robbery Info</h4>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="robberytype">Robbery Type</label>
+                                <input class="form-control" id="robberytype" name="robberytype" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="bankrobberyamount">Bank Robbery Amount</label>
+                                <input class="form-control" id="bankrobberyamount" name="bankrobberyamount" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="establishmenttype">Establishment Type</label>
+                                <input class="form-control" id="establishmenttype" name="establishmenttype" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="establishmentname">Establishment Name</label>
+                                <input class="form-control" id="establishmentname" name="establishmentname" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Case Info</h4>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="casestatus">Case Status</label>
+                                <input class="form-control" id="casestatus" name="casestatus" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="solved">Solved?</label>
+                                <input class="form-control" id="solved" name="solved" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="cleared">Cleared?</label>
+                                <input class="form-control" id="cleared" name="cleared" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="uncleared_unsolved">Uncleared/Unsolved</label>
+                                <input class="form-control" id="uncleared_unsolved" name="uncleared_unsolved" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="arrest">Arrest</label>
+                                <input class="form-control" id="arrest" name="arrest" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="numarrested">No. of Arrested Suspect(s)</label>
+                                <input class="form-control" id="numarrested" name="numarrested" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="datefiled">Date Filed</label>
+                                <input class="form-control" id="datefiled" name="datefiled" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="iscasenum">IS/Case Number</label>
+                                <input class="form-control" id="iscasenum" name="iscasenum" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Victim Info</h4>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="numvictim">Number of Victims</label>
+                                <input class="form-control" id="numvictim" name="numvictim" type="text"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="namevictim">Victim Name</label>
+                                <input class="form-control" id="namevictim" name="namevictim" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="addressvictim">Victim Address</label>
+                                <input class="form-control" id="addressvictim" name="addressvictim" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimoccupation">Victim Occupation</label>
+                                <input class="form-control" id="victimoccupation" name="victimoccupation" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimoccupationagency">Victim Occupation Agency</label>
+                                <input class="form-control" id="victimoccupationagency" name="victimoccupationagency" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimage">Victim Age</label>
+                                <input class="form-control" id="victimage" name="victimage" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimagegroup">Victim Age Group</label>
+                                <input class="form-control" id="victimagegroup" name="victimagegroup" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimsex">Victim Sex</label>
+                                <input class="form-control" id="victimsex" name="victimsex" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimcs">Victim Civil Status</label>
+                                <input class="form-control" id="victimcs" name="victimcs" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimtourist">Victim a Tourist?</label>
+                                <input class="form-control" id="victimtourist" name="victimtourist" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimnationality">Victim Nationality</label>
+                                <input class="form-control" id="victimnationality" name="victimnationality" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimethnicity">Victim Ethnicity</label>
+                                <input class="form-control" id="victimethnicity" name="victimethnicity" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimdefect">Victim Defect</label>
+                                <input class="form-control" id="victimdefect" name="victimdefect" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimstatus">Victim Status</label>
+                                <input class="form-control" id="victimstatus" name="victimstatus" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="victimdrugalcohol">Victim Drug/Alcohol Use</label>
+                                <input class="form-control" id="victimdrugalcohol" name="victimdrugalcohol" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Suspect Info</h4>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="numsuspect">Number of Suspect(s)</label>
+                                <input class="form-control" id="numsuspect" name="numsuspect" type="text"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="namesuspect">Suspect Name</label>
+                                <input class="form-control" id="namesuspect" name="namesuspect" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="addresssuspect">Suspect Address</label>
+                                <input class="form-control" id="addresssuspect" name="addresssuspect" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectbirthplace">Victim Birthplace</label>
+                                <input class="form-control" id="suspectbirthplace" name="suspectbirthplace" type="text"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectdistinctmark">Suspect Distinct Mark</label>
+                                <input class="form-control" id="suspectdistinctmark" name="suspectdistinctmark" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectsex">Suspect Sex</label>
+                                <input class="form-control" id="suspectsex" name="suspectsex" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectcs">Suspect Civil Status</label>
+                                <input class="form-control" id="suspectcs" name="suspectcs" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectheight">Suspect Height</label>
+                                <input class="form-control" id="suspectheight" name="suspectheight" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectweight">Suspect Weight</label>
+                                <input class="form-control" id="suspectweight" name="suspectweight" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectbday">Suspect Birth Date</label>
+                                <input class="form-control" id="suspectbday" name="suspectbday"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectage">Suspect Age</label>
+                                <input class="form-control" id="suspectage" name="suspectage" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspecthaircolor">Suspect Hair Color</label>
+                                <input class="form-control" id="suspecthaircolor" name="suspecthaircolor" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectoccupation">Suspect Occupation</label>
+                                <input class="form-control" id="suspectoccupation" name="suspectoccupation" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectoccupationagency">Suspect Occupation Agency</label>
+                                <input class="form-control" id="suspectoccupationagency" name="suspectoccupationagency" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectnationality">Suspect Nationality</label>
+                                <input class="form-control" id="suspectnationality" name="suspectnationality" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectethnicity">Suspect Ethnicity</label>
+                                <input class="form-control" id="suspectethnicity" name="suspectethnicity" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectforeigner">Suspect a Foreigner?</label>
+                                <input class="form-control" id="suspectforeigner" name="suspectforeigner" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectgang">Suspect Gang</label>
+                                <input class="form-control" id="suspectgang" name="suspectgang" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectprevcriminal">Suspect Previous Criminal</label>
+                                <input class="form-control" id="suspectprevcriminal" name="suspectprevcriminal" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectpnpmember">Suspect PNP Member</label>
+                                <input class="form-control" id="suspectpnpmember" name="suspectpnpmember" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectdrugalcohol">Suspect Drug/Alcohol Use</label>
+                                <input class="form-control" id="suspectdrugalcohol" name="suspectdrugalcohol" type="text"/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="suspectdisposition">Suspect Disposition</label>
+                                <input class="form-control" id="suspectdisposition" name="suspectdisposition" type="text"/>
+                            </div>
+                            <div class="modal-subheader">
+                                <h4>Entry Info</h4>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="investigator">Investigator</label>
+                                <input class="form-control" id="investigator" name="investigator" type="text"/>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="narrative">Narrative</label>
+                                <input class="form-control" id="narrative" name="narrative" type="text"/>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <!--<small class="text-danger">* <?php echo $classificationError; ?></small>-->
+                                <label class="control-label " for="progressreport">Progress Report</label>
+                                <input class="form-control" id="progressreport" name="progressreport" type="text"/>
+                            </div>
 
-    <!-- End of Crime Entry modal -->
-
-    <div class="modal fade" id="map-picker" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div id="map_canvas2"></div>
+                            <div class="form-group">
+                                <div>
+                                    <input style="display:none" type="text"/>
+                                    <button class="btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+                                    <button class="btn btn-default btn-lg" data-dismiss="modal" data-number="1">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-primary">Done</a>  
-            </div>
         </div>
-        <!-- /.modal-content -->
+
+        <!-- End of Crime Entry modal -->
+
+        <div class="modal fade" id="map-picker">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div id="map_canvas2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-lg" data-number="2">Done</button>  
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
     </div>
-    <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
 
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-</div>
+    <!-- Morris Charts JavaScript -->
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../js/morris-data.js"></script>
 
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/highlight.js"></script>
+    <script src="../dist/js/main.js"></script>
 
+    <script type="text/javascript">
+    $('#map-picker').on('shown.bs.modal', function () {
+        google.maps.event.trigger(map2, "resize");
+    });
+    </script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script type="text/javascript">
+    $("button[data-number=1]").click(function(){
+        $('#form-entry').modal('hide');
+    });
 
-<!-- Morris Charts JavaScript -->
-<script src="../bower_components/raphael/raphael-min.js"></script>
-<script src="../bower_components/morrisjs/morris.min.js"></script>
-<script src="../js/morris-data.js"></script>
+    $("button[data-number=2]").click(function(){
+        $('#map-picker').modal('hide');
+    });
+    </script>
 
-<!-- Custom Theme JavaScript -->
-<script src="../dist/js/sb-admin-2.js"></script>
-<script src="../dist/js/highlight.js"></script>
-<script src="../dist/js/main.js"></script>
+    <script>
+    $('.fa.arrow').on('click', function() {
+        $(this).closest('a').next('.nav').slideToggle();
+    });
+    </script>
 
-<script type="text/javascript">
-$('#map-picker').on('shown.bs.modal', function () {
-    google.maps.event.trigger(map2, "resize");
-});
-</script>
+    <script>
+    $('.rotate').click(function(){
+        $(this).toggleClass("down")  ; 
+    })
+    </script>
 
-<!--<script type="text/javascript">
-$('#openBtn').click(function(){
-    $('#form-entry').modal({show:true})
-});
-</script>-->
-
-<script type='text/javascript'>
-$(document).ready(function() {
-    $('#openBtn').click(function(){
-    $('#form-entry').modal({show:true})
-});
-
-
-$('.modal').on('hidden.bs.modal', function( event ) {
-                $(this).removeClass( 'fv-modal-stack' );
-                $('body').data( 'fv_open_modals', $('body').data( 'fv_open_modals' ) - 1 );
-                });
-
-
-$( '.modal' ).on( 'shown.bs.modal', function ( event ) {
-                   
-                   // keep track of the number of open modals
-                   
-                   if ( typeof( $('body').data( 'fv_open_modals' ) ) == 'undefined' )
-                   {
-                     $('body').data( 'fv_open_modals', 0 );
-                   }
-                   
-                     
-                   // if the z-index of this modal has been set, ignore.
-                        
-                if ( $(this).hasClass( 'fv-modal-stack' ) )
-                        {
-                        return;
-                        }
-                   
-                $(this).addClass( 'fv-modal-stack' );
-
-                $('body').data( 'fv_open_modals', $('body').data( 'fv_open_modals' ) + 1 );
-
-                $(this).css('z-index', 1040 + (10 * $('body').data( 'fv_open_modals' )));
-
-                $( '.modal-backdrop' ).not( '.fv-modal-stack' )
-                        .css( 'z-index', 1039 + (10 * $('body').data( 'fv_open_modals' )));
-
-
-                $( '.modal-backdrop' ).not( 'fv-modal-stack' )
-                        .addClass( 'fv-modal-stack' ); 
-
-                 });
-
-        
-        });
-</script>
-
-<script>
-$('.fa.arrow').on('click', function() {
-    $(this).closest('a').next('.nav').slideToggle();
-});
-</script>
-
-<script>
-$('.rotate').click(function(){
-    $(this).toggleClass("down")  ; 
-})
-</script>
-
-<script type="text/javascript">
-$(".checkbox").click(function(){
-    var cat = $(this).attr("value");    
+    <script type="text/javascript">
+    $(".checkbox").click(function(){
+        var cat = $(this).attr("value");    
             // If checked
             if ($(this).is(":checked"))
             {
@@ -2184,61 +2058,25 @@ $(".checkbox").click(function(){
                 hide(cat);
             }
         });
-</script>
+    </script>
 
-<!-- Singe Datepicker-->
-<script type="text/javascript">
+    <!-- Singe Datepicker-->
+    <script type="text/javascript">
     $('#datereptd,#date,#datefiled,#suspectbday').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true
     });
-</script>
+    </script>
 
-<!-- Daterange Picker -->
-<script type="text/javascript">
+    <!-- Daterange Picker -->
+    <script type="text/javascript">
     $('#daterange').daterangepicker({
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
       console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-    });
-
-    //var date_from = $('#daterange').data('startDate');
-    //var date_to = $('#daterange').data('endDate');
-</script>
-
-
-
-<!--
-<script type="text/javascript">
-$(function() {
-    $('#daterange').daterangepicker();
-});
-</script>-->
-
-<!--
-<script type="text/javascript">
-$(function() {
-
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-    }
-    cb(moment().subtract(29, 'days'), moment());
-
-    $('#reportrange').daterangepicker({
-        ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
-
-});
-</script>
--->
+  });
+    </script>
 
 </body>
 </html>
