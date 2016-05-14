@@ -719,7 +719,8 @@ mysqli_close($connection);
     var markers = [];
     var map;
     var map2;
-
+    var start_date;
+    var end_date;
 
     var customMapType = new google.maps.StyledMapType([            
     {
@@ -906,20 +907,16 @@ function hide(category) {
 }*/
 
 function showMarkers() {
-    resetMarker();
-    var date_from = moment(this.container.find('input[name="daterangepicker_start"]').val(), this.locale.format);
-    var date_to = moment(this.container.find('input[name="daterangepicker_end"]').val(), this.locale.format);
-    console.log(date_from);
-    console.log(date_to);
-    var ppo = document.getElementById('province').value;
+    //resetMarker();
+    //var date_from = document.getElementById('daterangepicker_start').value;
+    //var date_to = document.getElementById('daterangepicker_end').value;
+    console.log(start_date);
+    console.log(end_date);
     if (date_from > date_to) {
         alert('Starting date must be earlier than ending date.');
     }
         for ( var i = 0; i < gmarkers.length; i++) {
-            if ((gmarkers[i].date >= date_from && gmarkers[i].date <= date_to)
-                    && (Date.parse('20 Aug 2000 ' + gmarkers[i].time) >= time_from && Date
-                            .parse('20 Aug 2000 ' + gmarkers[i].time) <= time_to)
-                    && gmarkers[i].province == ppo) {
+            if (gmarkers[i].date >= start_date && gmarkers[i].date <= end_date) {
                 gmarker.push(gmarkers[i]);
             }
         }
@@ -2112,8 +2109,8 @@ function doNothing() {}
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-        var start_date = start.format('MM/DD/YYYY');
-        var end_date = end.format('MM/DD/YYYY');
+        start_date = start.format('MM/DD/YYYY');
+        end_date = end.format('MM/DD/YYYY');
         console.log(start_date);
       //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
