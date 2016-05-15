@@ -912,7 +912,7 @@ function showMarkers() {
     //var date_to = document.getElementById('daterangepicker_end').value;
     console.log(start_date);
     console.log(end_date);
-    if (date_from > date_to) {
+    if (start_date > end_date) {
         alert('Starting date must be earlier than ending date.');
     }
         for ( var i = 0; i < gmarkers.length; i++) {
