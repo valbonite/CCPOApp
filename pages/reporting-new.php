@@ -867,7 +867,7 @@ function load()
 
           var oldDate = markers[i].getAttribute("date");
           marker.date = stringToDate(oldDate,"mm/dd/yyyy","/");
-          console.log(marker.date);
+          //console.log(marker.date);
           marker.crimecategory = crimecategory;
           marker.time = markers[i].getAttribute("time");
           marker.address = markers[i].getAttribute("address");

@@ -715,11 +715,15 @@ mysqli_close($connection);
         STATION5_PUSOK : []
     }
 
-    var gmarkers = [], gmarker = [];   
+    var gmarkers = [], gmarker = [];
+    var maps = [];   
     var markers = [];
     var map;
     var map2;
-
+    var start_date;
+    var end_date;
+    var dateStart;
+    var dateEnd;
 
     var customMapType = new google.maps.StyledMapType([            
     {
@@ -861,13 +865,15 @@ function load()
             title: 'Click to show crime info'
         });
 
+          var oldDate = markers[i].getAttribute("date");
+          marker.date = stringToDate(oldDate,"mm/dd/yyyy","/");
+          //console.log(marker.date);
           marker.crimecategory = crimecategory;
-          marker.date = markers[i].getAttribute("date");
           marker.time = markers[i].getAttribute("time");
           marker.address = markers[i].getAttribute("address");
           gmarkers.push(marker);
 
-        if (markerGroups.hasOwnProperty(crimecategory)) {
+        /*if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
             //count++;
         } else {
@@ -879,32 +885,16 @@ function load()
             //count++;
         } else {
             doNothing();
-        }
+        }*/
         bindInfoWindow(marker, map, infowindow, html); 
     } 
 });    
     google.maps.event.addListenerOnce( map, 'idle', function() {
     });
+    console.log(gmarkers);
 }
 
-/*function checkCrime() { //Check if user checked the Checkbox
-    var crimeChecked = document.getElementsByName('crimefilter');
-    for ( var i = 0; i < gmarkers.length; i++) {
-        for ( var x = 0; x < crimeChecked.length; x++) {
-            if (crimeChecked[x].checked == true) {
-                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
-                    cr[i].setMap(map);
-                } 
-            } else {
-                if (gmarkers[i].crimecategory == crimeChecked[x].value) {
-                    gmarkers[i].setMap(null);
-                } 
-            }
-        }
-    }
-}*/
-
-function show(category) {
+/*function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
         for (var i=0; i<markersInCategory.length; i++) {
@@ -920,6 +910,76 @@ function hide(category) {
             markersInCategory[i].setVisible(false);
         }
     }
+}*/
+
+function showMarkers() {
+    resetMarker();
+    //var date_from = document.getElementById('daterangepicker_start').value;
+    //var date_to = document.getElementById('daterangepicker_end').value;
+    console.log(dateStart);
+    console.log(dateEnd);
+    if (dateStart > dateEnd) {
+        alert('Starting date must be earlier than ending date.');
+    }
+        for ( var i = 0; i < gmarkers.length; i++) {
+            if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
+                gmarker.push(gmarkers[i]);
+            }
+        }
+    checkBox();
+    checkBox2();
+    console.log(gmarker);
+}
+function checkBox() {
+    var crime_filter = document.getElementsByName('crimefilter');
+    console.log(crime_filter);
+    for ( var i = 0; i < gmarker.length; i++) {
+        for ( var x = 0; x < crime_filter.length; x++) {
+            if (crime_filter[x].checked == true) {
+                if (gmarker[i].crimecategory == crime_filter[x].value) {
+                    maps.push(gmarker[i]);
+                }
+            }
+        }
+    }
+    finalMarker();
+    console.log(maps);
+}
+
+function checkBox2() {
+    var station_filter = document.getElementsByName('stationfilter');
+    console.log(station_filter);
+    for ( var i = 0; i < gmarker.length; i++) {
+        for ( var x = 0; x < station_filter.length; x++) {
+            if (station_filter[x].checked == true) {
+                if (gmarker[i].address == station_filter[x].value) {
+                    maps.push(gmarker[i]);
+                }
+            }
+        }
+    }
+    finalMarker();
+    console.log(maps);
+}
+
+function finalMarker() {
+    var counter = 0;
+        for ( var i = 0; i < maps.length; i++) {
+            maps[i].setMap(map);
+            counter++;
+        }
+        console.log(counter);
+        document.getElementById('crimeCount').innerHTML = "Number of crimes: " + counter;
+}
+
+function resetMarker() {
+    for ( var i = 0; i < gmarkers.length; i++) {
+        gmarkers[i].setMap(null);
+    }
+    gmarker.length = 0;
+    maps.length = 0;
+    gmarker = [];
+    maps = [];
 }
 
 
@@ -946,6 +1006,19 @@ function bindInfoWindow(marker, map, infoWindow, html) {
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
 });
+}
+
+function stringToDate(date, format, delimiter){
+            var formatLowerCase=format.toLowerCase();
+            var formatItems=formatLowerCase.split(delimiter);
+            var dateItems=date.split(delimiter);
+            var monthIndex=formatItems.indexOf("mm");
+            var dayIndex=formatItems.indexOf("dd");
+            var yearIndex=formatItems.indexOf("yyyy");
+            var month=parseInt(dateItems[monthIndex]);
+            month-=1;
+            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+            return formatedDate;
 }
 
 
@@ -1183,12 +1256,14 @@ function doNothing() {}
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
                     <span></span> <b class="caret"></b>
                 </div>-->
-
-                <div class="input-group">
+                <div class="form-inline">
+                    <div class="input-group">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
+                </div>
+                    <button class="btn btn-primary" onclick="showMarkers()">Apply</button>
                 </div>
                 <!--<div class="input-group" style="position: relative">
                     <input type="text" name="birthdate" class="form-control" value="MM/DD/YYYY">
@@ -1196,7 +1271,7 @@ function doNothing() {}
                         <span class="fa fa-calendar fa-fw"></span>
                     </div>
                 </div>-->
-                <div id="counter">
+                <div id="crimeCount">
                     <h3><span></span></h3>
                 </div>
             </div>
@@ -1242,68 +1317,68 @@ function doNothing() {}
                                 <li>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER" checked> MURDER
+                                            <input class="checkbox" id="MURDER" name="crimefilter" type="checkbox" value="MURDER" onclick="showMarkers()" checked="checked"> MURDER
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT" checked> THEFT
+                                            <input class="checkbox" id="THEFT" name="crimefilter" type="checkbox" value="THEFT" onclick="showMarkers()" checked="checked"> THEFT
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" checked > ROBBERY
+                                            <input class="checkbox" id="ROBBERY" name="crimefilter" type="checkbox" value="ROBBERY" onclick="showMarkers()" checked="checked" > ROBBERY
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES"  checked> ORDINANCES
+                                            <input class="checkbox" id="ORDINANCES" name="crimefilter" type="checkbox" value="ORDINANCES"  onclick="showMarkers()" checked="checked"> ORDINANCES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING" checked> CATTLE RUSTLING
+                                            <input class="checkbox" id="CATTLERUSTLING" name="crimefilter" type="checkbox" value="CATTLERUSTLING" onclick="showMarkers()" checked="checked"> CATTLE RUSTLING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS" checked> SPECIAL LAWS
+                                            <input class="checkbox" id="SPECIALLAWS" name="crimefilter" type="checkbox" value="SPECIALLAWS" onclick="showMarkers()" checked="checked"> SPECIAL LAWS
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE" checked> HOMICIDE
+                                            <input class="checkbox" id="HOMICIDE" name="crimefilter" type="checkbox" value="HOMICIDE" onclick="showMarkers()" checked="checked"> HOMICIDE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING" checked> CARNAPPING
+                                            <input class="checkbox" id="CARNAPPING" name="crimefilter" type="checkbox" value="CARNAPPING" onclick="showMarkers()" checked="checked"> CARNAPPING
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES" checked> PHYSICAL INJURIES
+                                            <input class="checkbox" id="PHYSICALINJURIES" name="crimefilter" type="checkbox" value="PHYSICALINJURIES" onclick="showMarkers()" checked="checked"> PHYSICAL INJURIES
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE" checked> RAPE
+                                            <input class="checkbox" id="RAPE" name="crimefilter" type="checkbox" value="RAPE" onclick="showMarkers()" checked="checked"> RAPE
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX" checked> OTHER NON-INDEX
+                                            <input class="checkbox" id="OTHERNONINDEX" name="crimefilter" type="checkbox" value="OTHERNONINDEX" onclick="showMarkers()" checked="checked"> OTHER NON-INDEX
                                         </label>
                                     </div>
                                     <div class="filters">
                                         <label class="control-label " for="crimefilter">
-                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS" checked> OTHER INCIDENTS
+                                            <input class="checkbox" id="OTHERINCIDENTS" name="crimefilter" type="checkbox" value="OTHERINCIDENTS" onclick="showMarkers()" checked="checked"> OTHER INCIDENTS
                                         </label>
                                     </div>
                                 </li>
                             </ul>                          
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
                                 <div class="form-group" id="barangay-selector">
@@ -1334,7 +1409,69 @@ function doNothing() {}
                                 </select>
                             </div>
                         </ul>                          
-                    </li>
+                    </li>-->
+                    <li>
+                            <a href="#"><i class="fa fa-list fa-fw"></i> Police Station<span class="fa arrow rotate"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION1_PARIAN" name="stationfilter" type="checkbox" value="STATION1_PARIAN" onclick="showMarkers()" checked="checked"> STATION1_PARIAN
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION2_FUENTE" name="stationfilter" type="checkbox" value="STATION2_FUENTE" onclick="showMarkers()" checked="checked"> STATION2_FUENTE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION3_WATERFRONT" name="stationfilter" type="checkbox" value="STATION3_WATERFRONT" onclick="showMarkers()" checked="checked" > STATION3_WATERFRONT
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION4_MABOLO" name="stationfilter" type="checkbox" value="STATION4_MABOLO"  onclick="showMarkers()" checked="checked"> STATION4_MABOLO
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION5_CARBON" name="stationfilter" type="checkbox" value="STATION5_CARBON" onclick="showMarkers()" checked="checked"> STATION5_CARBON
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION6_PASIL" name="stationfilter" type="checkbox" value="STATION6_PASIL" onclick="showMarkers()" checked="checked"> STATION6_PASIL
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION7_PARDO" name="stationfilter" type="checkbox" value="STATION7_PARDO" onclick="showMarkers()" checked="checked"> STATION7_PARDO
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION8_TALAMBAN" name="stationfilter" type="checkbox" value="STATION8_TALAMBAN" onclick="showMarkers()" checked="checked"> STATION8_TALAMBAN
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION9_GUADALUPE" name="stationfilter" type="checkbox" value="STATION9_GUADALUPE" onclick="showMarkers()" checked="checked"> STATION9_GUADALUPE
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION10_PUNTA" name="stationfilter" type="checkbox" value="STATION10_PUNTA" onclick="showMarkers()" checked="checked"> STATION10_PUNTA
+                                        </label>
+                                    </div>
+                                    <div class="filters">
+                                        <label class="control-label " for="stationfilter">
+                                            <input class="checkbox" id="STATION11_MAMBALING" name="stationfilter" type="checkbox" value="STATION11_MAMBALING" onclick="showMarkers()" checked="checked"> STATION11_MAMBALING
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>                          
+                        </li>
                     <!-- /.nav-second-level -->
                         <!-- /.
                         <li>
@@ -2043,7 +2180,7 @@ function doNothing() {}
     })
     </script>
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     $(".checkbox").click(function(){
         var cat = $(this).attr("value");    
             // If checked
@@ -2056,7 +2193,7 @@ function doNothing() {}
                 hide(cat);
             }
         });
-    </script>
+    </script>-->
 
     <!-- Singe Datepicker-->
     <script type="text/javascript">
@@ -2073,9 +2210,12 @@ function doNothing() {}
         "startDate": "04/19/2016",
         "endDate": "04/25/2016"
     }, function(start, end, label) {
-        var start_date = start.format('MM/DD/YYYY');
-        var end_date = end.format('MM/DD/YYYY');
-        console.log(start_date);
+        start_date = start.format('MM/DD/YYYY');
+        end_date = end.format('MM/DD/YYYY');
+        dateStart = stringToDate(start_date,"mm/dd/yyyy","/");
+        dateEnd = stringToDate(end_date,"mm/dd/yyyy","/");
+        console.log(dateStart);
+        console.log(dateEnd);
       //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
     </script>
