@@ -862,15 +862,9 @@ function load()
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-
-          var stringDate = markers[i].getAttribute("date");
-          var parts = stringDate.split('/');
-          //please put attention to the month (parts[0]), Javascript counts months from 0:
-          // January - 0, February - 1, etc
-          var objectDate = new Date(parts[0]-1,parts[1],parts[2]);
-          console.log(objectDate); 
+          
           marker.crimecategory = crimecategory;
-          marker.date = objectDate;
+          marker.date = markers[i].getAttribute("date");
           marker.time = markers[i].getAttribute("time");
           marker.address = markers[i].getAttribute("address");
           gmarkers.push(marker);
