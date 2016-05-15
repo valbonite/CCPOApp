@@ -887,6 +887,7 @@ function load()
 });    
     google.maps.event.addListenerOnce( map, 'idle', function() {
     });
+    console.log(gmarkers);
 }
 
 /*function show(category) {

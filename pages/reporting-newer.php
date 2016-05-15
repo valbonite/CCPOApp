@@ -910,13 +910,13 @@ function showMarkers() {
     resetMarker();
     //var date_from = document.getElementById('daterangepicker_start').value;
     //var date_to = document.getElementById('daterangepicker_end').value;
-    console.log(date_from);
-    console.log(date_to);
+    console.log(start_date);
+    console.log(end_date);
     if (date_from > date_to) {
         alert('Starting date must be earlier than ending date.');
     }
         for ( var i = 0; i < gmarkers.length; i++) {
-            if (gmarkers[i].date >= date_from && gmarkers[i].date <= date_to) {
+            if (gmarkers[i].date >= start_date && gmarkers[i].date <= end_date) {
                 gmarker.push(gmarkers[i]);
             }
         }
