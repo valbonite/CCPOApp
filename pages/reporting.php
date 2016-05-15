@@ -870,7 +870,7 @@ function load()
           //console.log(marker.date);
           marker.crimecategory = crimecategory;
           marker.time = markers[i].getAttribute("time");
-          marker.address = markers[i].getAttribute("address");
+          marker.address = markers[i].getAttribute("areaofincident");
           gmarkers.push(marker);
 
         /*if (markerGroups.hasOwnProperty(crimecategory)) {
