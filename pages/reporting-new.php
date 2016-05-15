@@ -867,6 +867,7 @@ function load()
 
           var oldDate = markers[i].getAttribute("date");
           marker.date = stringToDate(oldDate,"mm/dd/yyyy","/");
+          console.log(marker.date);
           marker.crimecategory = crimecategory;
           marker.time = markers[i].getAttribute("time");
           marker.address = markers[i].getAttribute("address");
@@ -992,7 +993,7 @@ function bindInfoWindow(marker, map, infoWindow, html) {
 function stringToDate(date, format, delimiter){
             var formatLowerCase=format.toLowerCase();
             var formatItems=formatLowerCase.split(delimiter);
-            var dateItems=date.split(_delimiter);
+            var dateItems=date.split(delimiter);
             var monthIndex=formatItems.indexOf("mm");
             var dayIndex=formatItems.indexOf("dd");
             var yearIndex=formatItems.indexOf("yyyy");
