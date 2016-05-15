@@ -918,8 +918,6 @@ function showMarkers() {
     //var date_to = document.getElementById('daterangepicker_end').value;
     var station = document.getElementById('precinctSelector').value;
     console.log(station);
-    console.log(dateStart);
-    console.log(dateEnd);
     if (dateStart > dateEnd) {
         alert('Starting date must be earlier than ending date.');
     }
