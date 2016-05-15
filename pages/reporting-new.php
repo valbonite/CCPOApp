@@ -722,6 +722,8 @@ mysqli_close($connection);
     var map2;
     var start_date;
     var end_date;
+    var dateStart;
+    var dateEnd;
 
     var customMapType = new google.maps.StyledMapType([            
     {
@@ -862,9 +864,10 @@ function load()
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          
+
+          var oldDate = markers[i].getAttribute("date");
+          marker.date = stringToDate(oldDate,"mm/dd/yyyy","/");
           marker.crimecategory = crimecategory;
-          marker.date = markers[i].getAttribute("date");
           marker.time = markers[i].getAttribute("time");
           marker.address = markers[i].getAttribute("address");
           gmarkers.push(marker);
@@ -912,13 +915,13 @@ function showMarkers() {
     resetMarker();
     //var date_from = document.getElementById('daterangepicker_start').value;
     //var date_to = document.getElementById('daterangepicker_end').value;
-    console.log(start_date);
-    console.log(end_date);
-    if (start_date > end_date) {
+    console.log(dateStart);
+    console.log(dateEnd);
+    if (dateStart > dateEnd) {
         alert('Starting date must be earlier than ending date.');
     }
         for ( var i = 0; i < gmarkers.length; i++) {
-            if (gmarkers[i].date >= start_date && gmarkers[i].date <= end_date) {
+            if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
                 gmarker.push(gmarkers[i]);
             }
         }
@@ -984,6 +987,19 @@ function bindInfoWindow(marker, map, infoWindow, html) {
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
 });
+}
+
+function stringToDate(date, format, delimiter){
+            var formatLowerCase=format.toLowerCase();
+            var formatItems=formatLowerCase.split(delimiter);
+            var dateItems=date.split(_delimiter);
+            var monthIndex=formatItems.indexOf("mm");
+            var dayIndex=formatItems.indexOf("dd");
+            var yearIndex=formatItems.indexOf("yyyy");
+            var month=parseInt(dateItems[monthIndex]);
+            month-=1;
+            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+            return formatedDate;
 }
 
 
@@ -2115,7 +2131,10 @@ function doNothing() {}
     }, function(start, end, label) {
         start_date = start.format('MM/DD/YYYY');
         end_date = end.format('MM/DD/YYYY');
-        console.log(start_date);
+        dateStart = stringToDate(start_date,"mm/dd/yyyy","/");
+        dateEnd = stringToDate(end_date,"mm/dd/yyyy","/");
+        console.log(dateStart);
+        console.log(dateEnd);
       //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
   });
     </script>
