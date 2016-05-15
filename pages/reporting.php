@@ -924,13 +924,13 @@ function showMarkers() {
     }
     if (station == 0) {
         for ( var i = 0; i < gmarkers.length; i++) {
-            if (gmarkers[i].date >= date_from && gmarkers[i].date <= date_to) {
+            if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
                 gmarker.push(gmarkers[i]);
             }
         }
     } else {
         for ( var i = 0; i < gmarkers.length; i++) {
-            if ((gmarkers[i].date >= date_from && gmarkers[i].date <= date_to) && gmarkers[i].address == station) {
+            if ((gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) && gmarkers[i].address == station) {
                 gmarker.push(gmarkers[i]);
             }
         }
