@@ -917,6 +917,7 @@ function showMarkers() {
     //var date_from = document.getElementById('daterangepicker_start').value;
     //var date_to = document.getElementById('daterangepicker_end').value;
     var station = document.getElementById('precinctSelector').value;
+    console.log(station);
     console.log(dateStart);
     console.log(dateEnd);
     if (dateStart > dateEnd) {
@@ -1376,28 +1377,28 @@ function doNothing() {}
                                 <div class="form-group" id="barangay-selector">
                                   <select class="form-control" id="precinctSelector" onchange="showMarkers()">
                                     <option value="0">Choose Precinct</option>
-                                    <option value="1">STATION1_PARIAN</option>
-                                    <option value="2">STATION2_FUENTE</option>
-                                    <option value="3">STATION3_WATERFRONT</option>
-                                    <option value="4">STATION4_MABOLO</option>
-                                    <option value="5">STATION5_CARBON</option>
-                                    <option value="6">STATION6_PASIL</option>
-                                    <option value="7">STATION7_PARDO</option>
-                                    <option value="8">STATION8_TALAMBAN</option>
-                                    <option value="9">STATION9_GUADALUPE</option>
-                                    <option value="10">STATION10_PUNTA</option>
-                                    <option value="11">STATION11_MAMBALING</option>
-                                    <option value="12">STATION1_CENTRO</option>
-                                    <option value="13">STATION2_SUBANGDAKU</option>
-                                    <option value="14">STATION3_BASAK</option>
-                                    <option value="15">STATION4_CASUNTINGAN</option>
-                                    <option value="16">STATION5_OPAO</option>
-                                    <option value="17">STATION6_CANDUMAN</option>
-                                    <option value="18">STATION1_OLANGO</option>
-                                    <option value="19">STATION2_MACTAN</option>
-                                    <option value="20">STATION3_GUNOB</option>
-                                    <option value="21">STATION4_MARIGONDON</option>
-                                    <option value="22">STATION5_PUSOK</option>
+                                    <option value="STATION1_PARIAN">STATION1_PARIAN</option>
+                                    <option value="STATION2_FUENTE">STATION2_FUENTE</option>
+                                    <option value="STATION3_WATERFRONT">STATION3_WATERFRONT</option>
+                                    <option value="STATION4_MABOLO">STATION4_MABOLO</option>
+                                    <option value="STATION5_CARBON">STATION5_CARBON</option>
+                                    <option value="STATION6_PASIL">STATION6_PASIL</option>
+                                    <option value="STATION7_PARDO">STATION7_PARDO</option>
+                                    <option value="STATION8_TALAMBAN">STATION8_TALAMBAN</option>
+                                    <option value="STATION9_GUADALUPE">STATION9_GUADALUPE</option>
+                                    <option value="STATION10_PUNTA">STATION10_PUNTA</option>
+                                    <option value="STATION11_MAMBALING">STATION11_MAMBALING</option>
+                                    <option value="STATION1_CENTRO">STATION1_CENTRO</option>
+                                    <option value="STATION2_SUBANGDAKU">STATION2_SUBANGDAKU</option>
+                                    <option value="STATION3_BASAK">STATION3_BASAK</option>
+                                    <option value="STATION4_CASUNTINGAN">STATION4_CASUNTINGAN</option>
+                                    <option value="STATION5_OPAO">STATION5_OPAO</option>
+                                    <option value="STATION6_CANDUMAN">STATION6_CANDUMAN</option>
+                                    <option value="STATION1_OLANGO">STATION1_OLANGO</option>
+                                    <option value="STATION2_MACTAN">STATION2_MACTAN</option>
+                                    <option value="STATION3_GUNOB">STATION3_GUNOB</option>
+                                    <option value="STATION4_MARIGONDON">STATION4_MARIGONDON</option>
+                                    <option value="STATION5_PUSOK">STATION5_PUSOK</option>
                                 </select>
                             </div>
                         </ul>                          
