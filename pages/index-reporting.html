@@ -435,7 +435,7 @@ function doNothing() {}
             <div class="form-group" id="barangay-selector">
                 <label id="filterSelector">CRIME TYPE</label>
                 <select class="form-control" id="crimeSelector">
-                    <option value="">Choose Crime Type</option>
+                    <option value="0">Choose Crime Type</option>
                     <option name="MURDER" value="MURDER">Murder</option>
                     <option name="THEFT" value="THEFT">Theft</option>
                     <option name="ROBBERY" value="ROBBERY">Robbery</option>
@@ -453,7 +453,7 @@ function doNothing() {}
             <div class="form-group" id="day-selector">
                 <label id="filterSelector">DAY</label>
                 <select class="form-control" id="barangaySelector">
-                    <option value="">Choose Day</option>
+                    <option value="0">Choose Day</option>
                     <option name="Sunday" value="Sunday">Sunday</option>
                     <option name="Monday" value="Monday">Monday</option>
                     <option name="Tuesday" value="Tuesday">Tuesday</option>
@@ -471,7 +471,8 @@ function doNothing() {}
     $('#daterange').daterangepicker({
         "linkedCalendars": false,
         "startDate": "04/19/2016",
-        "endDate": "04/25/2016"
+        "endDate": "04/25/2016",
+        "drops": "up"
     }, function(start, end, label) {
         start_date = start.format('MM/DD/YYYY');
         end_date = end.format('MM/DD/YYYY');
