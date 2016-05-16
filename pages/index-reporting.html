@@ -319,19 +319,19 @@ function showMarkers() {
     if (barangayFilter == 0) {
         for ( var i = 0; i < gmarkers.length; i++) {
             if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
-                gmarker.push(gmarkers[i]);
+                maps.push(gmarkers[i]);
             }
         }
     } else {
         for ( var i = 0; i < gmarkers.length; i++) {
             if ((gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) && gmarkers[i].barangay == barangayFilter && gmarkers[i].crimecategory == crimeFilter) {
-                gmarker.push(gmarkers[i]);
+                maps.push(gmarkers[i]);
             }
         }
     }
-    checkBox();
+    finalMarker();
 }
-function checkBox() {
+/*function checkBox() {
     var crime_filter = document.getElementsByName('crimefilter');
     console.log(crime_filter);
     for ( var i = 0; i < gmarker.length; i++) {
@@ -345,7 +345,7 @@ function checkBox() {
     }
     finalMarker();
     console.log(maps);
-}
+}*/
 
 function finalMarker() {
     var counter = 0;
@@ -499,7 +499,6 @@ function doNothing() {}
     <script src="../js/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    title: 'Click to show crime info'
     <script src="../dist/js/highlight.js"></script>
     <script src="../dist/js/main.js"></script>
 
