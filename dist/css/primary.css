@@ -769,3 +769,7 @@ hr {
 .apply-index {
     margin-left: 15px;
 }
+
+.indexFilters {
+    text-align: center;
+}
