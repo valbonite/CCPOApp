@@ -773,3 +773,8 @@ hr {
 .indexFilters {
     text-align: center;
 }
+
+#precinct-selector {
+    margin-left: 30px;
+    margin-right: 30px;
+}
