@@ -119,7 +119,15 @@ require('../vendor/autoload.php');
 
     }
 
-    var markers = null;
+    var gmarkers = [], gmarker = [];
+    var maps = [];   
+    var markers = [];
+    var map;
+    var map2;
+    var start_date;
+    var end_date;
+    var dateStart;
+    var dateEnd;
     
     function load() {        
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
