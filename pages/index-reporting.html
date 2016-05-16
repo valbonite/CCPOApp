@@ -319,19 +319,19 @@ function showMarkers() {
     if (barangayFilter == 0) {
         for ( var i = 0; i < gmarkers.length; i++) {
             if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
-                maps.push(gmarkers[i]);
+                gmarker.push(gmarkers[i]);
             }
         }
     } else {
         for ( var i = 0; i < gmarkers.length; i++) {
             if ((gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) && gmarkers[i].barangay == barangayFilter && gmarkers[i].crimecategory == crimeFilter) {
-                maps.push(gmarkers[i]);
+                gmarker.push(gmarkers[i]);
             }
         }
     }
-    finalMarker();
+    checkBox();
 }
-/*function checkBox() {
+function checkBox() {
     var crime_filter = document.getElementsByName('crimefilter');
     console.log(crime_filter);
     for ( var i = 0; i < gmarker.length; i++) {
@@ -345,7 +345,7 @@ function showMarkers() {
     }
     finalMarker();
     console.log(maps);
-}*/
+}
 
 function finalMarker() {
     var counter = 0;
