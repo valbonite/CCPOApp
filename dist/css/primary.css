@@ -775,6 +775,5 @@ hr {
 }
 
 #precinct-selector {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin: 10px 15px 0 15px;
 }

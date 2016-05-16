@@ -317,7 +317,7 @@ function showMarkers() {
     if (barangayFilter == 0 && crimeFilter == 0) {
         for ( var i = 0; i < gmarkers.length; i++) {
             if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
-                gmarker.push(gmarkers[i]);
+                maps.push(gmarkers[i]);
             }
         }
     } else {
