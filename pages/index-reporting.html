@@ -316,7 +316,7 @@ function showMarkers() {
     if (dateStart > dateEnd) {
         alert('Starting date must be earlier than ending date.');
     }
-    if (barangayFilter == 0 && crimeFilter == 0) {
+    if (barangayFilter == 0) {
         for ( var i = 0; i < gmarkers.length; i++) {
             if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
                 maps.push(gmarkers[i]);

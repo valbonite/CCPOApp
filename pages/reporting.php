@@ -1248,7 +1248,7 @@ function doNothing() {}
                     <span></span> <b class="caret"></b>
                 </div>-->
                 <div class="form-inline">
-                    <div class="input-group">
+                    <div class="input-group datePicker">
                     <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
                     <div class="input-group-addon">
                         <span class="fa fa-calendar fa-fw"></span>
