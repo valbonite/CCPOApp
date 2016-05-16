@@ -1372,7 +1372,7 @@ function doNothing() {}
                         <li>
                             <a href="#"><i class="fa fa-map-marker fa-fw"></i> Precinct<span class="fa arrow rotate"></span></a>
                             <ul class="nav nav-second-level">
-                                <div class="form-group" id="barangay-selector">
+                                <div class="form-group" id="precinct-selector">
                                   <select class="form-control" id="precinctSelector" onchange="showMarkers()">
                                     <option value="0">Choose Precinct</option>
                                     <option value="STATION1_PARIAN">STATION1_PARIAN</option>
