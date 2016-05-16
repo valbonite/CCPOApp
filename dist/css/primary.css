@@ -632,11 +632,11 @@ input[readonly] {
 }
 
 #barangay-selector {
-    margin: 0 15px 15px 15px;
+    margin-left: 30px;
 }
 
 #day-selector {
-    margin: 0 15px 15px 15px;
+    margin-left: 30px;
 }
 
 .login-btn { 
@@ -750,4 +750,22 @@ hr {
 .input-group {
     width: 80%;
     display: block;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #204d74;
+    height: 100px;
+    padding: 30px;
+}
+
+#filterSelector {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.apply-index {
+    margin-left: 15px;
 }

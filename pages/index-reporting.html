@@ -53,10 +53,10 @@ require('../vendor/autoload.php');
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=places"></script>
-<script type="text/javascript" src="proj4.js"></script>
-<script type="text/javascript">
+        <![endif]-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.8&libraries=places"></script>
+        <script type="text/javascript" src="proj4.js"></script>
+        <script type="text/javascript">
         var customIcons = [];
 
         var customIcons = {
@@ -220,10 +220,9 @@ map.mapTypes.set(customMapTypeId, customMapType);
 map.setMapTypeId(customMapTypeId);
 
       // Change this depending on the name of your PHP file
-      downloadUrl('phpsqlajax_genxml.php', function(data) {
+      downloadUrl("phpsqlajax_genxml.php", function(data) {       
         var xml = data.responseXML;
         markers = xml.documentElement.getElementsByTagName("marker");
-        console.log(markers)
         for (var i = 0; i < markers.length; i++) {
           var date = markers[i].getAttribute("date");
           var day = markers[i].getAttribute("day");
@@ -236,7 +235,7 @@ map.setMapTypeId(customMapTypeId);
           var type = markers[i].getAttribute("crimetype");
           var crimecategory = markers[i].getAttribute("crimecategory");
           var crime = markers[i].getAttribute("classification");
-          var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Barangay: " + barangay + "</b> <br/>" + "Precinct: " + address;
+          var html = "<b>" + crimecategory + "</b> <br/>" + "Classification: " + crime + "</b> <br/>" + "Date: " + date + "</b> <br/>" + "Time: " + time + "</b> <br/>" + "Barangay: "+ barangay + "</b> <br/>" + "Precinct: "+ address;
           var icon = customIcons[crimecategory] || {};
           var marker = new google.maps.Marker({
             map: map,
@@ -244,74 +243,143 @@ map.setMapTypeId(customMapTypeId);
             icon: icon.icon,
             title: 'Click to show crime info'
         });
-          if (markerGroups.hasOwnProperty(crimecategory)) {
+
+          var oldDate = markers[i].getAttribute("date");
+          marker.date = stringToDate(oldDate,"mm/dd/yyyy","/");
+          //console.log(marker.date);
+          marker.crimecategory = crimecategory;
+          marker.time = markers[i].getAttribute("time");
+          marker.address = markers[i].getAttribute("areaofincident");
+          marker.barangay = markers[i].getAttribute("barangay");
+          gmarkers.push(marker);
+
+        /*if (markerGroups.hasOwnProperty(crimecategory)) {
             markerGroups[crimecategory].push(marker);
-            count++;
+            //count++;
         } else {
             doNothing();
         }
-        //markerGroups[crimecategory].push(marker);
-        //markerGroups[barangay].push(marker);
-        bindInfoWindow(marker, map, infowindow, html);
-      }
-  });
-    google.maps.event.addListenerOnce( map, 'idle', function() {
 
-    });
-        
-  }
-
-
-
-  function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-      new ActiveXObject('Microsoft.XMLHTTP') :
-      new XMLHttpRequest;
-
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-      }
-  };
-
-  request.open('GET', url, true);
-  request.send(null);
+        if (markerGroups.hasOwnProperty(address)) {
+            markerGroups[address].push(marker);
+            //count++;
+        } else {
+            doNothing();
+        }*/
+        bindInfoWindow(marker, map, infowindow, html); 
+    } 
+});    
+google.maps.event.addListenerOnce( map, 'idle', function() {
+});
+console.log(gmarkers);
 }
 
-  function show(category) {
-
+/*function show(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
-        console.dir(markersInCategory);
-        for (var i=1; i<markersInCategory.length; i++) {
+        for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(true);
         }
     }
-  }
+}
 
-  function hide(category) {
+function hide(category) {
     if (markerGroups.hasOwnProperty(category)) {
         var markersInCategory = markerGroups[category];
-        for (var i=1; i<markersInCategory.length; i++) {
+        for (var i=0; i<markersInCategory.length; i++) {
             markersInCategory[i].setVisible(false);
         }
     }
+}*/
+
+function showMarkers() {
+    resetMarker();
+    //var date_from = document.getElementById('daterangepicker_start').value;
+    //var date_to = document.getElementById('daterangepicker_end').value;
+    var barangayFilter = document.getElementById('barangaySelector').value;
+    var crimeFilter = document.getElementById('crimeSelector').value;
+    console.log(station);
+    if (dateStart > dateEnd) {
+        alert('Starting date must be earlier than ending date.');
+    }
+    if (barangayFilter == 0 && crimeFilter == 0) {
+        for ( var i = 0; i < gmarkers.length; i++) {
+            if (gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) {
+                gmarker.push(gmarkers[i]);
+            }
+        }
+    } else {
+        for ( var i = 0; i < gmarkers.length; i++) {
+            if ((gmarkers[i].date >= dateStart && gmarkers[i].date <= dateEnd) && gmarkers[i].barangay == barangayFilter && gmarkers[i].crimecategory == crimeFilter) {
+                maps.push(gmarkers[i]);
+            }
+        }
+    }
+}
+/*function checkBox() {
+    var crime_filter = document.getElementsByName('crimefilter');
+    console.log(crime_filter);
+    for ( var i = 0; i < gmarker.length; i++) {
+        for ( var x = 0; x < crime_filter.length; x++) {
+            if (crime_filter[x].checked == true) {
+                if (gmarker[i].crimecategory == crime_filter[x].value) {
+                    maps.push(gmarker[i]);
+                }
+            }
+        }
+    }
+    finalMarker();
+    console.log(maps);
+}*/
+
+function finalMarker() {
+    var counter = 0;
+    for ( var i = 0; i < maps.length; i++) {
+        maps[i].setMap(map);
+        counter++;
+    }
+    console.log(counter);
+    document.getElementById('crimeCount').innerHTML = "Number of crimes: " + counter;
+}
+
+function resetMarker() {
+    for ( var i = 0; i < gmarkers.length; i++) {
+        gmarkers[i].setMap(null);
+    }
+    gmarker.length = 0;
+    maps.length = 0;
+    gmarker = [];
+    maps = [];
+}
+
+
+
+function downloadUrl(url, callback) {
+  var request = window.ActiveXObject ?
+  new ActiveXObject('Microsoft.XMLHTTP') :
+  new XMLHttpRequest;
+
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      request.onreadystatechange = doNothing;
+      callback(request, request.status);
   }
+};
 
+request.open('GET', url, true);
+request.send(null);
+}
 
-  function bindInfoWindow(marker, map, infoWindow, html) {
-      google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent(html);
-        infoWindow.open(map, marker);
-    });
-  }
+function bindInfoWindow(marker, map, infoWindow, html) {
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker);
+});
+}
 
+function doNothing() {}
 
-
-    function doNothing() {}
-
-    </script>
+</script>
 
 </head>
 
@@ -329,52 +397,65 @@ map.setMapTypeId(customMapTypeId);
             </div>
         </nav>
         <div id="page-wrapper-index-reporting">
-            <div class="index-sidebar" style="position: absolute">
-               <div class="heading">
-                    <h3><i class="fa fa-map-marker fa-fw"></i> MAP FILTERS</h3>
-               </div>
-               <hr></hr>
-               
-               <div id="barangay-selector">
-                           
-                            <input id="places-search" type="text" class="form-control" placeholder="Search for barangay...">
-                        </div>
-                <div class="form-group" id="barangay-selector">
-                    <select class="form-control" id="selector" onchange="hide(this.value);">
-                        <option value="">Choose Crime Type</option>
-                        <option name="MURDER" value="MURDER">Murder</option>
-                        <option name="THEFT" value="THEFT">Theft</option>
-                        <option name="ROBBERY" value="ROBBERY">Robbery</option>
-                        <option name="ORDINANCES" value="ORDINANCES">Ordinances</option>
-                        <option name="CATTLERUSTLING" value="CATTLERUSTLING">Cattle Rustling</option>
-                        <option name="SPECIALLAWS" value="SPECIALLAWS">Special Laws</option>
-                        <option name="HOMICIDE" value="HOMICIDE">Homicide</option>
-                        <option name="CARNAPPING" value="CARNAPPING">Carnapping</option>
-                        <option name="PHYSICALINJURIES" value="PHYSICALINJURIES">Physical Injuries</option>
-                        <option name="RAPE" value="RAPE">Rape</option>
-                        <option name="OTHERNONINDEX" value="OTHERNONINDEX">Other Non-Index</option>
-                        <option name="OTHERINCIDENTS" value="OTHERINCIDENTS">Other Incidents</option>
-                    </select>
-                </div>
-                <div class="form-group" id="day-selector">
-                    <select class="form-control" id="selector" onchange="hide(this.value);">
-                        <option value="">Choose Day</option>
-                        <option name="Sunday" value="Sunday">Sunday</option>
-                        <option name="Monday" value="Monday">Monday</option>
-                        <option name="Tuesday" value="Tuesday">Tuesday</option>
-                        <option name="Wednesday" value="Wednesday">Wednesday</option>
-                        <option name="Thursday" value="Thursday">Thursday</option>
-                        <option name="Friday" value="Friday">Friday</option>
-                        <option name="Saturday" value="Saturday">Saturday</option>
-                    </select>
-                </div>
-            </div>
             <div id="map_canvas" style="width:100%; height: 100vh; position: relative"></div>
         </div>
-        <div class="progress">
-        </div>
+    </div>
+    <div class="footer">
+        <form class="form-inline">
+            <div class="form-group">
+                <label id="filterSelector">DATE</label>
+                <input class="form-control" type="text" id="daterange" value="01/01/2015 - 01/31/2015" />
+            </div>
+            <div class="form-group" id="barangay-selector">
+                <label id="filterSelector">CRIME TYPE</label>
+                <select class="form-control" id="crimeSelector">
+                    <option value="">Choose Crime Type</option>
+                    <option name="MURDER" value="MURDER">Murder</option>
+                    <option name="THEFT" value="THEFT">Theft</option>
+                    <option name="ROBBERY" value="ROBBERY">Robbery</option>
+                    <option name="ORDINANCES" value="ORDINANCES">Ordinances</option>
+                    <option name="CATTLERUSTLING" value="CATTLERUSTLING">Cattle Rustling</option>
+                    <option name="SPECIALLAWS" value="SPECIALLAWS">Special Laws</option>
+                    <option name="HOMICIDE" value="HOMICIDE">Homicide</option>
+                    <option name="CARNAPPING" value="CARNAPPING">Carnapping</option>
+                    <option name="PHYSICALINJURIES" value="PHYSICALINJURIES">Physical Injuries</option>
+                    <option name="RAPE" value="RAPE">Rape</option>
+                    <option name="OTHERNONINDEX" value="OTHERNONINDEX">Other Non-Index</option>
+                    <option name="OTHERINCIDENTS" value="OTHERINCIDENTS">Other Incidents</option>
+                </select>
+            </div>
+            <div class="form-group" id="day-selector">
+                <label id="filterSelector">DAY</label>
+                <select class="form-control" id="barangaySelector">
+                    <option value="">Choose Day</option>
+                    <option name="Sunday" value="Sunday">Sunday</option>
+                    <option name="Monday" value="Monday">Monday</option>
+                    <option name="Tuesday" value="Tuesday">Tuesday</option>
+                    <option name="Wednesday" value="Wednesday">Wednesday</option>
+                    <option name="Thursday" value="Thursday">Thursday</option>
+                    <option name="Friday" value="Friday">Friday</option>
+                    <option name="Saturday" value="Saturday">Saturday</option>
+                </select>
+            </div>
+            <button class="btn btn-primary apply-index" onclick="showMarkers()">APPLY FILTERS</button>
+        </form>
     </div>
 
+    <script type="text/javascript">
+    $('#daterange').daterangepicker({
+        "linkedCalendars": false,
+        "startDate": "04/19/2016",
+        "endDate": "04/25/2016"
+    }, function(start, end, label) {
+        start_date = start.format('MM/DD/YYYY');
+        end_date = end.format('MM/DD/YYYY');
+        dateStart = stringToDate(start_date,"mm/dd/yyyy","/");
+        dateEnd = stringToDate(end_date,"mm/dd/yyyy","/");
+        console.log(dateStart);
+        console.log(dateEnd);
+      //console.log("New date range selected: " + start.format('DD/MM/YYYY') + " to " + end.format('DD/MM/YYYY') + " (predefined range: " + label + ")");
+  });
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
